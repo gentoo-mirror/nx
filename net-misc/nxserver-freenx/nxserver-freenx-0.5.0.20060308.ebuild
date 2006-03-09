@@ -6,7 +6,7 @@ inherit eutils
 DESCRIPTION="An X11/RDP/VNC proxy server especially well suited to low bandwidth links such as ISDN or modem"
 HOMEPAGE="http://freenx.berlios.de/"
 URI_BASE="http://debian.tu-bs.de/knoppix/nx/snapshots"
-SRC_URI="$URI_BASE/freenx-0.5.0-test-2006-03-07-4.tar.gz"
+SRC_URI="$URI_BASE/freenx-0.5.0-test-2006-03-08-5.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
@@ -25,7 +25,7 @@ DEPEND="virtual/ssh
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
 
-S=${WORKDIR}/freenx-0.5.0-test-2006-03-07-4
+S=${WORKDIR}/freenx-0.5.0-test-2006-03-08-5
 
 pkg_setup () {
 	enewuser nx -1 -1 /usr/NX/home/nx
@@ -93,9 +93,4 @@ EOF
 
 pkg_postinst () {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
-
-	echo
-	einfo "If you are using NX version 1.5.0, make sure you edit the file:"
-	einfo "/usr/NX/etc/node.conf and set ENABLE_1_5_0_BACKEND to 1."
-	echo
 }
