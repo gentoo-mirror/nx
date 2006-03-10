@@ -2,23 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/nxssh/nxssh-1.5.0-r1.ebuild,v 1.2 2005/10/20 21:54:54 agriffis Exp $
 
-inherit eutils
+inherit multilib flag-o-matic
 
 DESCRIPTION="Modified openssh client, used by nxclient"
 HOMEPAGE="http://www.nomachine.com/"
-
-SRC_NXSSH="nxssh-$PV-23.tar.gz"
-SRC_NXCOMP="nxcomp-$PV-80.tar.gz"
-URI_BASE="http://web04.nomachine.com/download/1.5.0/sources"
-SRC_URI="$URI_BASE/$SRC_NXSSH
-	 $URI_BASE/$SRC_NXCOMP"
 
 IUSE="ipv6 pam tcpd"
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc"
 
-DEPEND="dev-libs/openssl
+SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/nxssh-$PV-23.tar.gz"
+
+DEPEND="~net-misc/nxcomp-1.5.0
+	dev-libs/openssl
 	virtual/libc
 	sys-libs/zlib
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -26,24 +23,9 @@ DEPEND="dev-libs/openssl
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	unpack ${SRC_NXSSH}
-	unpack ${SRC_NXCOMP}
-
-	cd "${S}/../nxcomp"
-
-	epatch ${FILESDIR}/1.5.0/nxcomp-pic.patch
-	epatch ${FILESDIR}/1.5.0/nxcomp-gcc4.patch
-}
-
 src_compile() {
-
-	cd ../nxcomp
-	econf --prefix="/usr/NX/" || die "Unable to configure nxcomp"
-	emake || die "Unable to build nxcomp"
-
-	cd ../nxssh
-			
+	append-flags -I/usr/NX/include
+	append-ldflags -L/usr/NX/$(get_libdir)
 	./configure \
 	    --prefix=/usr \
 		--sysconfdir=/etc/ssh \

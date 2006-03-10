@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxclient/nxclient-1.5.0-r3.ebuild,v 1.2 2006/03/06 15:22:38 stuart Exp $
+# $Header: $
 
 inherit rpm
 
@@ -16,7 +16,8 @@ RESTRICT="nostrip"
 SRC_URI="http://web04.nomachine.com/download/1.5.0/client/$P-141.i386.rpm"
 
 DEPEND="
-	=net-misc/nxssh-1.5*
+	~net-misc/nxssh-1.5.0
+	~net-misc/nxesd-1.5.0
 	net-analyzer/gnu-netcat
 	amd64? (
 		>=app-emulation/emul-linux-x86-baselibs-2.1.4
