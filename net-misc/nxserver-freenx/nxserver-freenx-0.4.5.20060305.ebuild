@@ -35,7 +35,6 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch gentoo-nomachine.diff
-	epatch $FILESDIR/$PN-0.4.5-xorg7.patch
 }
 
 src_compile() {
@@ -48,6 +47,11 @@ src_install() {
 	NX_ETC_DIR=$NX_DIR/etc
 	NX_SESS_DIR=$NX_DIR/var/db
 	NX_HOME_DIR=$NX_DIR/home/nx
+
+	if [ -f ${ROOT}/usr/share/X11/XKeysymDB ] && [ ! -f ${ROOT}/usr/lib/X11/XKeysymDB ] ; then
+		mkdir -p ${D}/usr/lib/X11
+		dosym /usr/share/X11/XKeysymDB /usr/lib/X11/XKeysymDB
+	fi
 
 	into ${NX_DIR}
 	dobin nxserver
