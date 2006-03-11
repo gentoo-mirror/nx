@@ -24,7 +24,7 @@ DEPEND="virtual/ssh
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
 
-S=${WORKDIR}/freenx-0.5.0-test-2006-03-08-5
+S=${WORKDIR}/freenx-0.5.0-test-2006-03-11-7
 
 pkg_setup () {
 	enewuser nx -1 -1 /usr/NX/home/nx
@@ -34,7 +34,6 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch gentoo-nomachine.diff
-	epatch $FILESDIR/$PN-0.4.5-xorg7.patch
 }
 
 src_compile() {
@@ -92,4 +91,5 @@ EOF
 
 pkg_postinst () {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
+	dosym /usr/share/X11/XKeysymDB /usr/lib/X11/XKeysymDB
 }
