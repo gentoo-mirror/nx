@@ -34,6 +34,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch gentoo-nomachine.diff
+	epatch $FILESDIR/$PN-0.4.5-xorg7.patch
 }
 
 src_compile() {
@@ -91,5 +92,4 @@ EOF
 
 pkg_postinst () {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
-	dosym /usr/share/X11/XKeysymDB /usr/lib/X11/XKeysymDB
 }
