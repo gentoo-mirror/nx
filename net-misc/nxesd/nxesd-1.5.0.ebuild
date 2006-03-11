@@ -7,7 +7,7 @@ HOMEPAGE="http://www.nomachine.com/"
 SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/$P-3.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa debug ipv6 tcpd"
 
 DEPEND=">=media-libs/audiofile-0.1.5

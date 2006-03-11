@@ -20,18 +20,16 @@ DEPEND="
 	~net-misc/nxesd-1.5.0
 	net-analyzer/gnu-netcat
 	amd64? (
+		app-emulation/emul-linux-x86-compat
 		>=app-emulation/emul-linux-x86-baselibs-2.1.4
+		>=app-emulation/emul-linux-x86-xlibs-2.2.1
+		>=app-emulation/emul-linux-x86-qtlibs-2.1.1
 	)
 	x86? (
-		media-libs/jpeg
-		sys-libs/glibc
-		sys-libs/zlib
-		virtual/x11
-		dev-libs/expat
-		media-libs/fontconfig
-		media-libs/freetype
-		media-libs/jpeg
-		x11-libs/qt
+		>=dev-libs/expat-1.95.7
+		>=media-libs/fontconfig-2.2.2
+		>=media-libs/freetype-2.19
+		>=x11-libs/qt-3.3.4
 		sys-libs/lib-compat
 	)"
 
@@ -53,7 +51,7 @@ src_install() {
 	# delivered by net-misc/nxcomp
 	rm -f ${D}/usr/NX/lib/libXcomp.so*
 
-	# delivered by net-misc/nx-x11 (at some point)
+	# delivered by net-misc/nxesd
 	rm -f ${D}/usr/NX/bin/nxesd
 
 	# delivered by net-misc/nxssh

@@ -14,11 +14,32 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/$P-80.tar.gz"
 
-DEPEND="media-libs/jpeg
-	media-libs/libpng
-	virtual/libc
-	sys-libs/zlib
-	virtual/x11"
+# Add modular Xorg dependencies, but allow fallback to <7.0
+RDEPEND="|| ( ( x11-libs/libX11
+			x11-libs/libXFS
+			x11-libs/libXvMC
+			media-libs/mesa
+		)
+		virtual/x11
+	)"
+DEPEND="${RDEPEND}
+	|| ( ( x11-proto/xproto
+			x11-proto/xf86vidmodeproto
+			x11-proto/glproto
+			x11-proto/videoproto
+			x11-proto/xextproto
+			x11-proto/fontsproto
+
+			x11-misc/gccmakedep
+			x11-misc/imake
+			x11-misc/xdialog
+		)
+		virtual/x11
+	)
+	>=media-libs/jpeg-6b-r4
+	>=media-libs/libpng-1.2.8
+	>=sys-libs/zlib-1.2.3
+	virtual/libc"
 
 S=${WORKDIR}/${PN}
 
@@ -29,19 +50,17 @@ src_unpack() {
 }
 
 src_compile() {
-	econf
+	econf --prefix="/usr/NX/" || die "Unable to configure nxcomp"
 	emake || die "emake failed"
 }
 
 src_install() {
 	into /usr/NX
-	dolib libXcomp.so*
+	dolib.so libXcomp.so*
 	if [[ $(get_libdir) != lib ]]; then
 		# necessary for nxclient to work, it seems
 		ln -s "$(get_libdir)" ${D}/usr/NX/lib
 	fi
-
-	preplib /usr/NX/lib
 
 	insinto /usr/NX/include
 	doins NX*.h MD5.h
@@ -57,6 +76,5 @@ PATH=/usr/NX/bin
 ROOTPATH=/usr/NX/bin
 LDPATH=/usr/NX/lib
 EOF
-	insinto /etc/env.d
-	doins ${T}/50nxpaths
+	doenvd ${T}/50nxpaths
 }

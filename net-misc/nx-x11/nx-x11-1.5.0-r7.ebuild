@@ -13,40 +13,21 @@ SRC_NXAGENT="nxagent-$PV-112.tar.gz"
 SRC_NXAUTH="nxauth-$PV-1.tar.gz"
 SRC_NXCOMP="nxcomp-$PV-80.tar.gz"
 SRC_NXCOMPEXT="nxcompext-$PV-20.tar.gz"
-SRC_NXVIEWER="nxviewer-$PV-15.tar.gz"
 SRC_NXDESKTOP="nxdesktop-$PV-78.tar.gz"
-SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXAUTH $URI_BASE/$SRC_NXCOMP $URI_BASE/$SRC_NXCOMPEXT $URI_BASE/$SRC_NXVIEWER $URI_BASE/$SRC_NXDESKTOP"
+SRC_NXVIEWER="nxviewer-$PV-15.tar.gz"
+
+SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXAUTH
+	$URI_BASE/$SRC_NXCOMP $URI_BASE/$SRC_NXCOMPEXT
+	rdesktop? ( $URI_BASE/$SRC_NXDESKTOP )
+	vnc? ( $URI_BASE/$SRC_NXVIEWER )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="rdesktop vnc"
 
-# Add modular Xorg dependencies, but allow fallback to <7.0
-RDEPEND="|| ( ( x11-libs/libX11
-			x11-libs/libXFS
-			x11-libs/libXvMC
-			media-libs/mesa
-		)
-		virtual/x11
-	)"
-DEPEND="${RDEPEND}
-	~net-misc/nxproxy-1.5.0
-	|| ( ( x11-proto/xproto
-			x11-proto/xf86vidmodeproto
-			x11-proto/glproto
-			x11-proto/videoproto
-			x11-proto/xextproto
-			x11-proto/fontsproto
-
-			x11-misc/gccmakedep
-			x11-misc/imake
-			x11-misc/xdialog
-		)
-		virtual/x11
-	)
-	app-text/rman
-	media-libs/jpeg"
+DEPEND="~net-misc/nxproxy-1.5.0
+	app-text/rman"
 
 S=${WORKDIR}/${PN//x11/X11}
 
@@ -99,14 +80,13 @@ src_install() {
 		dobin ../nxdesktop/nxdesktop
 	fi
 
-	dolib lib/X11/libX11.so*
+	dolib.so lib/X11/libX11.so*
 
-	dolib lib/Xext/libXext.so*
+	dolib.so lib/Xext/libXext.so*
 
-	dolib lib/Xrender/libXrender.so*
+	dolib.so lib/Xrender/libXrender.so*
 
-	dolib ../nxcompext/libXcompext.so*
+	dolib.so ../nxcompext/libXcompext.so*
 
-	preplib /usr/NX
 	dodir /var/lib/nxserver
 }

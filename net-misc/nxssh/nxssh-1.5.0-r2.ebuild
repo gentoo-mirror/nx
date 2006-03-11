@@ -15,11 +15,9 @@ KEYWORDS="~amd64 ~x86 ~ppc"
 SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/nxssh-$PV-23.tar.gz"
 
 DEPEND="~net-misc/nxcomp-1.5.0
-	dev-libs/openssl
-	virtual/libc
-	sys-libs/zlib
-	tcpd? ( sys-apps/tcp-wrappers )
-	pam? ( sys-libs/pam )"
+	>=dev-libs/openssl-0.9.7
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+	pam? ( >=sys-libs/pam-0.77 )"
 
 S=${WORKDIR}/${PN}
 

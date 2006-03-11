@@ -14,11 +14,7 @@ KEYWORDS="~amd64 ~x86 ~ppc"
 
 SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/nxproxy-$PV-9.tar.gz"
 
-DEPEND="~net-misc/nxcomp-1.5.0
-	media-libs/jpeg
-	media-libs/libpng
-	virtual/libc
-	sys-libs/zlib"
+DEPEND="~net-misc/nxcomp-1.5.0"
 
 S=${WORKDIR}/${PN}
 
