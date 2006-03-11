@@ -28,7 +28,7 @@ DEPEND="
 	x86? (
 		>=dev-libs/expat-1.95.7
 		>=media-libs/fontconfig-2.2.2
-		>=media-libs/freetype-2.19
+		>=media-libs/freetype-2.1.9
 		>=x11-libs/qt-3.3.4
 		sys-libs/lib-compat
 	)"
