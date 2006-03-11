@@ -23,11 +23,10 @@ SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXAUTH
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~ppc ~x86"
 IUSE="rdesktop vnc"
 
-DEPEND="~net-misc/nxproxy-1.5.0
-	app-text/rman"
+DEPEND="~net-misc/nxcomp-1.5.0"
 
 S=${WORKDIR}/${PN//x11/X11}
 

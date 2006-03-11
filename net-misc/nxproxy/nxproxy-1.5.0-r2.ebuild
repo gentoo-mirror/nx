@@ -23,7 +23,7 @@ src_unpack() {
 	cd ${S}
 	# unfortunately this package doesn't honor environment variables correctly
 	# in configure, so append-flags doesn't work.
-	sed -i '/^C\(XX\|C\)INCLUDES =/s/$/ -I\/usr\/NX\/include/' Makefile.in
+	sed -i 's/-I *..\/nxcomp/-I\/usr\/NX\/include/' Makefile.in
 }
 
 src_compile() {

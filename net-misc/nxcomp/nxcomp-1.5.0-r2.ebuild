@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 			x11-misc/gccmakedep
 			x11-misc/imake
 			x11-misc/xdialog
+
+			app-text/rman
 		)
 		virtual/x11
 	)
