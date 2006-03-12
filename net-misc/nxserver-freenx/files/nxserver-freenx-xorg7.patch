@@ -1,6 +1,6 @@
 --- freenx-server/nxnode	2005-08-07 12:53:57.000000000 +0300
 +++ freenx-server/nxnode	2006-02-02 00:00:25.000000000 +0200
-@@ -22,6 +22,26 @@
+@@ -22,6 +22,15 @@
  
  echo "NX> 1000 NXNODE - Version $NX_VERSION $NX_LICENSE"
  
