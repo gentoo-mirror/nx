@@ -28,5 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "unable to install nxesd"
+	exeinto /usr/NX/bin
+	doexe nxesd
 }
