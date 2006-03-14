@@ -28,6 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	exeinto /usr/NX/bin
-	doexe nxesd
+	into /usr/NX
+	dobin nxesd
 }

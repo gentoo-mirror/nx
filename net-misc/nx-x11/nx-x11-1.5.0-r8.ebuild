@@ -26,7 +26,8 @@ SLOT="0"
 KEYWORDS="~ppc ~x86"
 IUSE="rdesktop vnc"
 
-DEPEND="~net-misc/nxcomp-1.5.0"
+DEPEND="~net-misc/nxcomp-1.5.0
+	!net-misc/nx-x11-bin"
 
 S=${WORKDIR}/${PN//x11/X11}
 
@@ -43,6 +44,16 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nx-x11-windows-linux-resume.patch
 	epatch ${FILESDIR}/1.5.0/plastik-render-fix-1.5.0.patch
+
+	# Fix the font issues with xorg 7
+	if has_version "x11-base/xorg-server"; then
+		einfo "Applying fix to support xorg 7 font paths."
+		einfo "This might take a while..."
+		for file in $(find -type f); do
+			sed -i 's/\/usr\/X11R6\/lib\/X11\/fonts/\/usr\/share\/fonts/g' ${file}
+		done
+	fi
+
 	cd ../nxcomp
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-r1-gcc4.patch
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-r1-pic.patch
@@ -86,6 +97,4 @@ src_install() {
 	dolib.so lib/Xrender/libXrender.so*
 
 	dolib.so ../nxcompext/libXcompext.so*
-
-	dodir /var/lib/nxserver
 }

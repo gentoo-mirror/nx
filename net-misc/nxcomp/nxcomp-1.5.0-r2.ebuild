@@ -67,9 +67,6 @@ src_install() {
 	insinto /usr/NX/include
 	doins NX*.h MD5.h
 
-	insinto /usr/X11R6/include
-	doins NX.h
-
 	dodoc README README-IPAQ LICENSE VERSION
 
 	# environment variables

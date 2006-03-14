@@ -1,15 +1,16 @@
+# Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.5.0.-r3.ebuild,v 1.1 2005/05/23 19:10:14 stuart Exp $
+# $Header: $
 
-inherit eutils
+inherit multilib eutils
 
 DESCRIPTION="An X11/RDP/VNC proxy server especially well suited to low bandwidth links such as ISDN or modem"
 HOMEPAGE="http://freenx.berlios.de/"
-URI_BASE="http://svn.gnqs.org/downloads/gentoo-nx-overlay"
+URI_BASE="http://svn.gnqs.org/svn/gentoo-nx-overlay/downloads"
 SRC_URI="$URI_BASE/freenx-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="nomirror strip"
 IUSE="commercial"
 DEPEND="virtual/ssh
@@ -18,9 +19,12 @@ DEPEND="virtual/ssh
 	net-analyzer/gnu-netcat
 	x86? ( commercial? ( >=net-misc/nxclient-1.4.0 )
 	      !commercial? ( !net-misc/nxclient ) )
-	!x86? ( !net-misc/nxclient )
-	>=net-misc/nxproxy-1.4.0
-	>=net-misc/nx-x11-1.4.0
+	amd64? ( commercial? ( >=net-misc/nxclient-1.5* )
+	      !commercial? ( !net-misc/nxclient )
+	      >=net-misc/nxproxy-1.5.0 )
+	!x86? ( !amd64? ( !net-misc/nxclient ) )
+	!amd64? ( >=net-misc/nxproxy-1.4.0 )
+	|| ( >=net-misc/nx-x11-1.4.0 >=net-misc/nx-x11-bin-1.5.0 )
 	!net-misc/nxserver-personal
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
@@ -36,6 +40,10 @@ src_unpack() {
 	cd ${S}
 	epatch gentoo-nomachine.diff
 	epatch $FILESDIR/nxserver-freenx-xorg7.patch
+
+	# fix to make sure 32 bit libraries are used by nx-x11 on amd64
+	has_multilib_profile && \
+		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" nxloadconfig
 }
 
 src_compile() {
@@ -56,8 +64,8 @@ src_install() {
 	dobin nxkeygen
 	dobin nxloadconfig
 	dobin nxsetup
-	( use x86 && use commercial ) || dobin nxprint
-	( use x86 && use commercial ) || dobin nxclient
+	( ( use x86 || use amd64 ) && use commercial ) || dobin nxprint
+	( ( use x86 || use amd64 ) && use commercial ) || dobin nxclient
 
 	dodir ${NX_ETC_DIR}
 	for x in passwords passwords.orig ; do
