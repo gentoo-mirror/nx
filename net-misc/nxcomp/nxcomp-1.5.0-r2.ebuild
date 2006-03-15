@@ -16,7 +16,7 @@ SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/$P-80.tar.gz"
 
 # Add modular Xorg dependencies, but allow fallback to <7.0
 RDEPEND="|| ( ( x11-libs/libX11
-			x11-libs/libXFS
+			x11-libs/libFS
 			x11-libs/libXvMC
 			media-libs/mesa
 		)

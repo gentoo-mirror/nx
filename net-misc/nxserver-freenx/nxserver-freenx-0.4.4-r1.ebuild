@@ -14,15 +14,17 @@ RESTRICT="nomirror strip"
 IUSE="commercial"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
+	sys-apps/gawk
 	net-analyzer/gnu-netcat
-	x86? ( commercial? ( >=net-misc/nxclient-1.4* )
+	x86? ( commercial? ( >=net-misc/nxclient-1.4.0 )
 	      !commercial? ( !net-misc/nxclient ) )
 	amd64? ( commercial? ( >=net-misc/nxclient-1.5* )
 	      !commercial? ( !net-misc/nxclient )
-	      >=net-misc/nxproxy-1.5.0 )
+	      >=net-misc/nxproxy-1.5.0
+	      >=net-misc/nx-x11-bin-1.5.0 )
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
-	!amd64? ( >=net-misc/nxproxy-1.4.0 )
-	|| ( >=net-misc/nx-x11-1.4.0 >=net-misc/nx-x11-bin-1.5.0 )
+	!amd64? ( >=net-misc/nxproxy-1.4.0
+		  >=net-misc/nx-x11-1.4.0 )
 	!net-misc/nxserver-personal
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
