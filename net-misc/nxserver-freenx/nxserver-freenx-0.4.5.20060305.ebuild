@@ -77,6 +77,14 @@ src_install() {
 	insinto ${NX_ETC_DIR}
 	doins node.conf.sample
 
+	# Automatically enable the 1.5 backend if it's installed.
+	if has_version "=net-misc/nxcomp-1.5*" ; then
+		cat <<EOF > ${D}${NX_ETC_DIR}/node.conf
+# For more configure options see node.conf.sample
+ENABLE_1_5_0_BACKEND="1"
+EOF
+	fi
+
 	ssh-keygen -f ${D}${NX_ETC_DIR}/users.id_dsa -t dsa -N "" -q
 
 	for x in closed running failed ; do
@@ -102,9 +110,4 @@ EOF
 
 pkg_postinst () {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
-
-	echo
-	einfo "If you are using NX version 1.5.0, make sure you edit the file:"
-	einfo "/usr/NX/etc/node.conf and set ENABLE_1_5_0_BACKEND to 1."
-	echo
 }
