@@ -11,13 +11,12 @@ URI_BASE="http://web04.nomachine.com/download/1.5.0/sources"
 SRC_NX_X11="nx-X11-$PV-21.tar.gz"
 SRC_NXAGENT="nxagent-$PV-112.tar.gz"
 SRC_NXAUTH="nxauth-$PV-1.tar.gz"
-SRC_NXCOMP="nxcomp-$PV-80.tar.gz"
 SRC_NXCOMPEXT="nxcompext-$PV-20.tar.gz"
 SRC_NXDESKTOP="nxdesktop-$PV-78.tar.gz"
 SRC_NXVIEWER="nxviewer-$PV-15.tar.gz"
 
-SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXAUTH
-	$URI_BASE/$SRC_NXCOMP $URI_BASE/$SRC_NXCOMPEXT
+SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT
+	$URI_BASE/$SRC_NXAUTH $URI_BASE/$SRC_NXCOMPEXT
 	rdesktop? ( $URI_BASE/$SRC_NXDESKTOP )
 	vnc? ( $URI_BASE/$SRC_NXVIEWER )"
 
@@ -26,7 +25,8 @@ SLOT="0"
 KEYWORDS="~ppc ~x86"
 IUSE="rdesktop vnc"
 
-DEPEND="~net-misc/nxcomp-1.5.0
+DEPEND="!<net-misc/nx-x11-1.5.0-r8
+	~net-misc/nxcomp-1.5.0
 	!net-misc/nx-x11-bin"
 
 S=${WORKDIR}/${PN//x11/X11}
@@ -36,27 +36,32 @@ src_unpack() {
 	unpack ${SRC_NX_X11}
 	unpack ${SRC_NXAGENT}
 	unpack ${SRC_NXAUTH}
-	unpack ${SRC_NXCOMP}
 	unpack ${SRC_NXCOMPEXT}
 	use rdesktop && unpack ${SRC_NXDESKTOP}
 	use vnc && unpack ${SRC_NXVIEWER}
 
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nx-x11-windows-linux-resume.patch
-	epatch ${FILESDIR}/1.5.0/plastik-render-fix-1.5.0.patch
+	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch
+	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-nxcomp-fix.patch
 
 	# Fix the font issues with xorg 7
 	if has_version "x11-base/xorg-server"; then
-		einfo "Applying fix to support xorg 7 font paths."
-		einfo "This might take a while..."
-		for file in $(find -type f); do
-			sed -i 's/\/usr\/X11R6\/lib\/X11\/fonts/\/usr\/share\/fonts/g' ${file}
-		done
+		epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
 	fi
 
-	cd ../nxcomp
-	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-r1-gcc4.patch
-	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-r1-pic.patch
+	cd ../nxcompext
+	epatch ${FILESDIR}/1.5.0/nxcompext-1.5.0-nxcomp-fix.patch
+
+	if use rdesktop ; then
+		cd ../nxdesktop
+		epatch ${FILESDIR}/1.5.0/nxdesktop-1.5.0-nxcomp-fix.patch
+	fi
+
+	if use vnc ; then
+		cd ../nxviewer
+		epatch ${FILESDIR}/1.5.0/nxviewer-1.5.0-nxcomp-fix.patch
+	fi
 }
 
 src_compile() {

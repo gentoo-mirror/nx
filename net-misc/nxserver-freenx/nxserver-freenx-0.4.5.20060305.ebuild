@@ -19,13 +19,12 @@ DEPEND="virtual/ssh
 	net-analyzer/gnu-netcat
 	x86? ( commercial? ( >=net-misc/nxclient-1.4.0 )
 	      !commercial? ( !net-misc/nxclient ) )
-	amd64? ( commercial? ( >=net-misc/nxclient-1.5* )
-	      !commercial? ( !net-misc/nxclient )
-	      >=net-misc/nxproxy-1.5.0
-	      >=net-misc/nx-x11-bin-1.5.0 )
+	amd64? ( commercial? ( >=net-misc/nxclient-1.4.0 )
+	      !commercial? ( !net-misc/nxclient ) )
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
-	!amd64? ( >=net-misc/nxproxy-1.4.0
-		  >=net-misc/nx-x11-1.4.0 )
+	>=net-misc/nxproxy-1.4.0
+	|| ( >=net-misc/nx-x11-1.4.0
+	     >=net-misc/nx-x11-bin-1.4.0 )
 	!net-misc/nxserver-personal
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
@@ -78,7 +77,9 @@ src_install() {
 	doins node.conf.sample
 
 	# Automatically enable the 1.5 backend if it's installed.
-	if has_version "=net-misc/nxcomp-1.5*" ; then
+	if has_version "~net-misc/nx-x11-1.5.0" || has_version "~net-misc/nx-x11-bin-1.5.0" ; then
+		sed '/^ENABLE_1_5_0_BACKEND=/s/"0"/"1"' nxloadconfig
+		sed '/^#ENABLE_1_5_0_BACKEND=/s/"0"/"1"' node.conf.sample
 		cat <<EOF > ${D}${NX_ETC_DIR}/node.conf
 # For more configure options see node.conf.sample
 ENABLE_1_5_0_BACKEND="1"

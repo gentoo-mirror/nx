@@ -74,6 +74,7 @@ src_install() {
 PATH=/usr/NX/bin
 ROOTPATH=/usr/NX/bin
 LDPATH=/usr/NX/lib
+CONFIG_PROTECT="/usr/NX/etc /usr/NX/home"
 EOF
 	doenvd ${T}/50nxpaths
 }
