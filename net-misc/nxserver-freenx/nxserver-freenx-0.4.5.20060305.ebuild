@@ -17,10 +17,10 @@ DEPEND="virtual/ssh
 	dev-tcltk/expect
 	sys-apps/gawk
 	net-analyzer/gnu-netcat
-	x86? ( commercial? ( >=net-misc/nxclient-1.4.0 )
-	      !commercial? ( !net-misc/nxclient ) )
-	amd64? ( commercial? ( >=net-misc/nxclient-1.4.0 )
-	      !commercial? ( !net-misc/nxclient ) )
+	x86? ( nxclient? ( >=net-misc/nxclient-1.4.0 )
+	      !nxclient? ( !net-misc/nxclient ) )
+	amd64? ( nxclient? ( >=net-misc/nxclient-1.4.0 )
+	      !nxclient? ( !net-misc/nxclient ) )
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
 	>=net-misc/nxproxy-1.4.0
 	|| ( >=net-misc/nx-x11-1.4.0
@@ -74,8 +74,8 @@ src_install() {
 	dobin nxkeygen
 	dobin nxloadconfig
 	dobin nxsetup
-	( ( use x86 || use amd64 ) && use commercial ) || dobin nxprint
-	( ( use x86 || use amd64 ) && use commercial ) || dobin nxclient
+	( ( use x86 || use amd64 ) && use nxclient ) || dobin nxprint
+	( ( use x86 || use amd64 ) && use nxclient ) || dobin nxclient
 
 	dodir ${NX_ETC_DIR}
 	for x in passwords passwords.orig ; do
