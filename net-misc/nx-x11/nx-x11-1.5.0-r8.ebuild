@@ -44,11 +44,7 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nx-x11-windows-linux-resume.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-nxcomp-fix.patch
-
-	# Fix the font issues with xorg 7
-	if has_version "x11-base/xorg-server"; then
-		epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
-	fi
+	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
 
 	cd ../nxcompext
 	epatch ${FILESDIR}/1.5.0/nxcompext-1.5.0-nxcomp-fix.patch

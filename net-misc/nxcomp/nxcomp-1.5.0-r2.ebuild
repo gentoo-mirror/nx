@@ -21,7 +21,11 @@ RDEPEND="|| ( ( x11-libs/libX11
 			media-libs/mesa
 		)
 		virtual/x11
-	)"
+	)
+	>=media-libs/jpeg-6b-r4
+	>=media-libs/libpng-1.2.8
+	>=sys-libs/zlib-1.2.3
+	virtual/libc"
 DEPEND="${RDEPEND}
 	|| ( ( x11-proto/xproto
 			x11-proto/xf86vidmodeproto
@@ -37,11 +41,7 @@ DEPEND="${RDEPEND}
 			app-text/rman
 		)
 		virtual/x11
-	)
-	>=media-libs/jpeg-6b-r4
-	>=media-libs/libpng-1.2.8
-	>=sys-libs/zlib-1.2.3
-	virtual/libc"
+	)"
 
 S=${WORKDIR}/${PN}
 
@@ -73,7 +73,6 @@ src_install() {
 	cat <<EOF > ${T}/50nxpaths
 PATH=/usr/NX/bin
 ROOTPATH=/usr/NX/bin
-LDPATH=/usr/NX/lib
 CONFIG_PROTECT="/usr/NX/etc /usr/NX/home"
 EOF
 	doenvd ${T}/50nxpaths

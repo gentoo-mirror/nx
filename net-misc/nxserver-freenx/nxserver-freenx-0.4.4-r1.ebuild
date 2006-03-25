@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="nomirror strip"
-IUSE="commercial"
+IUSE="nxclient"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
 	sys-apps/gawk
@@ -45,6 +45,16 @@ src_unpack() {
 	# fix to make sure 32 bit libraries are used by nx-x11 on amd64
 	has_multilib_profile && \
 		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" nxloadconfig
+
+	# Automatically enable the 1.5 backend if it's installed.
+	if has_version "~net-misc/nx-x11-1.5.0" || has_version "~net-misc/nx-x11-bin-1.5.0" ; then
+		sed '/^ENABLE_1_5_0_BACKEND=/s/"0"/"1"' nxloadconfig
+		sed '/^#ENABLE_1_5_0_BACKEND=/s/"0"/"1"' node.conf.sample
+		cat <<EOF > node.conf
+# For more configure options see node.conf.sample
+ENABLE_1_5_0_BACKEND="1"
+EOF
+	fi
 }
 
 src_compile() {
@@ -77,14 +87,8 @@ src_install() {
 	insinto ${NX_ETC_DIR}
 	doins node.conf.sample
 
-	# Automatically enable the 1.5 backend if it's installed.
 	if has_version "~net-misc/nx-x11-1.5.0" || has_version "~net-misc/nx-x11-bin-1.5.0" ; then
-		sed '/^ENABLE_1_5_0_BACKEND=/s/"0"/"1"' nxloadconfig
-		sed '/^#ENABLE_1_5_0_BACKEND=/s/"0"/"1"' node.conf.sample
-		cat <<EOF > ${D}${NX_ETC_DIR}/node.conf
-# For more configure options see node.conf.sample
-ENABLE_1_5_0_BACKEND="1"
-EOF
+		doins node.conf
 	fi
 
 	ssh-keygen -f ${D}${NX_ETC_DIR}/users.id_dsa -t dsa -N "" -q

@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="nomirror strip"
-IUSE="commercial"
+IUSE="nxclient"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
 	sys-apps/gawk
