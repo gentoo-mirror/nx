@@ -102,8 +102,6 @@ src_install() {
 	insinto ${NX_ETC_DIR}
 	doins node.conf.sample
 
-	doins node.conf
-
 	ssh-keygen -f ${D}${NX_ETC_DIR}/users.id_dsa -t dsa -N "" -q
 
 	for x in closed running failed ; do

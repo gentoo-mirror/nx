@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="nomirror strip"
-IUSE="nxclient"
+IUSE="arts cups esd nxclient"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
 	sys-apps/gawk
@@ -25,6 +25,9 @@ DEPEND="virtual/ssh
 	>=net-misc/nxproxy-1.4.0
 	|| ( >=net-misc/nx-x11-1.4.0
 	     >=net-misc/nx-x11-bin-1.4.0 )
+	arts? ( kde-base/arts )
+	cups? ( net-print/cups )
+	esd? ( media-sound/esound )
 	!net-misc/nxserver-personal
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
@@ -97,11 +100,6 @@ src_install() {
 
 	insinto ${NX_ETC_DIR}
 	doins node.conf.sample
-
-	# Automatically enable the 1.5 backend if it's installed.
-	if has_version "~net-misc/nx-x11-1.5.0" || has_version "~net-misc/nx-x11-bin-1.5.0" ; then
-		doins node.conf
-	fi
 
 	ssh-keygen -f ${D}${NX_ETC_DIR}/users.id_dsa -t dsa -N "" -q
 

@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="nomirror strip"
-IUSE="nxclient"
+IUSE="arts cups esd nxclient"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
 	sys-apps/gawk
@@ -24,6 +24,9 @@ DEPEND="virtual/ssh
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
 	|| ( >=net-misc/nx-x11-1.5.0
 	     >=net-misc/nx-x11-bin-1.5.0 )
+	arts? ( kde-base/arts )
+	cups? ( net-print/cups )
+	esd? ( media-sound/esound )
 	!net-misc/nxserver-personal
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
