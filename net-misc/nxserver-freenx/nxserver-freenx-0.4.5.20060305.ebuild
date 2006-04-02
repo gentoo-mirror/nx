@@ -45,14 +45,26 @@ src_unpack() {
 	has_multilib_profile && \
 		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" nxloadconfig
 
-	# Automatically enable the 1.5 backend if it's installed.
+	# Change the defaults in nxloadconfig to meet the users needs.
 	if has_version "~net-misc/nx-x11-1.5.0" || has_version "~net-misc/nx-x11-bin-1.5.0" ; then
-		sed '/^ENABLE_1_5_0_BACKEND=/s/"0"/"1"' nxloadconfig
-		sed '/^#ENABLE_1_5_0_BACKEND=/s/"0"/"1"' node.conf.sample
-		cat <<EOF > node.conf
-# For more configure options see node.conf.sample
-ENABLE_1_5_0_BACKEND="1"
-EOF
+		einfo "Enabling the NX 1.5.0 backend support."
+		sed -i '/ENABLE_1_5_0_BACKEND=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_1_5_0_BACKEND=/s/"0"/"1"/' node.conf.sample
+	fi
+	if use arts ; then
+		einfo "Enabling arts support."
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' node.conf.sample
+	fi
+	if use esd ; then
+		einfo "Enabling esd support."
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' node.conf.sample
+	fi
+	if use cups ; then
+		einfo "Enabling cups support."
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' node.conf.sample
 	fi
 }
 

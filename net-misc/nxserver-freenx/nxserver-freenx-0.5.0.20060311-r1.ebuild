@@ -43,6 +43,23 @@ src_unpack() {
 	# fix to make sure 32 bit libraries are used by nx-x11 on amd64
 	has_multilib_profile && \
 		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" nxloadconfig
+
+	# Change the defaults in nxloadconfig to meet the users needs.
+	if use arts ; then
+		einfo "Enabling arts support."
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' node.conf.sample
+	fi
+	if use esd ; then
+		einfo "Enabling esd support."
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' node.conf.sample
+	fi
+	if use cups ; then
+		einfo "Enabling cups support."
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' node.conf.sample
+	fi
 }
 
 src_compile() {
