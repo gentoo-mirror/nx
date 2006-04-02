@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils multilib
+inherit eutils
 
 DESCRIPTION="X11 protocol compression library"
 HOMEPAGE="http://www.nomachine.com/"

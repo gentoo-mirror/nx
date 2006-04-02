@@ -19,11 +19,11 @@ DEPEND="virtual/ssh
 	net-analyzer/gnu-netcat
 	x86? ( nxclient? ( ~net-misc/nxclient-1.5.0 )
 	      !nxclient? ( !net-misc/nxclient ) )
-	amd64? ( nxclient? ( >=net-misc/nxclient-1.5* )
+	amd64? ( nxclient? ( ~net-misc/nxclient-1.5.0 )
 	        !nxclient? ( !net-misc/nxclient ) )
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
-	|| ( >=net-misc/nx-x11-1.5.0
-	     >=net-misc/nx-x11-bin-1.5.0 )
+	|| ( ~net-misc/nx-x11-1.5.0
+	     ~net-misc/nx-x11-bin-1.5.0 )
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )
 	esd? ( media-sound/esound )
