@@ -126,4 +126,6 @@ EOF
 
 pkg_postinst () {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
+
+	ewarn "NOTE: The commercial use flag was changed to nxclient."
 }
