@@ -28,14 +28,14 @@ DEPEND="sys-apps/shadow
 	  !net-misc/nxproxy
 	  !net-misc/nx-x11
 	  !net-misc/nxcomp
-	)
-	=net-misc/nxclient-1.5*"
+	)"
 
 RDEPEND="media-libs/jpeg
 	sys-libs/zlib
 	virtual/x11
-	net-misc/openssh-3.6.1_p2
-	dev-lang/perl"
+	net-misc/openssh
+	dev-lang/perl
+	=net-misc/nxclient-1.5*"
 
 S="${WORKDIR}"
 
