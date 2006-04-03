@@ -73,9 +73,10 @@ nxserver_1.5_src_install() {
 		find usr/NX/lib -type l -exec rm {} \;
 
 	    for x in nxagent nxdesktop nxpasswd nxviewer ; do
-		if [ -f usr/NX/bin/$x ]; then
-			rm -f usr/NX/bin/$x
-		fi
+			if [ -f usr/NX/bin/$x ]; then
+				rm -f usr/NX/bin/$x
+			fi
+		done
 	
 		# remove libraries installed by other packages
 		for x in usr/NX/lib/*.so.* ; do
