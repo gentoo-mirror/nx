@@ -4,7 +4,7 @@
 
 inherit multilib eutils
 
-DESCRIPTION="An X11/RDP/VNC proxy server especially well suited to low bandwidth links such as ISDN or modem"
+DESCRIPTION="An X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 HOMEPAGE="http://freenx.berlios.de/"
 URI_BASE="http://studwww.ira.uka.de/~s_franz2/freenx"
 SRC_URI="$URI_BASE/freenx-0.5.0-test-2006-03-11-7.tar.gz"
