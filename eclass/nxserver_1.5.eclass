@@ -114,6 +114,9 @@ nxserver_1.5_pkg_postinst() {
 
 	if [[ -f ${NX_OLD_PASSWORD_DB} ]]; then
 		mv ${NX_OLD_PASSWORD_DB} ${NX_PASSWORD_DB} || die "Unable to move passwords file"
+	else
+		einfo "Creating an empty password database"
+		touch ${NX_PASSWORD_DB}
 	fi
 
 	chmod 0600 ${NX_PASSWORD_DB}
@@ -187,7 +190,7 @@ nxserver_1.5_pkg_postinst() {
 	chmod u+x /usr/NX/var/db/*
 	chmod 755 /usr/NX/etc
 
-	cp -f /usr/NX/home/nx/.ssh/server.id_dsa.pub.key /usr/NX/home/nx/.ssh/authorized_keys2
+	cp -pf /usr/NX/home/nx/.ssh/server.id_dsa.pub.key /usr/NX/home/nx/.ssh/authorized_keys2
 	chown nx:root /usr/NX/home/nx/.ssh/authorized_keys2
 	chmod 0600 /usr/NX/home/nx/.ssh/authorized_keys2
 
