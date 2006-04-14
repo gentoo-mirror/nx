@@ -7,15 +7,14 @@
 #
 # now handles freenx as well
 
-inherit rpm eutils
+inherit eutils
 
 HOMEPAGE="http://www.nomachine.com/"
 IUSE="prebuilt cups"
 LICENSE="nomachine"
 SLOT="0"
-RESTRICT="nomirror strip fetch"
+RESTRICT="nomirror strip"
 
-SRC_URI="nxserver-${MY_PV}.i386.rpm"
 DEPEND="sys-apps/shadow
 	net-misc/openssh
 	!prebuilt? (
@@ -41,31 +40,22 @@ S="${WORKDIR}"
 
 DESCRIPTION="an X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 
-EXPORT_FUNCTIONS pkg_setup src_compile src_install pkg_postinst pkg_nofetch
+EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst
 
-nxserver_1.5_pkg_nofetch() {
-	eerror "Please download the $MY_EDITION edition of NXServer from:"
-	eerror
-	eerror "    $SRC_URI"
-	eerror
-	eerror "and save it onto this machine as:"
-	eerror
-	eerror "  ${DISTDIR}/nxserver-${MY_EDITION}-${MY_PV}.i386.rpm"
-	eerror
-	eerror "** NOTE the change in filename! **"
-}
 
 nxserver_1.5_pkg_setup() {
 	einfo "Adding user 'nx' for the NX server"
 	enewuser nx -1 -1 /usr/NX/home/nx
 }
 
-nxserver_1.5_src_compile() {
-	return;
-}
-
 nxserver_1.5_src_install() {
 	einfo "Installing"
+
+	# rpm has usr/NX/; tarball has only NX/
+	if [[ ! -d usr ]]; then
+		mkdir usr
+		mv NX usr || die "Unable to move NX to usr"
+	fi
 
 	# remove the pre-compiled binaries and libraries, if we are not
 	# to use the !M prebuilt files
@@ -154,8 +144,8 @@ nxserver_1.5_pkg_postinst() {
 	# 1.4.0			/usr/NX/etc/users
 	# 1.5.0			/usr/NX/etc/users.db
 
-	NX_OLD_USERS_DB="${NX_ROOT}/etc/users.db"
-	NX_USERS_DB="${NX_ROOT}/etc/users"
+	NX_OLD_USERS_DB="${NX_ROOT}/etc/users"
+	NX_USERS_DB="${NX_ROOT}/etc/users.db"
 
 	if [[ -f ${NX_OLD_USERS_DB} ]] ; then
 		einfo "Re-using existing users database"
