@@ -9,7 +9,7 @@
 #
 # Basically, deb_src_unpack does:
 #
-# 1. uses deb_unpack to unpack a deb file using ar from binutils.
+# 1. uses debian_unpack to unpack a deb file using ar from binutils.
 # 2. deletes all the unpacked tarballs and zip files from ${WORKDIR}
 # NOTE: deb2targz requiers perl, and that is not a package installed
 #       by default. ar comes with binutils, so everyone should have
@@ -25,15 +25,21 @@
 
 
 # extracts the contents of the DEP in ${WORKDIR}
-deb_unpack() {
+debian_unpack() {
 	local debfile return_value
 	debfile=$1
+
 	if [ -z "${debfile}" ]; then
 		return_value=1
 	else
 		ar x ${debfile}
 		# remove unneeded files.
 		rm -f control.tar.gz debian-binary
+
+		# Make this multi-file friendly.
+		# Keeps file for debugging purpose in temporary distdir.
+		# This will be deleted once the package installs successfully
+		mv data.tar.gz ${debfile//.deb/.tar.gz}
 
 		return_value=0
 	fi
@@ -51,14 +57,9 @@ debian_src_unpack() {
 		deb)
 			echo ">>> Unpacking ${x}"
 			cd ${WORKDIR}
-			deb_unpack ${DISTDIR}/${x} || die "${myfail}"
+			debian_unpack ${DISTDIR}/${x} || die "${myfail}"
 
-			# Needed to unpack data.tar.gz
-			OLD_DISTDIR=${DISTDIR}
-			DISTDIR=${WORKDIR}
-			unpack data.tar.gz
-			rm -f data.tar.gz
-			DISTDIR=${OLD_DISTDIR}
+			unpack ${x//.deb/.tar.gz}
 			;;
 		*)
 			unpack ${x}
