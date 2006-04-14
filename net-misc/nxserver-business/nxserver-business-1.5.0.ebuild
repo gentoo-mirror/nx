@@ -11,6 +11,5 @@ DEPEND="$DEPEND
 
 MY_PV="${PV}-91"
 SRC_URI="http://web04.nomachine.com/download/1.5.0/server/standard/nxserver-${MY_PV}.i386.tar.gz"
-http://64.34.161.181/download/1.5.0/server/standard/nxserver-1.5.0-91.i386.tar.gz
 KEYWORDS="~x86"
 IUSE=""

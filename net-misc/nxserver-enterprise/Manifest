@@ -7,6 +7,6 @@ SHA256 4902cc0467a83179a7325ee88362880929ab13cb1cb7f7e188b4d5d6c8d5103f files/di
 MD5 77fd36d93b0a1b9f35abbe6a1c146561 metadata.xml 482
 RMD160 43d7ffbdffac6f9862dfea8535446439e8c03cc7 metadata.xml 482
 SHA256 a057fa4844b9a4b9a6213a3dad7e620bee77a1e36bc0571ea948ecf585c17e45 metadata.xml 482
-MD5 f5c210a554e922494c02e1e163eab8ff nxserver-enterprise-1.5.0.ebuild 594
-RMD160 08ac21ad46bc34a8e9180a72db0ebbc994d2a2e7 nxserver-enterprise-1.5.0.ebuild 594
-SHA256 671bbbb0a91c2337445d0ac9a63142ff71d1d6a877af71d8fc9c021f951b789b nxserver-enterprise-1.5.0.ebuild 594
+MD5 00ce2aa5f753d643c9161c0dd91f39e3 nxserver-enterprise-1.5.0.ebuild 513
+RMD160 61f197c08e6c1e8dd9f82ac3659d1bd0689f55cd nxserver-enterprise-1.5.0.ebuild 513
+SHA256 7029404a6d74f2478b421e7785077a4fa6741008ccc97520981c52a3759bfa70 nxserver-enterprise-1.5.0.ebuild 513
