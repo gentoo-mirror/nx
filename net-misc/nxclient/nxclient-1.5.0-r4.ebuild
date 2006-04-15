@@ -13,8 +13,8 @@ SLOT="0"
 KEYWORDS="-alpha ~amd64 -mips -ppc -sparc ~x86"
 RESTRICT="nostrip"
 
-SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/$P-141.i386.rpm )
-	xft? ( http://web04.nomachine.com/download/1.5.0/client/xft/nxclient_1.5.0-141_i386.deb )"
+SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.rpm )
+	xft? ( http://web04.nomachine.com/download/1.5.0/client/xft/${PN}_${PV}-141_i386.deb )"
 
 DEPEND="
 	~net-misc/nxssh-1.5.0
@@ -36,13 +36,15 @@ DEPEND="
 
 S=${WORKDIR}
 
-src_install() {
-	# rpm has usr/NX/; tarball has only NX/
-	if [[ ! -d usr ]]; then
-		mkdir usr
-		mv NX usr || die
+src_unpack() {
+	if use xft ; then
+		debian_src_unpack
+	else
+		rpm_src_unpack
 	fi
+}
 
+src_install() {
 	cp -dPR usr ${D}
 
 	# All of the libraries delivered by nxclient are available in our deps.
