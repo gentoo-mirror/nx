@@ -17,7 +17,10 @@ SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.
 	xft? ( http://web04.nomachine.com/download/1.5.0/client/xft/${PN}_${PV}-141_i386.deb )"
 
 DEPEND="
-	~net-misc/nxssh-1.5.0
+	|| ( ~net-misc/nxssh-1.5.0
+	     ~net-misc/nxserver-personal-1.5.0
+	     ~net-misc/nxserver-business-1.5.0
+	     ~net-misc/nxserver-enterprise-1.5.0 )
 	~net-misc/nxesd-1.5.0
 	net-analyzer/gnu-netcat
 	amd64? (
