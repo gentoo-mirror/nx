@@ -15,7 +15,22 @@ LICENSE="nomachine"
 SLOT="0"
 RESTRICT="nomirror strip"
 
-DEPEND="sys-apps/shadow
+DEPEND="|| ( (
+		x11-proto/xproto
+		x11-proto/xf86vidmodeproto
+		x11-proto/glproto
+		x11-proto/videoproto
+		x11-proto/xextproto
+		x11-proto/fontsproto
+		x11-libs/libX11
+		x11-libs/libFS
+		x11-libs/libXvMC
+		media-libs/mesa
+		x11-misc/xdialog
+	     )
+		virtual/x11
+	)
+	sys-apps/shadow
 	net-misc/openssh
 	!prebuilt? (
 	  =net-misc/nxssh-1.5*
