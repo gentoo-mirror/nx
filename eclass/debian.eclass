@@ -26,7 +26,7 @@
 
 # extracts the contents of the DEP in ${WORKDIR}
 debian_unpack() {
-	local debfile return_value
+	local debfile targzfile return_value
 	debfile=$1
 
 	if [ -z "${debfile}" ]; then
@@ -37,9 +37,12 @@ debian_unpack() {
 		rm -f control.tar.gz debian-binary
 
 		# Make this multi-file friendly.
-		# Keeps file for debugging purpose in temporary distdir.
-		# This will be deleted once the package installs successfully
-		mv data.tar.gz ${debfile//.deb/.tar.gz}
+		# Rename this for nice output during emerge, so
+		# Users know what file is being extracted, rahter
+		# than seeing data.tar.gz all the time.
+		targzfile=${debfile##*\/}
+		targzfile=${targzfile//.deb/.tar.gz}
+		mv data.tar.gz ${targzfile}
 
 		return_value=0
 	fi
@@ -48,7 +51,7 @@ debian_unpack() {
 }
 
 debian_src_unpack() {
-	local x ext myfail OLD_DISTDIR
+	local x targzfile ext myfail OLD_DISTDIR
 
 	for x in ${A}; do
 		myfail="failure unpacking ${x}"
@@ -59,7 +62,14 @@ debian_src_unpack() {
 			cd ${WORKDIR}
 			debian_unpack ${DISTDIR}/${x} || die "${myfail}"
 
-			unpack ${x//.deb/.tar.gz}
+			# Needed to unpack data.tar.gz
+			OLD_DISTDIR=${DISTDIR}
+			DISTDIR=${WORKDIR}
+			targzfile=${debfile##*\/}
+			targzfile=${targzfile//.deb/.tar.gz}
+			unpack ${targzfile}
+			rm -f ${targzfile}
+			DISTDIR=${OLD_DISTDIR}
 			;;
 		*)
 			unpack ${x}
