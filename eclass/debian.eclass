@@ -65,7 +65,7 @@ debian_src_unpack() {
 			# Needed to unpack data.tar.gz
 			OLD_DISTDIR=${DISTDIR}
 			DISTDIR=${WORKDIR}
-			targzfile=${debfile##*\/}
+			targzfile=${x##*\/}
 			targzfile=${targzfile//.deb/.tar.gz}
 			unpack ${targzfile}
 			rm -f ${targzfile}
