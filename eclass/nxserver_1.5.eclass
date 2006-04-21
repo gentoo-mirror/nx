@@ -7,14 +7,15 @@
 #
 # now handles freenx as well
 
-inherit eutils
+inherit rpm eutils
 
 HOMEPAGE="http://www.nomachine.com/"
 IUSE="prebuilt cups"
 LICENSE="nomachine"
 SLOT="0"
-RESTRICT="nomirror strip"
+RESTRICT="nomirror strip fetch"
 
+SRC_URI="nxserver-${MY_PV}.i386.rpm"
 DEPEND="|| ( (
 		x11-proto/xproto
 		x11-proto/xf86vidmodeproto
@@ -55,8 +56,19 @@ S="${WORKDIR}"
 
 DESCRIPTION="an X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 
-EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_nofetch
 
+nxserver_1.5_pkg_nofetch() {
+	eerror "Please download the $MY_EDITION edition of NXServer from:"
+	eerror
+	eerror "    $SRC_URI"
+	eerror
+	eerror "and save it onto this machine as:"
+	eerror
+	eerror "  ${DISTDIR}/nxserver-${MY_EDITION}-${MY_PV}.i386.rpm"
+	eerror
+	eerror "** NOTE the change in filename! **"
+}
 
 nxserver_1.5_pkg_setup() {
 	einfo "Adding user 'nx' for the NX server"
@@ -65,12 +77,6 @@ nxserver_1.5_pkg_setup() {
 
 nxserver_1.5_src_install() {
 	einfo "Installing"
-
-	# rpm has usr/NX/; tarball has only NX/
-	if [[ ! -d usr ]]; then
-		mkdir usr
-		mv NX usr || die "Unable to move NX to usr"
-	fi
 
 	# remove the pre-compiled binaries and libraries, if we are not
 	# to use the !M prebuilt files
@@ -205,7 +211,8 @@ nxserver_1.5_pkg_postinst() {
 	chmod u+x /usr/NX/var/db/*
 	chmod 755 /usr/NX/etc
 
-	cp -pf /usr/NX/home/nx/.ssh/server.id_dsa.pub.key /usr/NX/home/nx/.ssh/authorized_keys2
+	# It seems to be default.id_dsa.pub in 1.5.0
+	cp -pf /usr/NX/home/nx/.ssh/default.id_dsa.pub /usr/NX/home/nx/.ssh/authorized_keys2
 	chown nx:root /usr/NX/home/nx/.ssh/authorized_keys2
 	chmod 0600 /usr/NX/home/nx/.ssh/authorized_keys2
 
@@ -231,10 +238,10 @@ nxserver_1.5_pkg_postinst() {
 		ewarn "by the 'nx' user."
 	fi
 
-	if [[ ! -f ${NX_ROOT}/etc/node.conf ]] ; then
+	if [[ ! -f ${NX_ROOT}/etc/node.cfg ]] ; then
 		ewarn
 		ewarn "To complete the installation, you must create a file called"
-		ewarn "'/usr/NX/etc/node.conf'.  An example configuration file can"
+		ewarn "'/usr/NX/etc/node.cfg'.  An example configuration file can"
 		ewarn "be found in /usr/NX/etc"
 	fi
 }
