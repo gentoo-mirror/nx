@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit rpm debian
+inherit rpm
 
 DESCRIPTION="NXClient is a X11/VNC/NXServer client especially tuned for using remote desktops over low-bandwidth links such as the Internet"
 HOMEPAGE="http://www.nomachine.com"
@@ -14,7 +14,7 @@ KEYWORDS="-alpha ~amd64 -mips -ppc -sparc ~x86"
 RESTRICT="nostrip"
 
 SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.rpm )
-	xft? ( http://web04.nomachine.com/download/1.5.0/client/xft/${PN}_${PV}-141_i386.deb )"
+	xft? ( http://svn.gnqs.org/svn/gentoo-nx-overlay/downloads/${PN}-xft-${PV}-141.i386.rpm )"
 
 DEPEND="
 	|| ( ~net-misc/nxssh-1.5.0
