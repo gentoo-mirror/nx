@@ -31,6 +31,8 @@ DEPEND="virtual/ssh
 	!net-misc/nxserver-business
 	!net-misc/nxserver-enterprise"
 
+RDEPEND="${DEPEND}"
+
 S=${WORKDIR}/freenx-${PV}
 
 pkg_setup () {

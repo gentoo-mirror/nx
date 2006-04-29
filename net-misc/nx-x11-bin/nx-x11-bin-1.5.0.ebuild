@@ -21,6 +21,8 @@ DEPEND="x86? ( ~net-misc/nxcomp-1.5.0 )
 	)
 	!net-misc/nx-x11"
 
+RDEPEND="${DEPEND}"
+
 pkg_setup() {
 	# This is a binary x86 package => ABI=x86
 	has_multilib_profile && ABI="x86"

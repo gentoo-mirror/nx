@@ -19,6 +19,8 @@ DEPEND="~net-misc/nxcomp-1.5.0
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	pam? ( >=sys-libs/pam-0.77 )"
 
+RDEPEND="${DEPEND}"
+
 S=${WORKDIR}/${PN}
 
 src_unpack() {

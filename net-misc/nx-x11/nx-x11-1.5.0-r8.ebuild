@@ -29,6 +29,8 @@ DEPEND="!<net-misc/nx-x11-1.5.0-r8
 	~net-misc/nxcomp-1.5.0
 	!net-misc/nx-x11-bin"
 
+RDEPEND="${DEPEND}"
+
 S=${WORKDIR}/${PN//x11/X11}
 
 src_unpack() {

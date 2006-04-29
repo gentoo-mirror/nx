@@ -16,6 +16,8 @@ DEPEND=">=media-libs/audiofile-0.1.5
 	alsa? ( >=media-libs/alsa-lib-0.5.10b )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )"
 
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}"
 
 src_unpack() {

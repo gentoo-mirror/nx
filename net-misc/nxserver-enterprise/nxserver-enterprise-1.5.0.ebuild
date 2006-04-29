@@ -9,6 +9,8 @@ DEPEND="$DEPEND
 	!net-misc/nxserver-business
 	!net-misc/nxserver-freenx"
 
+RDEPEND="${DEPEND}"
+
 MY_PV="${PV}-91"
 MY_EDITION="enterprise"
 MY_DOWNLOAD="http://web04.nomachine.com/download/1.5.0/server/enterprise/nxserver-${MY_PV}.i386.rpm"

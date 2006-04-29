@@ -16,6 +16,8 @@ SRC_URI="http://web04.nomachine.com/download/1.5.0/sources/nxproxy-$PV-9.tar.gz"
 
 DEPEND="~net-misc/nxcomp-1.5.0"
 
+RDEPEND="${DEPEND}"
+
 S=${WORKDIR}/${PN}
 
 src_unpack() {

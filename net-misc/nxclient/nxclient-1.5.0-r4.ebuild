@@ -37,6 +37,8 @@ DEPEND="
 		sys-libs/lib-compat
 	)"
 
+RDEPEND="${DEPEND}"
+
 S=${WORKDIR}
 
 src_unpack() {
