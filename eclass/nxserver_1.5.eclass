@@ -61,7 +61,7 @@ EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_nofetch
 nxserver_1.5_pkg_nofetch() {
 	eerror "Please download the $MY_EDITION edition of NXServer from:"
 	eerror
-	eerror "    $SRC_URI"
+	eerror "    $MY_DOWNLOAD"
 	eerror
 	eerror "and save it onto this machine as:"
 	eerror
