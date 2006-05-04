@@ -42,11 +42,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 src_unpack() {
-	if use xft ; then
-		debian_src_unpack
-	else
-		rpm_src_unpack
-	fi
+	rpm_src_unpack
 }
 
 src_install() {
