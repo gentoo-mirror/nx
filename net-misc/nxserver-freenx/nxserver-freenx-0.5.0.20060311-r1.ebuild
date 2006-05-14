@@ -49,6 +49,9 @@ src_unpack() {
 	has_multilib_profile && \
 		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" nxloadconfig
 
+	# fix spacing issue.
+	sed -i 's/"]/" ]/' nxloadconfig
+
 	# Change the defaults in nxloadconfig to meet the users needs.
 	if use arts ; then
 		einfo "Enabling arts support."
