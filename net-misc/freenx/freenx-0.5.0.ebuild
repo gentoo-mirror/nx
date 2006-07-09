@@ -11,7 +11,7 @@ SRC_URI="${URI_BASE}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-RESTRICT="nomirror nostrip"
+RESTRICT="mirror strip"
 IUSE="arts cups esd"
 DEPEND="virtual/ssh
 	dev-tcltk/expect
