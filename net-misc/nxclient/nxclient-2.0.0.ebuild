@@ -32,8 +32,8 @@ DEPEND=">=dev-libs/expat-1.95.8
 	esd? ( >=media-libs/audiofile-0.2.6
 	       >=media-sound/esound-0.2.36 )
 
-	prebuilt ( !net-misc/nxclient-base )
-	!prebuilt ( net-misc/nxclient-base )
+	prebuilt? ( !net-misc/nxclient-base )
+	!prebuilt? ( net-misc/nxclient-base )
 
 	amd64? (
 		app-emulation/emul-linux-x86-compat
