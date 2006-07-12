@@ -38,7 +38,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch gentoo-nomachine.diff
-	epatch ${FILESDIR}/freenx-xorg7.patch
+	epatch ${FILESDIR}/freenx-svn-xorg7.patch
 	epatch ${FILESDIR}/freenx-svn-name-change.patch
 
 	# fix to make sure 32 bit libraries are used by nx-x11 on amd64
