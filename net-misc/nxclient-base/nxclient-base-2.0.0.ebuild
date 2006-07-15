@@ -133,4 +133,21 @@ src_install() {
 
 	dolib.so nxcomp/libXcomp.so*
 	dolib.so nxcompsh/libXcompsh.so*
+
+	# Make wrappers to /usr/NX/lib, so other programs are not affected.
+	mv ${D}/usr/NX/bin/nxservice ${D}/usr/NX/bin/nxservice.bin
+	make_wrapper nxservice nxservice.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
+	mv ${D}/usr/NX/bin/nxssh ${D}/usr/NX/bin/nxssh.bin
+	make_wrapper nxssh nxssh.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
+
+	# install environment variables
+	cat <<EOF > ${T}/50nxpaths
+NXDIR=/usr/NX
+PATH=${NXDIR}/bin
+ROOTPATH=${NXDIR}/bin
+CONFIG_PROTECT="${NXDIR}/etc ${NXDIR}/home"
+PRELINK_PATH_MASK=${NXDIR}
+SEARCH_DIRS_MASK=/usr/NX
+EOF
+	doenvd ${T}/50nxpaths
 }

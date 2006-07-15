@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit rpm
+inherit eutils rpm
 
 DESCRIPTION="NXClient is a X11/VNC/NXServer client especially tuned for using remote desktops over low-bandwidth links such as the Internet"
 HOMEPAGE="http://www.nomachine.com"
@@ -44,7 +44,7 @@ DEPEND=">=dev-libs/expat-1.95.8
 
 	x86? ( >=sys-libs/lib-compat-1.4 )
 
-	|| (  ( x11-libs/libx11
+	|| (  ( x11-libs/libX11
 		x11-libs/libXau
 		x11-libs/libXdmcp
 		x11-libs/libXext
@@ -90,14 +90,35 @@ src_install() {
 		rm -f ${D}/usr/NX/bin/nxesd
 	fi
 
-	# FIXME: Of the options in the applnk directory, the desktop files in the
-	# "network" directory seem to make the most sense.  I have no idea if this
-	# works for KDE or just for Gnome.
-	declare applnk=/usr/NX/share/applnk apps=/usr/share/applications
-	if [[ -d ${D}${applnk} ]]; then
-		dodir ${apps}
-		mv ${D}${applnk}/network/*.desktop ${D}${apps}
-		rm ${D}${apps}/nxclient-help.desktop
-		rm -rf ${D}${applnk}
+	# Make wrappers to /usr/NX/lib, so other programs are not affected.
+	mv ${D}/usr/NX/bin/nxclient ${D}/usr/NX/bin/nxclient.wrapped
+	make_wrapper nxclient nxclient.wrapped /usr/NX/bin /usr/NX/lib /usr/NX/bin
+
+	if use prebuilt ; then
+		mv ${D}/usr/NX/bin/nxservice ${D}/usr/NX/bin/nxservice.wrapped
+		make_wrapper nxservice nxservice.wrapped /usr/NX/bin /usr/NX/lib /usr/NX/bin
+		mv ${D}/usr/NX/bin/nxssh ${D}/usr/NX/bin/nxssh.bin
+		make_wrapper nxssh nxssh.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 	fi
+
+	# install environment variables
+	if use prebuilt ; then
+		cat <<EOF > ${T}/50nxpaths
+NXDIR=/usr/NX
+PATH=${NXDIR}/bin
+ROOTPATH=${NXDIR}/bin
+CONFIG_PROTECT="${NXDIR}/etc ${NXDIR}/home"
+PRELINK_PATH_MASK=${NXDIR}
+SEARCH_DIRS_MASK=/usr/NX
+EOF
+		doenvd ${T}/50nxpaths
+	fi
+
+	# Of the options in the applnk directory, the desktop files in the
+	# "network" directory seem to make the most sense.
+	declare applnk=/usr/NX/share/applnk
+	domenu ${D}${applink}/network/nxclient-admin.desktop \
+	       ${D}${applink}/network/nxclient-wizard.desktop \
+	       ${D}${applink}/network/nxclient.desktop
+	rm -rf ${D}${applnk}
 }
