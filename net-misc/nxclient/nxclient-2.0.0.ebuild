@@ -91,12 +91,12 @@ src_install() {
 	fi
 
 	# Make wrappers to /usr/NX/lib, so other programs are not affected.
-	mv ${D}/usr/NX/bin/nxclient ${D}/usr/NX/bin/nxclient.wrapped
-	make_wrapper nxclient nxclient.wrapped /usr/NX/bin /usr/NX/lib /usr/NX/bin
+	mv ${D}/usr/NX/bin/nxclient ${D}/usr/NX/bin/nxclient.bin
+	make_wrapper nxclient nxclient.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 	if use prebuilt ; then
-		mv ${D}/usr/NX/bin/nxservice ${D}/usr/NX/bin/nxservice.wrapped
-		make_wrapper nxservice nxservice.wrapped /usr/NX/bin /usr/NX/lib /usr/NX/bin
+		mv ${D}/usr/NX/bin/nxservice ${D}/usr/NX/bin/nxservice.bin
+		make_wrapper nxservice nxservice.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 		mv ${D}/usr/NX/bin/nxssh ${D}/usr/NX/bin/nxssh.bin
 		make_wrapper nxssh nxssh.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 	fi
