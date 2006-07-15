@@ -116,9 +116,9 @@ EOF
 
 	# Of the options in the applnk directory, the desktop files in the
 	# "network" directory seem to make the most sense.
-	declare applnk=/usr/NX/share/applnk
-	domenu ${D}${applink}/network/nxclient-admin.desktop \
-	       ${D}${applink}/network/nxclient-wizard.desktop \
-	       ${D}${applink}/network/nxclient.desktop
+	declare applnk=/usr/NX/share/applnk apps=/usr/share/applications
+	dodir ${apps}
+	domenu ${D}${applnk}/network
+	rm ${D}${apps}/nxclient-help.desktop
 	rm -rf ${D}${applnk}
 }
