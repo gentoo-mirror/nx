@@ -124,8 +124,12 @@ src_install() {
 	into /usr/NX
 
 	dobin nxkill/nxkill
-	dobin nxservice/nxservice
-	dobin nxssh/nxssh
+
+	# Make wrappers to /usr/NX/lib, so other programs are not affected.
+	newbin nxservice/nxservice nxservice.bin
+	make_wrapper nxservice nxservice.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
+	newbin nxssh/nxssh nxssh.bin
+	make_wrapper nxssh nxssh.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 	if use esd ; then
 		dobin nxesd/nxesd
@@ -133,12 +137,6 @@ src_install() {
 
 	dolib.so nxcomp/libXcomp.so*
 	dolib.so nxcompsh/libXcompsh.so*
-
-	# Make wrappers to /usr/NX/lib, so other programs are not affected.
-	mv ${D}/usr/NX/bin/nxservice ${D}/usr/NX/bin/nxservice.bin
-	make_wrapper nxservice nxservice.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
-	mv ${D}/usr/NX/bin/nxssh ${D}/usr/NX/bin/nxssh.bin
-	make_wrapper nxssh nxssh.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 	# install environment variables
 	cat <<EOF > ${T}/50nxpaths
