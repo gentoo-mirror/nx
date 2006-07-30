@@ -1,0 +1,20 @@
+diff -purN nxcompext.orig/Makefile.in nxcompext/Makefile.in
+--- nxcompext.orig/Makefile.in	2006-06-04 08:35:58.000000000 -0500
++++ nxcompext/Makefile.in	2006-07-15 20:54:05.000000000 -0500
+@@ -30,14 +30,14 @@ LIBVERSION=@LIBVERSION@
+ CXX         = @CXX@
+ CXXFLAGS    = @CXXFLAGS@ @X_CFLAGS@ @DEFS@ \
+               -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
+-              -Wmissing-declarations -Wnested-externs
++              -Wmissing-declarations -Wnested-externs -fPIC
+ CXXINCLUDES = -I. -I../nxcomp
+ CXXDEFINES  =
+ 
+ CC          = @CC@
+ CCFLAGS     = @CFLAGS@ @X_CFLAGS@ @DEFS@ \
+               -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
+-              -Wmissing-declarations -Wnested-externs
++              -Wmissing-declarations -Wnested-externs -fPIC
+ CCINCLUDES  = -I. -I../nxcomp
+ CCDEFINES   =
+ 
