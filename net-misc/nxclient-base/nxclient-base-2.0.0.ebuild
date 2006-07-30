@@ -9,10 +9,10 @@ HOMEPAGE="http://www.nomachine.com/developers.php"
 
 URI_BASE="http://web04.nomachine.com/download/2.0.0/sources"
 SRC_NXCOMP="nxcomp-$PV-81.tar.gz"
-SRC_NXCOMPSH="nxcompsh-$PV-4.tar.gz"
-SRC_NXESD="nxesd-$PV-3.tar.gz"
-SRC_NXKILL="nxkill-$PV-3.tar.gz"
-SRC_NXSERVICE="nxservice-$PV-24.tar.gz"
+SRC_NXCOMPSH="nxcompsh-$PV-5.tar.gz"
+SRC_NXESD="nxesd-$PV-4.tar.gz"
+SRC_NXKILL="nxkill-$PV-4.tar.gz"
+SRC_NXSERVICE="nxservice-$PV-26.tar.gz"
 SRC_NXSSH="nxssh-$PV-12.tar.gz"
 
 SRC_URI="$URI_BASE/$SRC_NXCOMP $URI_BASE/$SRC_NXCOMPSH
