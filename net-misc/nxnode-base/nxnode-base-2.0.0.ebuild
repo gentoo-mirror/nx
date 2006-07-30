@@ -70,6 +70,7 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/2.0.0/nxcomp-2.0.0-makefile.patch
 	epatch ${FILESDIR}/2.0.0/nxcompext-2.0.0-makefile.patch
+	epatch ${FILESDIR}/nxspool-gcc4.patch
 }
 
 src_compile() {

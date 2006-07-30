@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip"
 
 URI_BASE="http://web04.nomachine.com/download/2.0.0/Linux"
-SRC_NXCLIENT="${P}-94.i386.rpm"
+SRC_NXCLIENT="${P}-98.i386.rpm"
 SRC_URI="${URI_BASE}/${SRC_NXCLIENT}"
 
 DEPEND=">=dev-libs/expat-1.95.8
@@ -105,10 +105,10 @@ src_install() {
 	if use prebuilt ; then
 		cat <<EOF > ${T}/50nxpaths
 NXDIR=/usr/NX
-PATH=${NXDIR}/bin
-ROOTPATH=${NXDIR}/bin
-CONFIG_PROTECT="${NXDIR}/etc ${NXDIR}/home"
-PRELINK_PATH_MASK=${NXDIR}
+PATH=/usr/NX/bin
+ROOTPATH=/usr/NX/bin
+CONFIG_PROTECT="/usr/NX/etc /usr/NX/home"
+PRELINK_PATH_MASK=/usr/NX
 SEARCH_DIRS_MASK=/usr/NX
 EOF
 		doenvd ${T}/50nxpaths

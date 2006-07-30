@@ -62,16 +62,16 @@ src_install() {
 	# to make some wrappers to the /usr/NX/lib dir. Again
 	# This is testing to see if this works better.
 	if use prebuilt ; then
-		mx ${D}/usr/NX/bin/nxagent ${D}/usr/NX/bin/nxagent.bin
+		mv ${D}/usr/NX/bin/nxagent ${D}/usr/NX/bin/nxagent.bin
 		make_wrapper nxagent nxagent.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 		if use vnc ; then
-			mx ${D}/usr/NX/bin/nxviewer ${D}/usr/NX/bin/nxviewer.bin
+			mv ${D}/usr/NX/bin/nxviewer ${D}/usr/NX/bin/nxviewer.bin
 			make_wrapper nxviewer nxviewer.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 		fi
 
 		if use rdesktop ; then
-			mx ${D}/usr/NX/bin/nxdesktop ${D}/usr/NX/bin/nxdesktop.bin
+			mv ${D}/usr/NX/bin/nxdesktop ${D}/usr/NX/bin/nxdesktop.bin
 			make_wrapper nxdesktop nxdesktop.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 		fi
 	fi
