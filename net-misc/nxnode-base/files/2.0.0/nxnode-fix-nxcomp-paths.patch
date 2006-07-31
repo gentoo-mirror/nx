@@ -6,10 +6,10 @@ diff -purN nxnode.orig/nx-X11/lib/X11/Imakefile nxnode/nx-X11/lib/X11/Imakefile
  
  #ifdef SunArchitecture
 -NX_INCLUDES = -I../../../nxcomp -I/usr/sfw/include
-+NX_INCLUDES = -I/usr/NX/lib -I/usr/sfw/include
++NX_INCLUDES = -I/usr/NX/include -I/usr/sfw/include
  #else
 -NX_INCLUDES = -I../../../nxcomp
-+NX_INCLUDES = -I/usr/NX/lib
++NX_INCLUDES = -I/usr/NX/include
  #endif
  
  NX_DEFINES = -DNX_TRANS_SOCKET
@@ -94,7 +94,7 @@ diff -purN nxnode.orig/nx-X11/programs/Xserver/hw/nxagent/Imakefile nxnode/nx-X1
  NXFONTINCLUDES = -I../../../../lib/font/include
  
 -INCLUDES = -I. -I../../../../../nxcomp -I../../../../../nxcompext \
-+INCLUDES = -I. -I/usr/NX/lib -I../../../../../nxcompext \
++INCLUDES = -I. -I/usr/NX/include -I../../../../../nxcompext \
  	   -I$(XBUILDINCDIR) -I$(FONTINCSRC) \
  	   -I../../mi -I../../include -I../../os \
  	   -I../../GL/glx -I../../GL/include -I../../../../lib/GL/include -I../../Xext \
@@ -102,7 +102,7 @@ diff -purN nxnode.orig/nx-X11/programs/Xserver/hw/nxagent/Imakefile nxnode/nx-X1
  	   $(VFBINCLUDES) $(NXFONTINCLUDES)
  #ifdef SunArchitecture
 -INCLUDES = -I../../../../../nxcomp -I../../../../../nxcompext \
-+INCLUDES = -I/usr/NX/lib -I../../../../../nxcompext \
++INCLUDES = -I/usr/NX/include -I../../../../../nxcompext \
  	   -I. -I$(XBUILDINCDIR) -I$(FONTINCSRC) \
  	   -I/usr/sfw/include \
  	   -I../../mi -I../../include -I../../os \
@@ -111,7 +111,7 @@ diff -purN nxnode.orig/nx-X11/programs/Xserver/hw/nxagent/Imakefile nxnode/nx-X1
  	   -I../../mi -I../../include -I../../os \
  	   -I../../GL/glx -I../../GL/include -I../../../../lib/GL/include -I../../Xext \
 -           -I. -I../../../../../nxcomp -I../../../../../nxcompext \
-+           -I. -I/usr/NX/lib -I../../../../../nxcompext \
++           -I. -I/usr/NX/include -I../../../../../nxcompext \
             -I$(EXTINCSRC) -I$(XINCLUDESRC) \
  	   $(VFBINCLUDES) $(NXFONTINCLUDES)
  #endif
@@ -123,7 +123,7 @@ diff -purN nxnode.orig/nx-X11/programs/Xserver/os/Imakefile nxnode/nx-X11/progra
  #if NXLibraries
  
 -NX_INCLUDES = -I../../../../nxcomp
-+NX_INCLUDES = -I/usr/NX/lib
++NX_INCLUDES = -I/usr/NX/include
  
  NX_DEFINES = -DNX_TRANS_SOCKET        \
               -DNX_TRANS_AUTH          \
@@ -135,7 +135,7 @@ diff -purN nxnode.orig/nxcompext/Makefile.in nxnode/nxcompext/Makefile.in
                -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
                -Wmissing-declarations -Wnested-externs
 -CXXINCLUDES = -I. -I../nxcomp
-+CXXINCLUDES = -I. -I/usr/NX/lib
++CXXINCLUDES = -I. -I/usr/NX/include
  CXXDEFINES  =
  
  CC          = @CC@
@@ -143,7 +143,7 @@ diff -purN nxnode.orig/nxcompext/Makefile.in nxnode/nxcompext/Makefile.in
                -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
                -Wmissing-declarations -Wnested-externs
 -CCINCLUDES  = -I. -I../nxcomp
-+CCINCLUDES  = -I. -I/usr/NX/lib
++CCINCLUDES  = -I. -I/usr/NX/include
  CCDEFINES   =
  
 -LDFLAGS     = @LDFLAGS@ -L../nxcomp

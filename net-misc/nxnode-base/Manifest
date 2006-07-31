@@ -2,22 +2,22 @@ AUX 2.0.0/nxcompext-makefile.patch 852 RMD160 c33478fdf2e1dc09c95ebb8aad9bb07a55
 MD5 cd89a8de3e8d6841eadbe2e71c664a75 files/2.0.0/nxcompext-makefile.patch 852
 RMD160 c33478fdf2e1dc09c95ebb8aad9bb07a55fc76c6 files/2.0.0/nxcompext-makefile.patch 852
 SHA256 825c31636ed01d939a8957fee5cb647c37485f75bde9552976bebebd98cd5088 files/2.0.0/nxcompext-makefile.patch 852
-AUX 2.0.0/nxdesktop-fix-nxcomp-paths.patch 1337 RMD160 7a33dd1d402efcb8b8a34c6e7ecbc7dd254b83e2 SHA1 dfbc06d4bb249bf828bfc25d04bae1a572ef5dab SHA256 ff826d96d042669653c67fa84d93dbc0767686d9cc92d525bc1b86f33d4e76b6
-MD5 54f47049ffa2574b226e77997a41a6c3 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1337
-RMD160 7a33dd1d402efcb8b8a34c6e7ecbc7dd254b83e2 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1337
-SHA256 ff826d96d042669653c67fa84d93dbc0767686d9cc92d525bc1b86f33d4e76b6 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1337
-AUX 2.0.0/nxnode-fix-nxcomp-paths.patch 5937 RMD160 82516776b349819c028031acb9fb473167b64667 SHA1 d89c693805395cc5ebc387809df5a65c0cc312ba SHA256 27b182ff741cc228151134e432c99785dabaa923a1633645dcdecdf732cbfaf4
-MD5 06a0d1d3f51e8f3f1c3945dbb0ba3bca files/2.0.0/nxnode-fix-nxcomp-paths.patch 5937
-RMD160 82516776b349819c028031acb9fb473167b64667 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5937
-SHA256 27b182ff741cc228151134e432c99785dabaa923a1633645dcdecdf732cbfaf4 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5937
+AUX 2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345 RMD160 30cd5b3e7df30a0ce2c45a25d276257c9382793f SHA1 95eac2079a31e576569609513f0fcf6e01da6c65 SHA256 aaf72f054ca38197162c7ab68c8bd580c528df326b87e2388e1a183474a401a8
+MD5 1ab2ae07d8dabbd9a3b3e3b76b481b06 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
+RMD160 30cd5b3e7df30a0ce2c45a25d276257c9382793f files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
+SHA256 aaf72f054ca38197162c7ab68c8bd580c528df326b87e2388e1a183474a401a8 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
+AUX 2.0.0/nxnode-fix-nxcomp-paths.patch 5969 RMD160 0804d348dba0bf634393c085c2742d77ec5d7db6 SHA1 8cf67d522c63dcd9b7da30c9827f4b7dfd756b1d SHA256 5efe2a4f7cfcfb0a3b61bdac7a1b8353479bf44d775ca2ddc732f5c8bf94e269
+MD5 c1efc4274ae6a2ec32b23b58a58c44ae files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
+RMD160 0804d348dba0bf634393c085c2742d77ec5d7db6 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
+SHA256 5efe2a4f7cfcfb0a3b61bdac7a1b8353479bf44d775ca2ddc732f5c8bf94e269 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
 AUX 2.0.0/nxspool-gcc4.patch 467 RMD160 3c46121de4c40025b7e27b76b2a6cdc0e690d974 SHA1 f3e31f958213789a1e87d5ad2b929e970acd0355 SHA256 c857f0a64bf619c1bdcf798416ab50b275a696d62d8c24d0c6fb11e30558c908
 MD5 1440a0de4d8f822f775f608bf95513ca files/2.0.0/nxspool-gcc4.patch 467
 RMD160 3c46121de4c40025b7e27b76b2a6cdc0e690d974 files/2.0.0/nxspool-gcc4.patch 467
 SHA256 c857f0a64bf619c1bdcf798416ab50b275a696d62d8c24d0c6fb11e30558c908 files/2.0.0/nxspool-gcc4.patch 467
-AUX 2.0.0/nxviewer-fix-nxcomp-paths.patch 671 RMD160 9b4ddd27fea9633009d3661ae0965b297a7abb39 SHA1 3e232e4eec3cb875364898ff909d3f0ecbb40f21 SHA256 ac819437d78b8d631befbb96ec784cc824c2cc1febbb1b2f4444f80396f8b3f6
-MD5 c26557d8dbeca740d8613861b80af6f4 files/2.0.0/nxviewer-fix-nxcomp-paths.patch 671
-RMD160 9b4ddd27fea9633009d3661ae0965b297a7abb39 files/2.0.0/nxviewer-fix-nxcomp-paths.patch 671
-SHA256 ac819437d78b8d631befbb96ec784cc824c2cc1febbb1b2f4444f80396f8b3f6 files/2.0.0/nxviewer-fix-nxcomp-paths.patch 671
+AUX 2.0.0/nxviewer-fix-nxcomp-paths.patch 675 RMD160 b6164856f361710add6b20e046c7cc055cfc0fdf SHA1 0bfa12a25e92751ecd39d1c3adc501df5af5ca23 SHA256 7a055ad699985aacc34a01b2dd5b665bba3a9b18b1916eaccb2b097fda96c747
+MD5 436333c7d9a962ad062151fe9e7c2ee5 files/2.0.0/nxviewer-fix-nxcomp-paths.patch 675
+RMD160 b6164856f361710add6b20e046c7cc055cfc0fdf files/2.0.0/nxviewer-fix-nxcomp-paths.patch 675
+SHA256 7a055ad699985aacc34a01b2dd5b665bba3a9b18b1916eaccb2b097fda96c747 files/2.0.0/nxviewer-fix-nxcomp-paths.patch 675
 DIST nx-X11-2.0.0-31.tar.gz 32667577 RMD160 7c922d1269d594764b7dbc2856d831f1913b0b6b SHA1 175939c904870bf3a54afb99b00c29695e9bfcd2 SHA256 7945e8abcaac8f6cd86b59a052f0c02edfd30386eff66c77705259fda51ee7ea
 DIST nxagent-2.0.0-89.tar.gz 933839 RMD160 56e8d49ccf406a7e6032b9d5937ec00861e0867b SHA1 56ef823fd4560ee501f3e0a6511a7ce022ed3e4a SHA256 d13a85aae8934f79896ae6d62c3be04c2c264229ec5511872fa8c9a8856cffcd
 DIST nxauth-2.0.0-3.tar.gz 23275 RMD160 f1213d09ffc4961ef244d46e5858b2a6bda39575 SHA1 9951b2f10b3a24bdb0a4e77be9be3fe934999619 SHA256 2d247695c816af638fa1a59a751ca6a85a4833a0ebd63c793b8e13ead13edb00
@@ -27,10 +27,10 @@ DIST nxsensor-2.0.0-2.tar.gz 180418 RMD160 0f25d3b4af1197499b05f96a7ffc251f6d045
 DIST nxspool-2.0.0-4.tar.gz 2838395 RMD160 fe7fa5312b8da770f458080846686e70c43a5022 SHA1 c2fe74ad5655b75322c5806838f9756a8674bebc SHA256 ef26f19c076a71a766a2e1f2103d1080c190159678d07ecc3cfc59d5724489dc
 DIST nxuexec-2.0.0-4.tar.gz 6948 RMD160 9308e1bc1763801b99ddcbab2d7ce25050e20ae3 SHA1 788f6465c28686b993586a93e6d24213238dc8d2 SHA256 80c6806377742eb0dfdec244b535c5ccebb20fc98d68cbb49ad7f3168b7eef11
 DIST nxviewer-2.0.0-15.tar.gz 93567 RMD160 df74a798e863d95e419057d706f5f8932a65aa5c SHA1 47f2b5ce65d049bb1c886e44269a1f1389c25c22 SHA256 96d1fe59d96fea67816a2f8390f5d430105fc1f2c8ba1ca573f6ee2eaef6f364
-EBUILD nxnode-base-2.0.0.ebuild 3747 RMD160 164e7caf9612dce91e0faabcc04b2dee6408233c SHA1 23f801464746824b5779b3c9208c00692996b2e0 SHA256 a4856f961e1163cda0789412bb2db51c931f1be4f757b0f1a6b10614e5e2903c
-MD5 e168f20a26b1215770de998894b9ea1f nxnode-base-2.0.0.ebuild 3747
-RMD160 164e7caf9612dce91e0faabcc04b2dee6408233c nxnode-base-2.0.0.ebuild 3747
-SHA256 a4856f961e1163cda0789412bb2db51c931f1be4f757b0f1a6b10614e5e2903c nxnode-base-2.0.0.ebuild 3747
+EBUILD nxnode-base-2.0.0.ebuild 3747 RMD160 1d7df2edf601c24c419a5c2aa0c87f2c25198e4c SHA1 65e7cde6ea3c53b5e1dfe85b8fff6fbd432b219a SHA256 df7a101143ea4c90210b781ea526661384a37a746f603422e4c8ad8917b0760c
+MD5 040a72dd31c5e8279c987e56a2161192 nxnode-base-2.0.0.ebuild 3747
+RMD160 1d7df2edf601c24c419a5c2aa0c87f2c25198e4c nxnode-base-2.0.0.ebuild 3747
+SHA256 df7a101143ea4c90210b781ea526661384a37a746f603422e4c8ad8917b0760c nxnode-base-2.0.0.ebuild 3747
 MD5 517b1e8eb8bedfbf1e68b48baa96dfcb files/digest-nxnode-base-2.0.0 2244
 RMD160 2d6407254cae2201ed477c8f7c2de667622203d1 files/digest-nxnode-base-2.0.0 2244
 SHA256 cd90218306028a3e19797d6c68faba6b51c79f5b36e228e907acc133fe89a517 files/digest-nxnode-base-2.0.0 2244

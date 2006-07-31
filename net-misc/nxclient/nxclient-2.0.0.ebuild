@@ -105,11 +105,11 @@ src_install() {
 	if use prebuilt ; then
 		cat <<EOF > ${T}/50nxpaths
 NXDIR=/usr/NX
-PATH=/usr/NX/bin
-ROOTPATH=/usr/NX/bin
-CONFIG_PROTECT="/usr/NX/etc /usr/NX/home"
-PRELINK_PATH_MASK=/usr/NX
-SEARCH_DIRS_MASK=/usr/NX
+PATH=\${NXDIR}/bin
+ROOTPATH=\${NXDIR}/bin
+CONFIG_PROTECT="\${NXDIR}/etc \${NXDIR}/home"
+PRELINK_PATH_MASK=\${NXDIR}
+SEARCH_DIRS_MASK=\${NXDIR}
 EOF
 		doenvd ${T}/50nxpaths
 	fi

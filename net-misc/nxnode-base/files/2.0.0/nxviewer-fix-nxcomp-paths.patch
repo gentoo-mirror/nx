@@ -7,7 +7,7 @@ diff -purN nxnode.orig/nxviewer/nxviewer/Imakefile nxnode/nxviewer/nxviewer/Imak
  
 -NX_INC = -I../../nxcomp -I../../nxcompext -I../../nx-X11/exports/include
 -NX_LIB = -L../../nxcomp -lXcomp -L../../nxcompext -lXcompext
-+NX_INC = -I/usr/NX/lib -I../../nxcompext -I../../nx-X11/exports/include
++NX_INC = -I/usr/NX/include -I../../nxcompext -I../../nx-X11/exports/include
 +NX_LIB = -L/usr/NX/lib -lXcomp -L../../nxcompext -lXcompext
  
  #ifdef SunArchitecture

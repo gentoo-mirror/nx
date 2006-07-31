@@ -18,11 +18,11 @@ DEPEND="virtual/ssh
 	sys-apps/gawk
 	net-analyzer/gnu-netcat
 	!ppc? ( >=net-misc/nxclient-1.5.0
-		|| ( ~net-misc/nx-x11-1.5.0
-		     ~net-misc/nx-x11-bin-1.5.0
-		     ~net-misc/nxnode-2.0.0 ) )
-	ppc? ( || ( ~net-misc/nx-x11-1.5.0
-		    ~net-misc/nxnode-base-2.0.0 ) )
+		|| ( ~net-misc/nxnode-2.0.0
+		     ~net-misc/nx-x11-1.5.0
+		     ~net-misc/nx-x11-bin-1.5.0 ) )
+	ppc? ( || ( ~net-misc/nxnode-base-2.0.0
+		    ~net-misc/nx-x11-1.5.0 ) )
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )"
 
@@ -51,6 +51,11 @@ src_unpack() {
 	mv nxprint nxprint.freenx
 
 	# Change the defaults in nxloadconfig to meet the users needs.
+	if has_version "~net-misc/nxclient-2.0.0" || has_version "~net-misc/nxclient-base-2.0.0" ; then
+		einfo "Enabling the NX 2.0.0 backend support."
+		sed -i '/ENABLE_2_0_0_BACKEND=/s/"0"/"1"/' nxloadconfig
+		sed -i '/ENABLE_2_0_0_BACKEND=/s/"0"/"1"/' node.conf.sample
+	fi
 	if use arts ; then
 		einfo "Enabling arts support."
 		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' nxloadconfig

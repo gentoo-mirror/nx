@@ -138,14 +138,17 @@ src_install() {
 	dolib.so nxcomp/libXcomp.so*
 	dolib.so nxcompsh/libXcompsh.so*
 
+	insinto /usr/NX/include
+	doins nxcomp/NX*.h nxcomp/MD5.h
+
 	# install environment variables
 	cat <<EOF > ${T}/50nxpaths
 NXDIR=/usr/NX
-PATH=${NXDIR}/bin
-ROOTPATH=${NXDIR}/bin
-CONFIG_PROTECT="${NXDIR}/etc ${NXDIR}/home"
-PRELINK_PATH_MASK=${NXDIR}
-SEARCH_DIRS_MASK=/usr/NX
+PATH=\${NXDIR}/bin
+ROOTPATH=\${NXDIR}/bin
+CONFIG_PROTECT="\${NXDIR}/etc \${NXDIR}/home"
+PRELINK_PATH_MASK=\${NXDIR}
+SEARCH_DIRS_MASK=\${NXDIR}
 EOF
 	doenvd ${T}/50nxpaths
 }

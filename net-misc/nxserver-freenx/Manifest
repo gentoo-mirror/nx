@@ -20,10 +20,10 @@ EBUILD nxserver-freenx-0.5.0.ebuild 3830 RMD160 f63b86bc94f2c3297733d5b5398ace77
 MD5 25fccff528d2c478009c5584752d13e1 nxserver-freenx-0.5.0.ebuild 3830
 RMD160 f63b86bc94f2c3297733d5b5398ace776db5afa8 nxserver-freenx-0.5.0.ebuild 3830
 SHA256 da29093372e2f260ada3e8815d69546dd1ba5c47ea4a19379bfc7bcf040aa8bc nxserver-freenx-0.5.0.ebuild 3830
-EBUILD nxserver-freenx-0.6.0_alpha20060711.ebuild 3861 RMD160 106ef45fe9aa333bc726506c7bd9f14c47c1f666 SHA1 4e8e051d772a0d39f8ddf0a26bf3e788af3d008c SHA256 d3bada486f6b736aedbd147f8b62d3d69125e768585e74ad416103a2c9212aba
-MD5 6f43e12f25c665fa91aa966ab9ae5c86 nxserver-freenx-0.6.0_alpha20060711.ebuild 3861
-RMD160 106ef45fe9aa333bc726506c7bd9f14c47c1f666 nxserver-freenx-0.6.0_alpha20060711.ebuild 3861
-SHA256 d3bada486f6b736aedbd147f8b62d3d69125e768585e74ad416103a2c9212aba nxserver-freenx-0.6.0_alpha20060711.ebuild 3861
+EBUILD nxserver-freenx-0.6.0_alpha20060711.ebuild 4131 RMD160 fab937be50c039c5bcd5a5de1fe5af86f41ec16d SHA1 d61da2fa1a4528c660caee7b9cce132399369dcb SHA256 fad9b48c8c1e452bb77a6b24a6412e1550a361c6e638a82cb29a1bfac6480d97
+MD5 d6dc469e687839467eab647ca40d02f5 nxserver-freenx-0.6.0_alpha20060711.ebuild 4131
+RMD160 fab937be50c039c5bcd5a5de1fe5af86f41ec16d nxserver-freenx-0.6.0_alpha20060711.ebuild 4131
+SHA256 fad9b48c8c1e452bb77a6b24a6412e1550a361c6e638a82cb29a1bfac6480d97 nxserver-freenx-0.6.0_alpha20060711.ebuild 4131
 MD5 76d8082a363dfe8809918cab10be8ea1 files/digest-nxserver-freenx-0.5.0 253
 RMD160 e5c978cddd5cbea1896de845d5571f2e07ffd420 files/digest-nxserver-freenx-0.5.0 253
 SHA256 b2bf6f40af47c6f3001a95290af3d418fc246518fa77f069c405185e3706cd24 files/digest-nxserver-freenx-0.5.0 253

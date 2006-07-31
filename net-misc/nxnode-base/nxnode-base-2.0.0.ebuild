@@ -75,7 +75,7 @@ src_unpack() {
 
 src_compile() {
 	# builds: nxcomp, nxcompext, nx-x11, nxauth, nxagent
-	cd nx-x11
+	cd nx-X11
 	emake World || die "Unable to build nx-X11"
 
 	# build nxsensor
