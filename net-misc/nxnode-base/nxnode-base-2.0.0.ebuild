@@ -108,11 +108,11 @@ src_install() {
 	into /usr/NX
 
 	# Rename to make a wrapper later that points to /usr/NX/libs
-	newbin nx-x11/programs/Xserver/nxagent nxagent.bin
+	newbin nx-X11/programs/Xserver/nxagent nxagent.bin
 	make_wrapper nxagent nxagent.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 	# Not needed anymore? Let's test if it's not. ;)
-	#dobin nx-x11/programs/nxauth/nxauth
+	#dobin nx-X11/programs/nxauth/nxauth
 
 	dobin nxsensor/nxsensor
 	# I think this nxspool line is right. :S Very confusing.
@@ -130,8 +130,8 @@ src_install() {
 		make_wrapper nxdesktop nxdesktop.bin /usr/NX/bin /usr/NX/lib /usr/NX/bin
 	fi
 
-	dolib.so nx-x11/lib/X11/libX11.so*
-	dolib.so nx-x11/lib/Xext/libXext.so*
-	dolib.so nx-x11/lib/Xrender/libXrender.so*
+	dolib.so nx-X11/lib/X11/libX11.so*
+	dolib.so nx-X11/lib/Xext/libXext.so*
+	dolib.so nx-X11/lib/Xrender/libXrender.so*
 	dolib.so nxcompext/libXcompext.so*
 }
