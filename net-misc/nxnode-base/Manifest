@@ -6,10 +6,10 @@ AUX 2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345 RMD160 30cd5b3e7df30a0ce2c45a25d
 MD5 1ab2ae07d8dabbd9a3b3e3b76b481b06 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
 RMD160 30cd5b3e7df30a0ce2c45a25d276257c9382793f files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
 SHA256 aaf72f054ca38197162c7ab68c8bd580c528df326b87e2388e1a183474a401a8 files/2.0.0/nxdesktop-fix-nxcomp-paths.patch 1345
-AUX 2.0.0/nxnode-fix-nxcomp-paths.patch 5969 RMD160 0804d348dba0bf634393c085c2742d77ec5d7db6 SHA1 8cf67d522c63dcd9b7da30c9827f4b7dfd756b1d SHA256 5efe2a4f7cfcfb0a3b61bdac7a1b8353479bf44d775ca2ddc732f5c8bf94e269
-MD5 c1efc4274ae6a2ec32b23b58a58c44ae files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
-RMD160 0804d348dba0bf634393c085c2742d77ec5d7db6 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
-SHA256 5efe2a4f7cfcfb0a3b61bdac7a1b8353479bf44d775ca2ddc732f5c8bf94e269 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5969
+AUX 2.0.0/nxnode-fix-nxcomp-paths.patch 5981 RMD160 53e490980ac82c363b0eaa45627ea717319055f8 SHA1 186dde5f39c5987bb24bf0cc0cc32996b068be9e SHA256 6776dec6ad1c3836cc8600ed51f4fead73d44af6a75a605429e168fedb959158
+MD5 ef5f5603d3b8dbbbd27d1c43a4a5b4b8 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5981
+RMD160 53e490980ac82c363b0eaa45627ea717319055f8 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5981
+SHA256 6776dec6ad1c3836cc8600ed51f4fead73d44af6a75a605429e168fedb959158 files/2.0.0/nxnode-fix-nxcomp-paths.patch 5981
 AUX 2.0.0/nxspool-gcc4.patch 467 RMD160 3c46121de4c40025b7e27b76b2a6cdc0e690d974 SHA1 f3e31f958213789a1e87d5ad2b929e970acd0355 SHA256 c857f0a64bf619c1bdcf798416ab50b275a696d62d8c24d0c6fb11e30558c908
 MD5 1440a0de4d8f822f775f608bf95513ca files/2.0.0/nxspool-gcc4.patch 467
 RMD160 3c46121de4c40025b7e27b76b2a6cdc0e690d974 files/2.0.0/nxspool-gcc4.patch 467

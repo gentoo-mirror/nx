@@ -133,7 +133,7 @@ diff -purN nxnode.orig/nxcompext/Makefile.in nxnode/nxcompext/Makefile.in
 @@ -31,17 +31,17 @@ CXX         = @CXX@
  CXXFLAGS    = @CXXFLAGS@ @X_CFLAGS@ @DEFS@ \
                -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
-               -Wmissing-declarations -Wnested-externs
+               -Wmissing-declarations -Wnested-externs -fPIC
 -CXXINCLUDES = -I. -I../nxcomp
 +CXXINCLUDES = -I. -I/usr/NX/include
  CXXDEFINES  =
@@ -141,7 +141,7 @@ diff -purN nxnode.orig/nxcompext/Makefile.in nxnode/nxcompext/Makefile.in
  CC          = @CC@
  CCFLAGS     = @CFLAGS@ @X_CFLAGS@ @DEFS@ \
                -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes \
-               -Wmissing-declarations -Wnested-externs
+               -Wmissing-declarations -Wnested-externs -fPIC
 -CCINCLUDES  = -I. -I../nxcomp
 +CCINCLUDES  = -I. -I/usr/NX/include
  CCDEFINES   =
