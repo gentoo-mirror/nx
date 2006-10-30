@@ -2,6 +2,9 @@
 # Copyright 2000-2006 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/nxcomp/ChangeLog,v 1.25 2006/05/01 22:05:44 stuart Exp $
 
+  30 Oct 2006; Stuart Herbert <stuart@gentoo.org>
+  Removed old versions of nxcomp
+
   01 May 2006; Stuart Herbert <stuart@gentoo.org> nxcomp-1.5.0-r2.ebuild:
   Added back in the dolib.so call (taken out by mistake yesterday)
 

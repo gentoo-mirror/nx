@@ -4,6 +4,9 @@
 
 *nxproxy-1.5.0-r2 (30 Apr 2006)
 
+  30 Oct 2006; Stuart Herbert <stuart@gentoo.org>
+  Removed old versions
+
   30 Apr 2006; Stuart Herbert <stuart@gentoo.org> +nxproxy-1.5.0-r2.ebuild:
   Huge thanks to Jon Scruggs for these changes:
   
