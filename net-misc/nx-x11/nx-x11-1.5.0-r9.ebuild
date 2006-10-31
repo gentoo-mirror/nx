@@ -73,14 +73,12 @@ src_compile() {
 
 	if use rdesktop ; then
 		cd ../nxdesktop
-		./configure --prefix=/usr/NX --mandir=/usr/share/man --sharedir=/usr/share || die "Unable to configure nxdesktop"
+		./configure --prefix=/usr --mandir=/usr/share/man --sharedir=/usr/share || die "Unable to configure nxdesktop"
 		emake || die "Unable to build nxdesktop"
 	fi
 }
 
 src_install() {
-	into /usr/NX
-
 	dobin programs/Xserver/nxagent
 	dobin programs/nxauth/nxauth
 
@@ -93,6 +91,7 @@ src_install() {
 		dobin ../nxdesktop/nxdesktop
 	fi
 
+	insinto /usr/NX
 	dolib.so lib/X11/libX11.so*
 
 	dolib.so lib/Xext/libXext.so*
