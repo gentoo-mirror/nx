@@ -21,8 +21,7 @@ DEPEND="virtual/ssh
 	amd64? ( nxclient? ( =net-misc/nxclient-1.5* )
 	        !nxclient? ( !net-misc/nxclient ) )
 	!x86? ( !amd64? ( !net-misc/nxclient ) )
-	|| ( =net-misc/nx-x11-1.5*
-	     =net-misc/nx-x11-bin-1.5* )
+	=net-misc/nx-1.5*
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )
 	esd? ( media-sound/esound )
@@ -44,27 +43,25 @@ src_unpack() {
 	rpm_unpack ${DISTDIR}/${A}
 	cd ${S}
 
-	mv etc/nxserver/node.conf.sample etc/nxserver/node.conf
+	mv etc/nxserver/node.conf.sample etc/nxserver/node.conf || die
 
-	# fix to make sure 32 bit libraries are used by nx-x11 on amd64
-	has_multilib_profile && \
-		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/" usr/bin/nxloadconfig
+	sed -e 's|^PATH_LIB=.*$|PATH_LIB=$NX_DIR/lib/NX/lib|;' -i usr/bin/nxloadconfig || die
 
 	# Change the defaults in nxloadconfig to meet the users needs.
 	if use arts ; then
 		einfo "Enabling arts support."
-		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' usr/bin/nxloadconfig
-		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' etc/nxserver/node.conf
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' usr/bin/nxloadconfig || die
+		sed -i '/ENABLE_ARTSD_PRELOAD=/s/"0"/"1"/' etc/nxserver/node.conf || die
 	fi
 	if use esd ; then
 		einfo "Enabling esd support."
-		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' usr/bin/nxloadconfig
-		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' etc/nxserver/node.conf
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' usr/bin/nxloadconfig || die
+		sed -i '/ENABLE_ESD_PRELOAD=/s/"0"/"1"/' etc/nxserver/node.conf || die
 	fi
 	if use cups ; then
 		einfo "Enabling cups support."
-		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' usr/bin/nxloadconfig
-		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' etc/nxserver/node.conf
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' usr/bin/nxloadconfig || die
+		sed -i '/ENABLE_KDE_CUPS=/s/"0"/"1"/' etc/nxserver/node.conf || die
 	fi
 }
 
@@ -121,4 +118,5 @@ src_install() {
 
 pkg_postinst () {
 	usermod -s /usr/bin/nxserver nx || die "Unable to set login shell of nx user!!"
+	usermod -d ${NX_HOME_DIR} nx || die "Unable to set home directory of nx user!!"
 }

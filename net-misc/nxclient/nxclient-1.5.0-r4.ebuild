@@ -53,20 +53,20 @@ src_install() {
 	# Remove those now...
 
 	# delivered by net-misc/nxcomp
-	rm -f ${D}/usr/NX/lib/libXcomp.so*
+	#rm -f ${D}/usr/NX/lib/libXcomp.so*
 
 	# delivered by net-misc/nxesd
-	rm -f ${D}/usr/NX/bin/nxesd
+	# rm -f ${D}/usr/NX/bin/nxesd
 
 	# delivered by net-misc/nxssh
-	rm -f ${D}/usr/NX/bin/nxssh
+	# rm -f ${D}/usr/NX/bin/nxssh
 
 	# delivered by other deps (emul-linux-x86-baselibs on amd64)
-	rm -f ${D}/usr/NX/lib/lib{crypto,jpeg,png,z}*
+	# rm -f ${D}/usr/NX/lib/lib{crypto,jpeg,png,z}*
 
 	# make sure there are no libs left (this is to catch problems when this
 	# package is updated)
-	rmdir ${D}/usr/NX/lib || die "leftover libraries in ${D}/usr/NX/lib"
+	#rmdir ${D}/usr/NX/lib || die "leftover libraries in ${D}/usr/NX/lib"
 
 	# FIXME: Of the options in the applnk directory, the desktop files in the
 	# "network" directory seem to make the most sense.  I have no idea if this
@@ -78,4 +78,9 @@ src_install() {
 		rm ${D}${apps}/nxclient-help.desktop
 		rm -rf ${D}${applnk}
 	fi
+
+	dodir /etc/env.d
+	cat > ${D}/etc/env.d/99nxclient <<EOF
+PATH=/usr/NX/bin
+EOF
 }
