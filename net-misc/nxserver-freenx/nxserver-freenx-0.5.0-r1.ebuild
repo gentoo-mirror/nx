@@ -119,4 +119,6 @@ src_install() {
 pkg_postinst () {
 	usermod -s /usr/bin/nxserver nx || die "Unable to set login shell of nx user!!"
 	usermod -d ${NX_HOME_DIR} nx || die "Unable to set home directory of nx user!!"
+
+	elog "Run nxsetup --override --install to complete the installation"
 }
