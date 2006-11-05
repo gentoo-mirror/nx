@@ -90,7 +90,7 @@ src_install()
 pkg_postinst()
 {
 	einfo "Running NoMachine's setup script"
-	/usr/NX/scripts/setup/nxnode --install
+	${ROOT}/usr/NX/scripts/setup/nxnode --install
 
 	elog "If you want server statistics, please add nxsensor to your default runlevel"
 	elog
