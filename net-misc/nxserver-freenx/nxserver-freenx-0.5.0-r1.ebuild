@@ -45,6 +45,8 @@ src_unpack() {
 
 	# fix the start commands
 	epatch ${FILESDIR}/freenx-0.5.0-startup.patch
+	# fix fullscreen support; see bug 150200
+	epatch ${FILESDIR}/freenx-0.5.0-fullscreen.patch
 
 	mv etc/nxserver/node.conf.sample etc/nxserver/node.conf || die
 
