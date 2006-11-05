@@ -30,6 +30,17 @@ IUSE="rdesktop vnc"
 RDEPEND="|| ( ( x11-libs/libX11
 				x11-libs/libFS
 				x11-libs/libXvMC
+				x11-libs/libICE
+				x11-libs/libXmu
+				x11-libs/libXdmcp
+				x11-libs/libSM
+				x11-libs/libXt
+				x11-libs/libXau
+				x11-libs/libXaw
+				x11-libs/libXp
+				x11-libs/libXpm
+				x11-libs/libXext
+				dev-libs/openssl
 				media-libs/mesa
 			)
 			virtual/x11
