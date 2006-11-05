@@ -10,7 +10,7 @@ HOMEPAGE="http://www.nomachine.com"
 IUSE="xft"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-alpha ~amd64 -mips -ppc -sparc ~x86"
+KEYWORDS="~x86"
 RESTRICT="nostrip"
 
 SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.rpm )
