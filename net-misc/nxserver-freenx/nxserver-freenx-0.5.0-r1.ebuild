@@ -43,6 +43,9 @@ src_unpack() {
 	rpm_unpack ${DISTDIR}/${A}
 	cd ${S}
 
+	# fix the start commands
+	epatch ${FILESDIR}/freenx-0.5.0-startup.patch
+
 	mv etc/nxserver/node.conf.sample etc/nxserver/node.conf || die
 
 	sed -e 's|^PATH_LIB=.*$|PATH_LIB=$NX_DIR/lib/NX/lib|;' -i usr/bin/nxloadconfig || die
