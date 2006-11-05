@@ -59,11 +59,9 @@ src_install()
 	# we install nxnode into /usr/NX, to make sure it doesn't clash
 	# with libraries installed for FreeNX
 
+	into /usr/NX
 	for x in nxagent nxdesktop nxnode nxpasswd nxsensor nxspool nxuexec nxviewer ; do
-		into /usr/NX
 		dobin bin/$x || die
-		into /usr
-		newbin ${FILESDIR}/nxwrapper $x || die
 	done
 
 	dodir /usr/NX/etc
