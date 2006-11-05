@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}
 			)
 			virtual/x11
 		)
+		app-text/rman
 		!net-misc/nx-x11
 		!net-misc/nx-x11-bin
 		!net-misc/nxcomp
@@ -77,6 +78,7 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch
 #	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-nxcomp-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
+	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
 
 	cd ${WORKDIR}/nxcomp
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
