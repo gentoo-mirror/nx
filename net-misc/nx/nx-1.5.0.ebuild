@@ -79,6 +79,7 @@ src_unpack() {
 #	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-nxcomp-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
+	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-amd64.patch
 
 	cd ${WORKDIR}/nxcomp
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
