@@ -1,27 +1,23 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxclient/nxclient-1.5.0-r4.ebuild,v 1.3 2006/08/23 12:45:51 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxclient/nxclient-1.5.0-r5.ebuild,v 1.1 2006/11/08 20:38:22 stuart Exp $
 
 inherit rpm
 
 DESCRIPTION="NXClient is a X11/VNC/NXServer client especially tuned for using remote desktops over low-bandwidth links such as the Internet"
 HOMEPAGE="http://www.nomachine.com"
 
-IUSE="xft"
-LICENSE="as-is"
+IUSE=""
+LICENSE="nomachine"
 SLOT="0"
-KEYWORDS="~x86"
 RESTRICT="nostrip"
+SRC_URI="http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.rpm"
 
-SRC_URI="!xft? ( http://web04.nomachine.com/download/1.5.0/client/${P}-141.i386.rpm )
-	xft? ( http://svn.gnqs.org/svn/gentoo-nx-overlay/downloads/${PN}-xft-${PV}-141.i386.rpm )"
+# This is only supported upstream on 32-bit x86.
+# Do _not_ mark it for any other arches.
+KEYWORDS="~x86"
 
 DEPEND="
-	|| ( ~net-misc/nxssh-1.5.0
-	     ~net-misc/nxserver-personal-1.5.0
-	     ~net-misc/nxserver-business-1.5.0
-	     ~net-misc/nxserver-enterprise-1.5.0 )
-	~net-misc/nxesd-1.5.0
 	net-analyzer/gnu-netcat
 	amd64? (
 		app-emulation/emul-linux-x86-compat
@@ -45,28 +41,14 @@ src_unpack() {
 	rpm_src_unpack
 }
 
-src_install() {
+src_install()
+{
+	# we install nxclient into /usr/NX ;
+	# this location is reserved for NoMachine's binary releases only
 	cp -dPR usr ${D}
 
-	# All of the libraries delivered by nxclient are available in our deps.
-	# Additionally a couple of the binaries are better installed as deps.
-	# Remove those now...
-
-	# delivered by net-misc/nxcomp
-	#rm -f ${D}/usr/NX/lib/libXcomp.so*
-
-	# delivered by net-misc/nxesd
-	# rm -f ${D}/usr/NX/bin/nxesd
-
-	# delivered by net-misc/nxssh
-	# rm -f ${D}/usr/NX/bin/nxssh
-
-	# delivered by other deps (emul-linux-x86-baselibs on amd64)
-	# rm -f ${D}/usr/NX/lib/lib{crypto,jpeg,png,z}*
-
-	# make sure there are no libs left (this is to catch problems when this
-	# package is updated)
-	#rmdir ${D}/usr/NX/lib || die "leftover libraries in ${D}/usr/NX/lib"
+	# install a wrapper script for nxclient
+	newbin ${FILESDIR}/nxwrapper nxclient
 
 	# FIXME: Of the options in the applnk directory, the desktop files in the
 	# "network" directory seem to make the most sense.  I have no idea if this
@@ -78,9 +60,4 @@ src_install() {
 		rm ${D}${apps}/nxclient-help.desktop
 		rm -rf ${D}${applnk}
 	fi
-
-	dodir /etc/env.d
-	cat > ${D}/etc/env.d/99nxclient <<EOF
-PATH=/usr/NX/bin
-EOF
 }

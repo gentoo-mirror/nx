@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nx-x11/nx-x11-1.5.0-r8.ebuild,v 1.2 2006/06/04 08:56:56 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nx/nx-1.5.0.ebuild,v 1.1 2006/11/08 21:27:10 stuart Exp $
 
 inherit eutils
 
@@ -24,7 +24,7 @@ SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXPROXY
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86"
 IUSE="rdesktop vnc"
 
 RDEPEND="|| ( ( x11-libs/libX11
@@ -70,6 +70,7 @@ DEPEND="${RDEPEND}
 		!net-misc/nx-x11-bin
 		!net-misc/nxcomp
 		!net-misc/nxproxy
+		!net-misc/nxssh
 		"
 S=${WORKDIR}/${PN//x11/X11}
 
@@ -87,7 +88,6 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nx-x11-windows-linux-resume.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch
-#	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-nxcomp-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-amd64.patch
@@ -107,7 +107,7 @@ src_compile() {
 	emake || die
 
 	cd ${WORKDIR}/nx-X11 || die
-	emake World || die 
+	emake World || die
 
 	cd ${WORKDIR}/nxcompext || die
 	./configure || die
@@ -115,14 +115,14 @@ src_compile() {
 
 	if use vnc ; then
 		cd ${WORKDIR}/nxviewer || die
-		xmkmf -a || die 
+		xmkmf -a || die
 		emake World || die
 	fi
 
 	if use rdesktop ; then
 		cd ${WORKDIR}/nxdesktop || die
 		./configure || die
-		emake || die 
+		emake || die
 	fi
 }
 
@@ -141,6 +141,7 @@ src_install() {
 	into /usr/lib/NX
 	dobin ${WORKDIR}/nx-X11/programs/Xserver/nxagent || die
 	dobin ${WORKDIR}/nx-X11/programs/nxauth/nxauth || die
+	dobin ${WORKDIR}/nxproxy/nxproxy || die
 
 	if use vnc ; then
 		dobin ${WORKDIR}/nxviewer/nxviewer/nxviewer || die

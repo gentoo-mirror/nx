@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.5.0.20060311-r1.ebuild,v 1.1 2006/04/30 19:38:46 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.5.0-r1.ebuild,v 1.1 2006/11/08 21:46:59 stuart Exp $
 
 inherit multilib eutils rpm
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://freenx.berlios.de/"
 SRC_URI="ftp://ftp.pbone.net/mirror/download.fedora.redhat.com/pub/fedora/linux/extras/5/i386/freenx-0.5.0-5.fc5.i386.rpm"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~x86"
 RESTRICT="strip"
 IUSE="arts cups esd nxclient"
 DEPEND="virtual/ssh
@@ -77,7 +77,7 @@ src_compile() {
 src_install() {
 	NX_ETC_DIR=/etc/nxserver
 	NX_SESS_DIR=/var/lib/nxserver/db
-	
+
 	dobin usr/bin/nxserver
 	dobin usr/bin/nxnode
 	dobin usr/bin/nxnode-login
@@ -98,27 +98,10 @@ src_install() {
 
 	dodir ${NX_HOME_DIR}
 
-	# ssh-keygen -f ${D}${NX_ETC_DIR}/users.id_dsa -t dsa -N "" -q
-
 	for x in closed running failed ; do
 		keepdir ${NX_SESS_DIR}/$x
 		fperms 0700 ${NX_SESS_DIR}/$x
 	done
-
-	#dodir ${NX_HOME_DIR}/.ssh
-	#fperms 0700 ${NX_HOME_DIR}
-	#fperms 0700 ${NX_HOME_DIR}/.ssh
-
-	#cat << EOF >${D}${NX_HOME_DIR}/.ssh/server.id_dsa.pub.key
-#ssh-dss AAAAB3NzaC1kc3MAAACBAJe/0DNBePG9dYLWq7cJ0SqyRf1iiZN/IbzrmBvgPTZnBa5FT/0Lcj39sRYt1paAlhchwUmwwIiSZaON5JnJOZ6jKkjWIuJ9MdTGfdvtY1aLwDMpxUVoGwEaKWOyin02IPWYSkDQb6cceuG9NfPulS9iuytdx0zIzqvGqfvudtufAAAAFQCwosRXR2QA8OSgFWSO6+kGrRJKiwAAAIEAjgvVNAYWSrnFD+cghyJbyx60AAjKtxZ0r/Pn9k94Qt2rvQoMnGgt/zU0v/y4hzg+g3JNEmO1PdHh/wDPVOxlZ6Hb5F4IQnENaAZ9uTZiFGqhBO1c8Wwjiq/MFZy3jZaidarLJvVs8EeT4mZcWxwm7nIVD4lRU2wQ2lj4aTPcepMAAACANlgcCuA4wrC+3Cic9CFkqiwO/Rn1vk8dvGuEQqFJ6f6LVfPfRTfaQU7TGVLk2CzY4dasrwxJ1f6FsT8DHTNGnxELPKRuLstGrFY/PR7KeafeFZDf+fJ3mbX5nxrld3wi5titTnX+8s4IKv29HJguPvOK/SI7cjzA+SqNfD7qEo8= root@nettuno
-#EOF
-	#fperms 0600 ${NX_HOME_DIR}/.ssh/server.id_dsa.pub.key
-	#cp ${D}${NX_HOME_DIR}/.ssh/server.id_dsa.pub.key ${D}${NX_HOME_DIR}/.ssh/authorized_keys2
-	#fperms 0600 ${NX_HOME_DIR}/.ssh/authorized_keys2
-
-	#echo -n "127.0.0.1" ${D}${NX_HOME_DIR}/.ssh/known_hosts
-
-	#chown -R nx:root ${D}${NX_DIR}
 }
 
 pkg_postinst () {
