@@ -1,0 +1,31 @@
+diff -uBb --recursive server.orig/nxsensor/server/Makefile server/nxsensor/server/Makefile
+--- server.orig/nxsensor/server/Makefile	2006-11-23 21:46:17.000000000 +0000
++++ server/nxsensor/server/Makefile	2006-11-23 21:48:48.000000000 +0000
+@@ -35,20 +35,20 @@
+ endif
+ PKG_LIB = `$(PKG_CONFIG) --libs glib-2.0 gmodule-2.0 gthread-2.0`
+ 
+-#GLIB12_INCLUDE = `glib-config --cflags`
+-#GLIB12_LIB = `glib-config --libs glib gmodule`
++GLIB12_INCLUDE = `glib-config --cflags`
++GLIB12_LIB = `glib-config --libs glib gmodule`
+ 
+-GLIB12_INCLUDE = -I../../glib-1.2.8/ -I../../glib-1.2.8/gmodule/ -I../../glib-1.2.8/gthread/
+-GLIB12_LIB = -L../../glib-1.2.8/.libs -L../../glib-1.2.8/gmodule/.libs -L../../glib-1.2.8/gthread/.libs -lglib -lgmodule -lgthread -ldl
++#GLIB12_INCLUDE = -I../../glib-1.2.8/ -I../../glib-1.2.8/gmodule/ -I../../glib-1.2.8/gthread/
++#GLIB12_LIB = -L../../glib-1.2.8/.libs -L../../glib-1.2.8/gmodule/.libs -L../../glib-1.2.8/gthread/.libs -lglib -lgmodule -lgthread -ldl
+ 
+ LD_RUN_PATH = /usr/NX/lib
+ 
+-FLAGS = -O3 -I.. $(PKG_INCLUDE) $(GTOP_INCLUDE)
++FLAGS = $(CFLAGS) -I.. $(PKG_INCLUDE) $(GTOP_INCLUDE)
+ ifeq ($(glib12),1)
+-FLAGS = -O3 -I.. $(GLIB12_INCLUDE) $(GTOP_INCLUDE)
++FLAGS = $(CFLAGS) -I.. $(GLIB12_INCLUDE) $(GTOP_INCLUDE)
+ endif
+ ifeq ($(glib12),yes)
+-FLAGS = -O3 -I.. $(GLIB12_INCLUDE) $(GTOP_INCLUDE)
++FLAGS = $(CFLAGS) -I.. $(GLIB12_INCLUDE) $(GTOP_INCLUDE)
+ endif
+ 
+ FLAGS+= $(PTHREAD_INC)

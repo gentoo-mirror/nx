@@ -52,6 +52,9 @@ src_unpack()
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch || die
 	epatch ${FILESDIR}/1.5.0/nxcompext-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxdesktop-1.5.0-insitu.patch || die
+	epatch ${FILESDIR}/1.5.0/nxviewer-1.5.0-insitu.patch || die
+	epatch ${FILESDIR}/1.5.0/nxsensor-1.5.0-insitu.patch || die
+	epatch ${FILESDIR}/1.5.0/nxnode-1.5.0-insitu.patch || die
 }
 
 # ------------------------------------------------------------------------
@@ -165,9 +168,11 @@ build_nxspool()
 	einfo "Building nxspool"
 	einfo
 
-	cd ${S}/server/nxspool || die
-	./configure --without-ldap --without-krb5 || die
-	emake || die
+	cd ${S}/server/nxspool/source || die
+	econf --without-ldap --without-krb5 || die
+	# We can't use emake here - it doesn't trigger the right target
+	# for some reason
+	make || die
 }
 
 build_nxsensor()
