@@ -1,0 +1,44 @@
+AUX 1.5.0/nx-x11-1.5.0-amd64.patch 522 RMD160 7ddb4ea671f01b9dfd9afba794c90d6180ce39cc SHA1 d7601f7accf1d3161933e98c37e0a679ccf481e7 SHA256 3da7bba55c801258359f9208ad63ea7d2a7a7a42c9aedd2e397f22b82147975b
+MD5 bfb13eece1a30e367cea52a4e34b19c8 files/1.5.0/nx-x11-1.5.0-amd64.patch 522
+RMD160 7ddb4ea671f01b9dfd9afba794c90d6180ce39cc files/1.5.0/nx-x11-1.5.0-amd64.patch 522
+SHA256 3da7bba55c801258359f9208ad63ea7d2a7a7a42c9aedd2e397f22b82147975b files/1.5.0/nx-x11-1.5.0-amd64.patch 522
+AUX 1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095 RMD160 4131c9b6e4b37e1ccf67cf36577afc01ebe4455c SHA1 96fd62bd8ffcc2fff37d052515790b86ffe30eff SHA256 20ff4bec5bd300a7d0324766e390b9f57312e74e154a6934fac8122120b05616
+MD5 0b90061cefb43ecd4e0c80f232ed09e1 files/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095
+RMD160 4131c9b6e4b37e1ccf67cf36577afc01ebe4455c files/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095
+SHA256 20ff4bec5bd300a7d0324766e390b9f57312e74e154a6934fac8122120b05616 files/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095
+AUX 1.5.0/nx-x11-1.5.0-tmp-exec.patch 363 RMD160 5c79c55a9a50620f8d7feefe9a3264691b25ea96 SHA1 5e573ae6ba8c2f7ba3ac188613ebceb486594f82 SHA256 5ff39018f527c9054c09cd7904f448c852e8ee0066842776c6beb94082acdab3
+MD5 c3ebd6330e7de2da0cab80e6d1143882 files/1.5.0/nx-x11-1.5.0-tmp-exec.patch 363
+RMD160 5c79c55a9a50620f8d7feefe9a3264691b25ea96 files/1.5.0/nx-x11-1.5.0-tmp-exec.patch 363
+SHA256 5ff39018f527c9054c09cd7904f448c852e8ee0066842776c6beb94082acdab3 files/1.5.0/nx-x11-1.5.0-tmp-exec.patch 363
+AUX 1.5.0/nx-x11-1.5.0-windows-linux-resume.patch 1383 RMD160 b2ea2200632ff5f6e9e238fab085bef15e9fd553 SHA1 5a95d58625418b8bda3ce13acb15af1fc629197d SHA256 060e2aa1fd05bcf0aa291782c35e795f43db62fead057360aae72ab7c4099fc8
+MD5 0ee863bb251aa2f6c1093cca5ddd68bd files/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch 1383
+RMD160 b2ea2200632ff5f6e9e238fab085bef15e9fd553 files/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch 1383
+SHA256 060e2aa1fd05bcf0aa291782c35e795f43db62fead057360aae72ab7c4099fc8 files/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch 1383
+AUX 1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch 17973 RMD160 66193b7b9dc2d2ec2d7072a02f6f55c1232b3937 SHA1 b3a5c294516bb59c4f90a7942d2cc0abd632286e SHA256 4b511644a1cb6e0e0c1bb09c78983e2b8a3e6dc865da68f5803ab7e97e2f4412
+MD5 2051746e37750e40b82ce418f204b6ac files/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch 17973
+RMD160 66193b7b9dc2d2ec2d7072a02f6f55c1232b3937 files/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch 17973
+SHA256 4b511644a1cb6e0e0c1bb09c78983e2b8a3e6dc865da68f5803ab7e97e2f4412 files/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch 17973
+AUX 1.5.0/nxcomp-1.5.0-gcc4.patch 329 RMD160 03065afd0dd2b0345a170bcc1ebd8da333004df4 SHA1 cdaf51133f34486e2d9cbc6cf61482eea8b3e9a0 SHA256 097b34afa77d40919e20f54a6b99ea10e2780720e58e72d4d7871303004749e3
+MD5 efb5695f79fc13d2ba55a2dd661fb798 files/1.5.0/nxcomp-1.5.0-gcc4.patch 329
+RMD160 03065afd0dd2b0345a170bcc1ebd8da333004df4 files/1.5.0/nxcomp-1.5.0-gcc4.patch 329
+SHA256 097b34afa77d40919e20f54a6b99ea10e2780720e58e72d4d7871303004749e3 files/1.5.0/nxcomp-1.5.0-gcc4.patch 329
+AUX 1.5.0/nxcomp-1.5.0-pic.patch 523 RMD160 5552146e4539f33cf61e1f6c3f323f51057e2e75 SHA1 95147d1e0a53df86c4f192fb6ee700303eb5f8bf SHA256 fe17e3e36b75fb0d4ac5ad74ff0ecc76ccb91e14b5d2f1a65cfd8c2bfc32cc62
+MD5 4694bf261e3ae8352908598bdaf39561 files/1.5.0/nxcomp-1.5.0-pic.patch 523
+RMD160 5552146e4539f33cf61e1f6c3f323f51057e2e75 files/1.5.0/nxcomp-1.5.0-pic.patch 523
+SHA256 fe17e3e36b75fb0d4ac5ad74ff0ecc76ccb91e14b5d2f1a65cfd8c2bfc32cc62 files/1.5.0/nxcomp-1.5.0-pic.patch 523
+AUX 1.5.0/nxcompext-1.5.0-insitu.patch 509 RMD160 4ca225be3064116a14a4fe26f372d62d62e13014 SHA1 744a00bffa429699d4489eba11116a73ba016640 SHA256 e3dada2031f14b504e2a181aa80cbe2dfe67884ac23a87c9c6f096ec4d5e4c4b
+MD5 d431bf1fefd4587961bb11bd39807d44 files/1.5.0/nxcompext-1.5.0-insitu.patch 509
+RMD160 4ca225be3064116a14a4fe26f372d62d62e13014 files/1.5.0/nxcompext-1.5.0-insitu.patch 509
+SHA256 e3dada2031f14b504e2a181aa80cbe2dfe67884ac23a87c9c6f096ec4d5e4c4b files/1.5.0/nxcompext-1.5.0-insitu.patch 509
+AUX 1.5.0/nxdesktop-1.5.0-insitu.patch 658 RMD160 a916d327a489d62147108444cd47f0f6bcf55ebb SHA1 4e59713ef5b10e100c2a70fe4bc7ca2f4667c22f SHA256 72f2fe9289bfbf88f37193810611c0c790c16d089480c365ef585afef0f4c3fa
+MD5 13f0e49aab83e8e306938791de024c92 files/1.5.0/nxdesktop-1.5.0-insitu.patch 658
+RMD160 a916d327a489d62147108444cd47f0f6bcf55ebb files/1.5.0/nxdesktop-1.5.0-insitu.patch 658
+SHA256 72f2fe9289bfbf88f37193810611c0c790c16d089480c365ef585afef0f4c3fa files/1.5.0/nxdesktop-1.5.0-insitu.patch 658
+DIST linuxterminalserver-1.5.0-r21-src.tar.gz 112952553 RMD160 0e0e96243419d03b5d290ebba286b61b06edc75e SHA1 0a3e9c0babdeaafe36e72d139c1eed19ddb86921 SHA256 e0b48e4f917cb84115c2c653f88aa33d3915901fff0a6cb2e779066c54b269d5
+EBUILD 2xlinuxterminalserver-1.5.0.ebuild 3986 RMD160 dd95147ffbee3dc2c90ca2ac6774ba1a973292c6 SHA1 4bbbaae50a02fdcaffc7dd0bafd42d7c818e4861 SHA256 432f5e6c2abf72ff862890334ecfb25dbd10d4a0621284552c6eda002a520dca
+MD5 2c5caf19bd545f62c8cdab8c23a20832 2xlinuxterminalserver-1.5.0.ebuild 3986
+RMD160 dd95147ffbee3dc2c90ca2ac6774ba1a973292c6 2xlinuxterminalserver-1.5.0.ebuild 3986
+SHA256 432f5e6c2abf72ff862890334ecfb25dbd10d4a0621284552c6eda002a520dca 2xlinuxterminalserver-1.5.0.ebuild 3986
+MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-2xlinuxterminalserver-1.5.0 310
+RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-2xlinuxterminalserver-1.5.0 310
+SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-2xlinuxterminalserver-1.5.0 310
