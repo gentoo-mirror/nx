@@ -16,19 +16,6 @@ IUSE=""
 DEPEND="
 	dev-libs/glib
 	dev-libs/openssl
-	dev-perl/BSD-Resource
-	dev-perl/Data-Dumper
-	dev-perl/DBD-SQLite
-	dev-perl/DBI
-	dev-perl/Digest-MD5
-	dev-perl/Error
-	dev-perl/GD
-	dev-perl/GDGraph
-	dev-perl/GDTextUtil
-	dev-perl/Passwd-Linux
-	dev-perl/Tie-IxHash
-	perl-core/Time-HiRes
-	dev-perl/Unix-Syslog
 	media-libs/gd
 	media-libs/jpeg
 	media-libs/libpng
@@ -41,7 +28,31 @@ S="${WORKDIR}"
 
 src_unpack()
 {
+	# step 1 - unpack the main tarball
 	unpack ${A}
+
+	# step 2 - unpack the bundled perl + additional modules
+	#
+	# NOTE - we cannot use unpack here because it incorrectly reports
+	#        these tar files as not existing
+	# cd ${S}/components
+	# tar -zxf perl-5.6.2.tar.gz || die
+	# tar -zxf BSD-Resource-1.23.tar.gz || die
+	# tar -zxf Data-Dumper-2.121.tar.gz || die
+	# tar -zxf DateManip-5.42a.tar.gz || die
+	# tar -zxf DBD-SQLite-1.07.tar.gz || die
+	# tar -zxf DBI-1.45.tar.gz || die
+	# tar -zxf Digest-MD5-2.33.tar.gz || die
+	# tar -zxf Error-0.15.tar.gz || die
+	# tar -zxf GD-2.19.tar.gz || die
+	# tar -zxf GDGraph-1.43.tar.gz || die
+	# tar -zxf GDTextUtil-0.86.tar.gz || die
+	# tar -zxf Passwd-Linux-0.70.tar.gz || die
+	# tar -zxf Tie-IxHash-1.21.tar.gz || die
+	# tar -zxf Time-HiRes-1.68.tar.gz || die
+	# tar -zxf Unix-Syslog-0.99.tar.gz || die
+
+	# step 3 - apply patches
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-gcc4.patch || die
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch || die
@@ -63,6 +74,23 @@ src_unpack()
 # These functions follow the same naming convention that 2X's build
 # script uses, to make it easy for us to compare what we do with what
 # they do
+
+build_perl()
+{
+	einfo
+	einfo "Building perl"
+	einfo
+
+	cd ${S}/components/perl-5.6.2 || die
+	./Configure -des -Uafs -Ud_csh -Duseshrplib -Dprefix="${S}/perl" -Uuse5005threads -Uusethreads -Ui_db -Ui_gdbm _Ui_ndbm -Ui_dbm -Ui_sdbm -Duseopcode || die
+	make || die
+
+	# we have to install at this stage, because we need to use this copy
+	# of perl to build other components
+	#
+	# I will be much happier when we can use the system Perl instance
+	make install || die
+}
 
 build_nxcomp()
 {
