@@ -6,11 +6,11 @@ inherit eutils
 
 DESCRIPTION=""
 HOMEPAGE="http://www.nomachine.com/"
-SRC_URI="http://64.34.161.181/download/2.1.0/Linux/FE/nxserver-2.1.0-9.i386.tar.gz"
+SRC_URI="http://64.34.161.181/download/2.1.0/Linux/FE/nxserver-2.1.0-18.i386.tar.gz"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -51,9 +51,9 @@ src_install()
 	doins etc/passwords.db.sample || die
 	doins etc/profiles.db.sample || die
 	doins etc/users.db.sample || die
+	doins etc/server.lic.sample || die
 
 	newins etc/server-debian.cfg.sample server-gentoo.cfg.sample || die
-	newins etc/server.lic.sample server.lic || die
 
 	cp -R etc/keys ${D}/usr/NX/etc || die
 
@@ -69,10 +69,17 @@ src_install()
 
 pkg_postinst ()
 {
-	usermod -d /usr/NX/home/nx nx || die
+	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
+	usermod -d /usr/NX/home/nx nx || die "Unable to set home directory of nx user!!"
 
-	einfo "Running NoMachine's setup script"
-	${ROOT}/usr/NX/scripts/setup/nxserver --install
+	# only run install when no configuration file is found
+	if [ -f /usr/NX/etc/server.cfg ]; then
+		einfo "Running NoMachine's update script"
+		${ROOT}/usr/NX/scripts/setup/nxserver --update
+	else
+		einfo "Running NoMachine's setup script"
+		${ROOT}/usr/NX/scripts/setup/nxserver --install
+	fi
 
 	elog "Remember to add nxserver to your default runlevel"
 }

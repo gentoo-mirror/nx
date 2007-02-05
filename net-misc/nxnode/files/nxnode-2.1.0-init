@@ -31,12 +31,12 @@ is_enabled()
 	fi
 
 	tmp=`/usr/bin/awk -F'"' '/^NODE_SENSOR_HOST/ {print $2}' $NX_NODE_CFG`
-	if [[ -z $tmp ]] ; then
+	if [[ -n $tmp ]] ; then
 		NX_SENSOR_HOST="$tmp"
 	fi
 
 	tmp=`/usr/bin/awk -F'"' '/^NODE_SENSOR_PORT/ {print $2}' $NX_NODE_CFG`
-	if [[ -z $tmp ]] ; then
+	if [[ -n $tmp ]] ; then
 		NX_SENSOR_PORT="$tmp"
 	fi
 
