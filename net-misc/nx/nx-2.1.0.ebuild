@@ -100,7 +100,7 @@ src_compile() {
 
 	if use rdesktop ; then
 		cd ${WORKDIR}/nxdesktop || die
-		econf || die
+		CC=(tc-getCC) ./configure || die
 		emake || die
 	fi
 }
