@@ -22,14 +22,14 @@ S="${WORKDIR}/NX"
 
 pkg_preinst()
 {
-	enewuser nx -1 -1 /usr/NX/home/nx || die
+	enewuser nx -1 -1 /usr/NX/home/nx
 }
 
 src_unpack()
 {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/nxserver-2.1.0-setup.patch || die
+	epatch ${FILESDIR}/nxserver-2.1.0-setup.patch
 }
 
 src_install()
@@ -41,19 +41,19 @@ src_install()
 
 	into /usr/NX
 	for x in nxserver ; do
-		dobin bin/$x || die
+		dobin bin/$x
 	done
 
 	dodir /usr/NX/etc
 	insinto /usr/NX/etc
-	doins etc/administrators.db.sample || die
-	doins etc/guests.db.sample || die
-	doins etc/passwords.db.sample || die
-	doins etc/profiles.db.sample || die
-	doins etc/users.db.sample || die
-	doins etc/server.lic.sample || die
+	doins etc/administrators.db.sample
+	doins etc/guests.db.sample 
+	doins etc/passwords.db.sample 
+	doins etc/profiles.db.sample 
+	doins etc/users.db.sample 
+	doins etc/server.lic.sample 
 
-	newins etc/server-debian.cfg.sample server-gentoo.cfg.sample || die
+	newins etc/server-debian.cfg.sample server-gentoo.cfg.sample 
 
 	cp -R etc/keys ${D}/usr/NX/etc || die
 
@@ -64,7 +64,7 @@ src_install()
 	cp -R var ${D}/usr/NX || die
 
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/nxserver-2.1.0-init nxserver || die
+	newexe ${FILESDIR}/nxserver-2.1.0-init nxserver
 }
 
 pkg_postinst ()

@@ -118,22 +118,22 @@ src_install() {
 	fi
 
 	into /usr/lib/NX
-	dobin ${WORKDIR}/nx-X11/programs/Xserver/nxagent || die
-	dobin ${WORKDIR}/nx-X11/programs/nxauth/nxauth || die
-	dobin ${WORKDIR}/nxproxy/nxproxy || die
+	dobin ${WORKDIR}/nx-X11/programs/Xserver/nxagent
+	dobin ${WORKDIR}/nx-X11/programs/nxauth/nxauth
+	dobin ${WORKDIR}/nxproxy/nxproxy 
 
 	if use vnc ; then
-		dobin ${WORKDIR}/nxviewer/nxviewer/nxviewer || die
-		dobin ${WORKDIR}/nxviewer/nxpasswd/nxpasswd || die
+		dobin ${WORKDIR}/nxviewer/nxviewer/nxviewer 
+		dobin ${WORKDIR}/nxviewer/nxpasswd/nxpasswd 
 	fi
 
 	if use rdesktop ; then
-		dobin ${WORKDIR}/nxdesktop/nxdesktop || die
+		dobin ${WORKDIR}/nxdesktop/nxdesktop 
 	fi
 
-	dolib.so ${WORKDIR}/nx-X11/lib/X11/libX11.so* || die
-	dolib.so ${WORKDIR}/nx-X11/lib/Xext/libXext.so* || die
-	dolib.so ${WORKDIR}/nx-X11/lib/Xrender/libXrender.so* || die
-	dolib.so ${WORKDIR}/nxcomp/libXcomp.so* || die
-	dolib.so ${WORKDIR}/nxcompext/libXcompext.so* || die
+	dolib.so ${WORKDIR}/nx-X11/lib/X11/libX11.so* 
+	dolib.so ${WORKDIR}/nx-X11/lib/Xext/libXext.so* 
+	dolib.so ${WORKDIR}/nx-X11/lib/Xrender/libXrender.so* 
+	dolib.so ${WORKDIR}/nxcomp/libXcomp.so* 
+	dolib.so ${WORKDIR}/nxcompext/libXcompext.so* 
 }

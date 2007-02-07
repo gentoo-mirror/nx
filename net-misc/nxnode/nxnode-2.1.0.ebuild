@@ -54,7 +54,7 @@ src_install()
 
 	into /usr/NX
 	for x in nxagent nxdesktop nxnode nxpasswd nxsensor nxspool nxuexec nxviewer ; do
-		dobin bin/$x || die
+		dobin bin/$x 
 	done
 
 	dodir /usr/NX/etc
@@ -74,9 +74,9 @@ src_install()
 	dodir /usr/NX/var
 	cp -R var ${D}/usr/NX || die
 
-	dodir /etc/init.d || die
+	dodir /etc/init.d
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/nxnode-2.1.0-init nxsensor || die
+	newexe ${FILESDIR}/nxnode-2.1.0-init nxsensor
 }
 
 pkg_postinst()

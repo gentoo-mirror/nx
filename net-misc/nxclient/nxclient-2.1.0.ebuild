@@ -48,7 +48,7 @@ src_install()
 
 	for x in nxclient nxesd nxkill nxprint nxservice nxssh ; do
 		into /usr/NX
-		dobin bin/$x || die
+		dobin bin/$x
 		into /usr
 		make_wrapper $x ./$x /usr/NX/bin /usr/NX/lib || die
 	done
