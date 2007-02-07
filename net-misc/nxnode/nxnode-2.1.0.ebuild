@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -54,14 +54,14 @@ src_install()
 
 	into /usr/NX
 	for x in nxagent nxdesktop nxnode nxpasswd nxsensor nxspool nxuexec nxviewer ; do
-		dobin bin/$x 
+		dobin bin/$x
 	done
 
 	dodir /usr/NX/etc
 	cp etc/node-debian.cfg.sample ${D}/usr/NX/etc/node-gentoo.cfg.sample || die
 	sed -e 's|COMMAND_FUSER = .*|COMMAND_FUSER = "/usr/bin/fuser"|;' -i ${D}/usr/NX/etc/node-gentoo.cfg.sample || die
 	cp etc/node.lic.sample ${D}/usr/NX/etc/node.lic.sample || die
-	
+
 	dodir /usr/NX/lib
 	cp -R lib ${D}/usr/NX || die
 

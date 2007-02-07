@@ -1,10 +1,10 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 inherit eutils
 
-DESCRIPTION=""
+DESCRIPTION="Free edition NX server from NoMachine"
 HOMEPAGE="http://www.nomachine.com/"
 SRC_URI="http://64.34.161.181/download/2.1.0/Linux/FE/nxserver-2.1.0-18.i386.tar.gz"
 
@@ -47,13 +47,13 @@ src_install()
 	dodir /usr/NX/etc
 	insinto /usr/NX/etc
 	doins etc/administrators.db.sample
-	doins etc/guests.db.sample 
-	doins etc/passwords.db.sample 
-	doins etc/profiles.db.sample 
-	doins etc/users.db.sample 
-	doins etc/server.lic.sample 
+	doins etc/guests.db.sample
+	doins etc/passwords.db.sample
+	doins etc/profiles.db.sample
+	doins etc/users.db.sample
+	doins etc/server.lic.sample
 
-	newins etc/server-debian.cfg.sample server-gentoo.cfg.sample 
+	newins etc/server-debian.cfg.sample server-gentoo.cfg.sample
 
 	cp -R etc/keys ${D}/usr/NX/etc || die
 

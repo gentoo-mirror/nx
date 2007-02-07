@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -36,7 +36,7 @@ RDEPEND="x86? ( || ( ( x11-libs/libXau
 				>=media-libs/jpeg-6b-r4
 				>=media-libs/libpng-1.2.8
 				>=sys-libs/zlib-1.2.3 )
-		 amd64? (app-emulation/emul-linux-x86-xlibs)"
+		 amd64? ( app-emulation/emul-linux-x86-xlibs )"
 
 DEPEND="${RDEPEND}
 		|| ( ( x11-proto/xproto
@@ -120,20 +120,20 @@ src_install() {
 	into /usr/lib/NX
 	dobin ${WORKDIR}/nx-X11/programs/Xserver/nxagent
 	dobin ${WORKDIR}/nx-X11/programs/nxauth/nxauth
-	dobin ${WORKDIR}/nxproxy/nxproxy 
+	dobin ${WORKDIR}/nxproxy/nxproxy
 
 	if use vnc ; then
-		dobin ${WORKDIR}/nxviewer/nxviewer/nxviewer 
-		dobin ${WORKDIR}/nxviewer/nxpasswd/nxpasswd 
+		dobin ${WORKDIR}/nxviewer/nxviewer/nxviewer
+		dobin ${WORKDIR}/nxviewer/nxpasswd/nxpasswd
 	fi
 
 	if use rdesktop ; then
-		dobin ${WORKDIR}/nxdesktop/nxdesktop 
+		dobin ${WORKDIR}/nxdesktop/nxdesktop
 	fi
 
-	dolib.so ${WORKDIR}/nx-X11/lib/X11/libX11.so* 
-	dolib.so ${WORKDIR}/nx-X11/lib/Xext/libXext.so* 
-	dolib.so ${WORKDIR}/nx-X11/lib/Xrender/libXrender.so* 
-	dolib.so ${WORKDIR}/nxcomp/libXcomp.so* 
-	dolib.so ${WORKDIR}/nxcompext/libXcompext.so* 
+	dolib.so ${WORKDIR}/nx-X11/lib/X11/libX11.so*
+	dolib.so ${WORKDIR}/nx-X11/lib/Xext/libXext.so*
+	dolib.so ${WORKDIR}/nx-X11/lib/Xrender/libXrender.so*
+	dolib.so ${WORKDIR}/nxcomp/libXcomp.so*
+	dolib.so ${WORKDIR}/nxcompext/libXcompext.so*
 }
