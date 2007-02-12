@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils multilib
+inherit autotools eutils multilib
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="http://www.nomachine.com/developers.php"
@@ -27,16 +27,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="rdesktop vnc"
 
-RDEPEND="x86? ( || ( ( x11-libs/libXau
+RDEPEND="|| ( ( x11-libs/libXau
 		   			 x11-libs/libXdmcp
 				     x11-libs/libXpm
-			       )
-			       virtual/x11
 				)
-				>=media-libs/jpeg-6b-r4
-				>=media-libs/libpng-1.2.8
-				>=sys-libs/zlib-1.2.3 )
-		 amd64? ( app-emulation/emul-linux-x86-xlibs )"
+				virtual/x11
+			)
+			>=media-libs/jpeg-6b-r4
+			>=media-libs/libpng-1.2.8
+			>=sys-libs/zlib-1.2.3
+			"
 
 DEPEND="${RDEPEND}
 		|| ( ( x11-proto/xproto
@@ -65,18 +65,18 @@ S=${WORKDIR}/${PN}-X11
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
+	cd ${WORKDIR}
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
-	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-amd64.patch
+	epatch ${FILESDIR}/${P}-64bit-clean.patch
+	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
 
 	cd ${WORKDIR}/nxcomp
-	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
+	epatch ${FILESDIR}/${P}-deprecated-headers.patch
+	epatch ${FILESDIR}/${P}-invalid-options.patch
+	eautoreconf
 }
 
 src_compile() {
-	# nx-X11 will only compile in 32-bit
-	use amd64 && multilib_toolchain_setup x86
-
 	cd ${WORKDIR}/nxcomp || die
 	econf || die
 	emake || die
@@ -106,18 +106,19 @@ src_compile() {
 }
 
 src_install() {
+	NX_ROOT=/usr/$(get_libdir)/NX
 	for x in nxagent nxauth nxproxy; do
-		make_wrapper $x ./$x /usr/lib/NX/bin /usr/lib/NX/$(get_libdir) ||die
+		make_wrapper $x ./$x ${NX_ROOT}/bin ${NX_ROOT}/$(get_libdir) ||die
 	done
 	if use vnc ; then
-		make_wrapper nxviewer ./nxviewer /usr/lib/NX/bin /usr/lib/NX/$(get_libdir) ||die
-		make_wrapper nxpasswd ./nxpasswd /usr/lib/NX/bin /usr/lib/NX/$(get_libdir) ||die
+		make_wrapper nxviewer ./nxviewer ${NX_ROOT}/bin ${NX_ROOT}/$(get_libdir) ||die
+		make_wrapper nxpasswd ./nxpasswd ${NX_ROOT}/bin ${NX_ROOT}/$(get_libdir) ||die
 	fi
 	if use rdesktop ; then
-		make_wrapper nxdesktop ./nxdesktop /usr/lib/NX/bin /usr/lib/NX/$(get_libdir) ||die
+		make_wrapper nxdesktop ./nxdesktop ${NX_ROOT}/bin ${NX_ROOT}/$(get_libdir) ||die
 	fi
 
-	into /usr/lib/NX
+	into ${NX_ROOT}
 	dobin ${WORKDIR}/nx-X11/programs/Xserver/nxagent
 	dobin ${WORKDIR}/nx-X11/programs/nxauth/nxauth
 	dobin ${WORKDIR}/nxproxy/nxproxy

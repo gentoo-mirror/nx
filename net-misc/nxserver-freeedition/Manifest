@@ -7,10 +7,10 @@ MD5 acbc4350a1f1fbee7d4e1aed7755e197 files/nxserver-2.1.0-setup.patch 1927
 RMD160 e0ee56dedff3dac4265d6ca920b7534f6c097ce3 files/nxserver-2.1.0-setup.patch 1927
 SHA256 2c9c934897ea31cfe6a860ad86fb9bf8e0c4b0e3dbff6b1f5472d19755030d7d files/nxserver-2.1.0-setup.patch 1927
 DIST nxserver-2.1.0-18.i386.tar.gz 5121771 RMD160 0e11165c6e888276e0fc17c6987bbe412f0664bd SHA1 ef3d7761caa906688394cd9b81f624ef009b1b24 SHA256 c6c23ccebdc4746be62448110e136a42b570aebb2d97dae2bcd548305aef90bb
-EBUILD nxserver-freeedition-2.1.0.ebuild 1856 RMD160 e605eee3c67d78cc4d6a104c68ebdb2a16b59556 SHA1 761121f5addc3761e0009bf13082815ba79ffad9 SHA256 4f1ccd8a6b8705e1b6561638b38e7bed1671c7a9e8ff002ef794f8bf7e542afc
-MD5 c3c896605250466b9ce584ee51c66775 nxserver-freeedition-2.1.0.ebuild 1856
-RMD160 e605eee3c67d78cc4d6a104c68ebdb2a16b59556 nxserver-freeedition-2.1.0.ebuild 1856
-SHA256 4f1ccd8a6b8705e1b6561638b38e7bed1671c7a9e8ff002ef794f8bf7e542afc nxserver-freeedition-2.1.0.ebuild 1856
+EBUILD nxserver-freeedition-2.1.0.ebuild 1865 RMD160 48d7e7193fcadc1ffbfcf50fe96297af00c5262f SHA1 107c0766b562cb3afc8f50dd563f6b9aa31e6e79 SHA256 ec97d3eeb2cfecf96590c48501a3307d71c89d214d222047b5c45a0458faa957
+MD5 95b2a844d7bb0b6e1ae95507f797dc13 nxserver-freeedition-2.1.0.ebuild 1865
+RMD160 48d7e7193fcadc1ffbfcf50fe96297af00c5262f nxserver-freeedition-2.1.0.ebuild 1865
+SHA256 ec97d3eeb2cfecf96590c48501a3307d71c89d214d222047b5c45a0458faa957 nxserver-freeedition-2.1.0.ebuild 1865
 MD5 b4d7fbe4c8422570000376a91c37c856 files/digest-nxserver-freeedition-2.1.0 271
 RMD160 f2d854466da37098288228ecc049317c73bc85e9 files/digest-nxserver-freeedition-2.1.0 271
 SHA256 7bba96820f219e34f8566206ecfa8e3cae6be92b706bd218f729264d55086961 files/digest-nxserver-freeedition-2.1.0 271

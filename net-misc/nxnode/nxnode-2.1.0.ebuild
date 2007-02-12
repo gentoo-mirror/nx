@@ -8,7 +8,7 @@ DESCRIPTION="nxnode provides the components that are shared between the differen
 HOMEPAGE="http://www.nomachine.com/"
 SRC_URI="http://64.34.161.181/download/2.1.0/Linux/nxnode-2.1.0-15.i386.tar.gz"
 
-LICENSE=""
+LICENSE="nomachine"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
