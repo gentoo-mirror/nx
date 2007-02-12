@@ -41,8 +41,6 @@ S=${WORKDIR}/NX
 
 src_install()
 {
-	cd ${S}
-
 	# we install nxclient into /usr/NX, to make sure it doesn't clash
 	# with libraries installed for FreeNX
 
@@ -53,9 +51,9 @@ src_install()
 		make_wrapper $x ./$x /usr/NX/bin /usr/NX/lib || die
 	done
 
-	dodir /usr/NX/lib
-	cp lib/libXcompsh.so* ${D}/usr/NX/lib || die
-	cp lib/libXcomp.so* ${D}/usr/NX/lib || die
+	exeinto /usr/NX/lib
+	doexe lib/libXcompsh.so*
+	doexe lib/libXcomp.so*
 
 	dodir /usr/NX/share
 	cp -R share ${D}/usr/NX

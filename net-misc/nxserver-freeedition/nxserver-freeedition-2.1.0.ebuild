@@ -34,8 +34,6 @@ src_unpack()
 
 src_install()
 {
-	cd ${S}
-
 	# we install nxserver into /usr/NX, to make sure it doesn't clash
 	# with libraries installed for FreeNX
 
