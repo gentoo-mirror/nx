@@ -50,7 +50,13 @@ src_unpack() {
 	mv node.conf.sample node.conf || die
 
 	epatch ${FILESDIR}/${P}-nxloadconfig.patch
-	sed -i "/PATH_LIB=/s/NX\/lib/NX\/$(get_libdir)/" nxloadconfig
+
+	# on amd64, get the correct path to NX 32bit libsA
+	if 	has_multilib_profile; then
+		sed -i "/PATH_LIB=/s/lib/$(get_abi_LIBDIR x86)/g" nxloadconfig || die
+		sed -i "/REAL_PATH_BIN=/s/lib/$(get_abi_LIBDIR x86)/g" nxloadconfig || die
+	fi
+
 	# Change the defaults in nxloadconfig to meet the users needs.
 	if use arts ; then
 		einfo "Enabling arts support."

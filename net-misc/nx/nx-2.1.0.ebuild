@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit autotools eutils multilib
+inherit eutils multilib
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="http://www.nomachine.com/developers.php"
@@ -27,16 +27,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="rdesktop vnc"
 
-RDEPEND="|| ( ( x11-libs/libXau
+RDEPEND="x86? ( || ( ( x11-libs/libXau
 		   			 x11-libs/libXdmcp
 				     x11-libs/libXpm
+			       )
+			       virtual/x11
 				)
-				virtual/x11
-			)
-			>=media-libs/jpeg-6b-r4
-			>=media-libs/libpng-1.2.8
-			>=sys-libs/zlib-1.2.3
-			"
+				>=media-libs/jpeg-6b-r4
+				>=media-libs/libpng-1.2.8
+				>=sys-libs/zlib-1.2.3 )
+		 amd64? ( app-emulation/emul-linux-x86-xlibs )"
 
 DEPEND="${RDEPEND}
 		|| ( ( x11-proto/xproto
@@ -67,7 +67,6 @@ src_unpack() {
 
 	cd ${WORKDIR}
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
-	epatch ${FILESDIR}/${P}-64bit-clean.patch
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
 
 	cd ${WORKDIR}/nxcomp
@@ -77,6 +76,9 @@ src_unpack() {
 }
 
 src_compile() {
+	# nx-X11 will only compile in 32-bit
+	use amd64 && multilib_toolchain_setup x86
+
 	cd ${WORKDIR}/nxcomp || die
 	econf || die
 	emake || die
@@ -107,6 +109,7 @@ src_compile() {
 
 src_install() {
 	NX_ROOT=/usr/$(get_libdir)/NX
+
 	for x in nxagent nxauth nxproxy; do
 		make_wrapper $x ./$x ${NX_ROOT}/bin ${NX_ROOT}/$(get_libdir) ||die
 	done
