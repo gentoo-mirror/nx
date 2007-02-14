@@ -39,21 +39,8 @@ RDEPEND="x86? ( || ( ( x11-libs/libXau
 		 amd64? ( app-emulation/emul-linux-x86-xlibs )"
 
 DEPEND="${RDEPEND}
-		|| ( ( x11-proto/xproto
-				x11-proto/xf86vidmodeproto
-				x11-proto/glproto
-				x11-proto/videoproto
-				x11-proto/xextproto
-				x11-proto/fontsproto
-
-				x11-misc/gccmakedep
-				x11-misc/imake
-
-				app-text/rman
-			)
-			virtual/x11
-		)
-		app-text/rman
+		x11-misc/gccmakedep
+		x11-misc/imake
 		!net-misc/nx-x11
 		!net-misc/nx-x11-bin
 		!net-misc/nxcomp
