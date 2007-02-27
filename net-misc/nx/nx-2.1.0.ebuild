@@ -36,7 +36,7 @@ RDEPEND="x86? ( || ( ( x11-libs/libXau
 				>=media-libs/jpeg-6b-r4
 				>=media-libs/libpng-1.2.8
 				>=sys-libs/zlib-1.2.3 )
-		 amd64? ( app-emulation/emul-linux-x86-xlibs )"
+		 amd64? ( >=app-emulation/emul-linux-x86-xlibs-10.0 )"
 
 DEPEND="${RDEPEND}
 		x11-misc/gccmakedep

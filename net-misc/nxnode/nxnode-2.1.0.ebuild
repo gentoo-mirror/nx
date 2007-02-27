@@ -34,6 +34,7 @@ RDEPEND="
 		x11-libs/libXaw
 		x11-libs/libXpm )
 	amd64? ( app-emulation/emul-linux-x86-xlibs )
+	x11-apps/xrdb
 "
 
 S=${WORKDIR}/NX
