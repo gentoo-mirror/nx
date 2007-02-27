@@ -13,9 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	=net-misc/nxnode-2.1*
-"
+DEPEND="=net-misc/nxnode-2.1*"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/NX"

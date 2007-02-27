@@ -18,9 +18,6 @@ DEPEND="
 	!net-misc/nx-x11-bin
 	!net-misc/nxcomp
 	!net-misc/nxproxy
-	!<=net-misc/nxserver-personal-2.0.99
-	!<=net-misc/nxserver-business-2.0.99
-	!<=net-misc/nxserver-enterprise-2.0.99
 	!net-misc/nxserver-freenx
 "
 

@@ -27,12 +27,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="rdesktop vnc"
 
-RDEPEND="x86? ( || ( ( x11-libs/libXau
-		   			 x11-libs/libXdmcp
-				     x11-libs/libXpm
-			       )
-			       virtual/x11
-				)
+RDEPEND="x86? ( x11-libs/libXau
+		   		x11-libs/libXdmcp
+				x11-libs/libXpm
 				>=media-libs/jpeg-6b-r4
 				>=media-libs/libpng-1.2.8
 				>=sys-libs/zlib-1.2.3 )

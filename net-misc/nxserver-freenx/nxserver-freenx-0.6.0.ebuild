@@ -23,10 +23,7 @@ DEPEND="virtual/ssh
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )
 	esd? ( media-sound/esound )
-	!net-misc/nxserver-freeedition
-	!net-misc/nxserver-personal
-	!net-misc/nxserver-business
-	!net-misc/nxserver-enterprise"
+	!net-misc/nxserver-freeedition"
 
 RDEPEND="${DEPEND}"
 
