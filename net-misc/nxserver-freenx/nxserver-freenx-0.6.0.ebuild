@@ -39,8 +39,8 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# fix fullscreen support; see bug 150200
-	epatch ${FILESDIR}/${P}-fullscreen.patch
+	# fix fullscreen support and rootless mode image compression
+	epatch ${FILESDIR}/${P}-rootless-mode.patch
 	# fix rdesktop/vnc proxying
 	epatch ${FILESDIR}/${P}-rdesktop.patch
 
