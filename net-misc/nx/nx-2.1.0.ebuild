@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils multilib
+inherit autotools eutils multilib
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="http://www.nomachine.com/developers.php"
@@ -52,6 +52,7 @@ src_unpack() {
 	cd ${WORKDIR}
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
+	epatch ${FILESDIR}/${P}-nxagent-mem-leaks.patch
 
 	cd ${WORKDIR}/nxcomp
 	epatch ${FILESDIR}/${P}-deprecated-headers.patch
