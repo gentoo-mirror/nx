@@ -4,19 +4,17 @@
 
 inherit eutils qt3
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="2X Terminal Server NX client"
+HOMEPAGE="http://www.2x.com/terminalserver/"
 SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-r21-src.tar.gz"
 
-LICENSE=""
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	dev-libs/glib
 	dev-libs/openssl
-	media-libs/gd
 	media-libs/jpeg
 	media-libs/libpng
 	net-print/cups
@@ -33,6 +31,10 @@ src_unpack()
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-gcc4.patch
 	epatch ${FILESDIR}/1.5.0/nxcomp-1.5.0-pic.patch
+
+	# Set correct product name (until proper tarballs are available)
+	einfo "Setting correct product name (this will take some time)"
+	find . -type f -exec sed -i "s/@PRODUCT_NAME@/2X TerminalServer/g" {} \;
 }
 
 src_compile()
@@ -44,7 +46,7 @@ src_compile()
 	cd ${S}/common/nxssh
 	econf || die
 	emake || die
-	
+
 	cd ${S}/client/nxesd
 	econf || die
 	emake || die
@@ -65,9 +67,9 @@ src_install() {
 	done
 
 	into /usr/NX
-	dobin client/nxclient/nxclient 
+	dobin client/nxclient/nxclient
 	dobin client/nxclient/nxprint/nxprint
-	dobin client/nxesd/nxesd 
+	dobin client/nxesd/nxesd
 	dobin common/nxssh/nxssh
 
 	# TODO: cp must be used, hardcoded /usr/NX/lib
@@ -77,5 +79,9 @@ src_install() {
 	dodir /usr/NX/share
 	cp -R client/nxclient/share ${D}/usr/NX || die
 
-	# TODO: add icons/desktop entries
+	# Add icons/desktop entries
+	doicon client/nxclient/share/icons/*.png
+	make_desktop_entry "nxclient" "NX Client" nx-desktop.png
+	make_desktop_entry "nxclient -admin" "NX Session Administrator" nxclient-admin.png
+	make_desktop_entry "nxclient -wizard" "NX Connection Wizard" nxclient-wizard.png
 }

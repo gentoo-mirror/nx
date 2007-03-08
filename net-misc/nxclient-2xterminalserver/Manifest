@@ -7,10 +7,10 @@ MD5 4694bf261e3ae8352908598bdaf39561 files/1.5.0/nxcomp-1.5.0-pic.patch 523
 RMD160 5552146e4539f33cf61e1f6c3f323f51057e2e75 files/1.5.0/nxcomp-1.5.0-pic.patch 523
 SHA256 fe17e3e36b75fb0d4ac5ad74ff0ecc76ccb91e14b5d2f1a65cfd8c2bfc32cc62 files/1.5.0/nxcomp-1.5.0-pic.patch 523
 DIST linuxterminalserver-1.5.0-r21-src.tar.gz 112952553 RMD160 0e0e96243419d03b5d290ebba286b61b06edc75e SHA1 0a3e9c0babdeaafe36e72d139c1eed19ddb86921 SHA256 e0b48e4f917cb84115c2c653f88aa33d3915901fff0a6cb2e779066c54b269d5
-EBUILD nxclient-2xterminalserver-1.5.0.ebuild 1481 RMD160 a6fdb7a37b05f508bd1feb2bd17c36f80de8bba9 SHA1 efc82ebb4ef63c691bf305d0379df218bf55fcea SHA256 d94d3daebd464083ce73276d5117b8f8299af3cf5d509d57a3718031157f7aba
-MD5 e1db250a1d17bf771a0e8e77b09dddea nxclient-2xterminalserver-1.5.0.ebuild 1481
-RMD160 a6fdb7a37b05f508bd1feb2bd17c36f80de8bba9 nxclient-2xterminalserver-1.5.0.ebuild 1481
-SHA256 d94d3daebd464083ce73276d5117b8f8299af3cf5d509d57a3718031157f7aba nxclient-2xterminalserver-1.5.0.ebuild 1481
+EBUILD nxclient-2xterminalserver-1.5.0.ebuild 1980 RMD160 38d961a23a74a18e33ff2e27236f81cef3b25522 SHA1 0c3bacdefa7f9c3b0cd172e67ef7dd6dc47c337a SHA256 459e0d15adf6321be6df935d66f3fd250814cc3d91c48cd19487725303bed96e
+MD5 c346bc2b0e3eaa7007572101c26ba864 nxclient-2xterminalserver-1.5.0.ebuild 1980
+RMD160 38d961a23a74a18e33ff2e27236f81cef3b25522 nxclient-2xterminalserver-1.5.0.ebuild 1980
+SHA256 459e0d15adf6321be6df935d66f3fd250814cc3d91c48cd19487725303bed96e nxclient-2xterminalserver-1.5.0.ebuild 1980
 MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-nxclient-2xterminalserver-1.5.0 310
 RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-nxclient-2xterminalserver-1.5.0 310
 SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-nxclient-2xterminalserver-1.5.0 310
