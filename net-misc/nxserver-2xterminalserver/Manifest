@@ -47,10 +47,10 @@ MD5 a45d969ed6d2c7afe9d4097f31027f0f files/1.5.0/nxviewer-1.5.0-insitu.patch 203
 RMD160 8e0f91e1ce41e87b6a8f9d80ec83124780423152 files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 SHA256 f7b9a75ea81e0bb735fde26e7816ddf0cd3e9a77bf8ba1df9e7577f0a1f031fc files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 DIST linuxterminalserver-1.5.0-r21-src.tar.gz 112952553 RMD160 0e0e96243419d03b5d290ebba286b61b06edc75e SHA1 0a3e9c0babdeaafe36e72d139c1eed19ddb86921 SHA256 e0b48e4f917cb84115c2c653f88aa33d3915901fff0a6cb2e779066c54b269d5
-EBUILD 2xlinuxterminalserver-1.5.0.ebuild 5321 RMD160 975824e83ec7020e34fe43cbf375a066e3b26d1d SHA1 8e37498efbf5c927d580d163384aac15c96c121a SHA256 6bcf7415613ac0b6f6935cb644da3f3056f8c40738878be5223ba6169447e386
-MD5 2b36fe8f3744633e550f6e884a9ba740 2xlinuxterminalserver-1.5.0.ebuild 5321
-RMD160 975824e83ec7020e34fe43cbf375a066e3b26d1d 2xlinuxterminalserver-1.5.0.ebuild 5321
-SHA256 6bcf7415613ac0b6f6935cb644da3f3056f8c40738878be5223ba6169447e386 2xlinuxterminalserver-1.5.0.ebuild 5321
-MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-2xlinuxterminalserver-1.5.0 310
-RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-2xlinuxterminalserver-1.5.0 310
-SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-2xlinuxterminalserver-1.5.0 310
+EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5465 RMD160 b4b532bacff4f8f9e1686593c2bdba7151b86b17 SHA1 5226e89b92bf054bec7b23fce941ad840a1ee66c SHA256 63d3d3eb57bd68baf5d60a8120e291e3a2db8b0239810df8603bdabe1c475d1a
+MD5 340828ba169185bd270b40a7982bb9ae nxserver-2xterminalserver-1.5.0.ebuild 5465
+RMD160 b4b532bacff4f8f9e1686593c2bdba7151b86b17 nxserver-2xterminalserver-1.5.0.ebuild 5465
+SHA256 63d3d3eb57bd68baf5d60a8120e291e3a2db8b0239810df8603bdabe1c475d1a nxserver-2xterminalserver-1.5.0.ebuild 5465
+MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-nxserver-2xterminalserver-1.5.0 310
+RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-nxserver-2xterminalserver-1.5.0 310
+SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-nxserver-2xterminalserver-1.5.0 310

@@ -1,14 +1,15 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 inherit eutils
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="A X11/RDP/VNC proxy server especially well suited to low bandwidth
+links such as wireless, WANS, and worse"
+HOMEPAGE="http://www.2x.com/terminalserver/"
 SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-r21-src.tar.gz"
 
-LICENSE=""
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
