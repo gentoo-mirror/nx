@@ -1,0 +1,49 @@
+--- common/nx-X11/lib/X11/Imakefile.orig	2007-03-08 16:53:42.000000000 +0100
++++ common/nx-X11/lib/X11/Imakefile	2007-03-08 16:56:58.000000000 +0100
+@@ -58,9 +58,10 @@
+ #            -DNX_CLEAN_FLUSH     \
+ #            -DNX_CLEAN_SEND      \
+                                                                                                                                               
+-NX_XCOMPLIBTARGET = ../../../nxcomp/libXcomp.so
++NX_PREFIX = /usr/NX
++NX_XCOMPLIBTARGET = $(NX_PREFIX)/lib/libXcomp.so
+                                                                                                                                               
+-NX_REQUIREDLIBS =  -L../../../nxcomp -lXcomp
++NX_REQUIREDLIBS =  -L$(NX_PREFIX)/lib -lXcomp
+                                                                                                                                               
+ #endif
+ 
+@@ -1132,18 +1133,6 @@
+ 
+ #if NXLibraries
+                                                                                                                                               
+-#ifdef SunArchitecture
+-$(NX_XCOMPLIBTARGET):
+-	cd ../../../nxcomp && \
+-	./configure && \
+-	gmake
+-#else
+-$(NX_XCOMPLIBTARGET):
+-	cd ../../../nxcomp && \
+-	./configure && \
+-	make
+-#endif
+-                                                                                                                                              
+ depend:: $(NX_XCOMPLIBTARGET) ks_tables.h
+                                                                                                                                               
+ #else
+--- common/nx-X11/programs/Xserver/Imakefile.orig	2007-03-08 18:57:58.000000000 +0100
++++ common/nx-X11/programs/Xserver/Imakefile	2007-03-08 18:58:20.000000000 +0100
+@@ -1368,11 +1368,7 @@
+  * We need this as the linker will try to locate dependencies of X11 and Xext.
+  */
+ 
+-#if defined(SunArchitecture)
+-NXAGENTNXLIBS = -L ../../../nxcomp -L ../../../nxcompext -lXcomp -lXcompext -lrt -L/usr/sfw/lib -lXrender
+-#else
+-NXAGENTNXLIBS = -Wl,-rpath-link,../../../nxcomp -Wl,-rpath-link,../../../nxcompext,-lXrender
+-#endif
++NXAGENTNXLIBS = -Wl,-rpath-link,/usr/NX/lib -Wl,-rpath-link,../../../nxcompext,-lXrender
+ 
+ #endif
+ ServerTarget(nxagent,$(NXAGENTDIRS),$(NXAGENTOBJS), \
