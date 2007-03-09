@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
+inherit flag-o-matic eutils
 
-DESCRIPTION="A X11/RDP/VNC proxy server especially well suited to low bandwidth
-links such as wireless, WANS, and worse"
+DESCRIPTION="A X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 HOMEPAGE="http://www.2x.com/terminalserver/"
 SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-r21-src.tar.gz"
 
@@ -49,18 +48,20 @@ src_unpack()
 build_nxagent()
 {
 	einfo
+	einfo "Building nxcompext"
+	einfo
+
+	cd ${S}/common/nxcompext
+	append-ldflags "-L/usr/NX/lib"
+	econf || die
+	emake || die
+	
+	einfo
 	einfo "Building nx-X11"
 	einfo
 	
 	cd ${S}/common/nx-X11
 	emake World || die
-
-	einfo
-	einfo "Building nxcompext"
-	einfo
-
-	cd ${S}/common/nxcompext
-	emake || die
 }
 
 build_nxdesktop()
@@ -70,9 +71,8 @@ build_nxdesktop()
 	einfo
 
 	cd ${S}/client/nxdesktop
-	econf || die
-	sed -e 's|/usr/X11R6/lib|../../common/nx-X11/lib/X11|g;' -i Makeconf || die
-	sed -e 's|/usr/X11R6/include|../../common/nx-X11/lib/X11|g;' -i Makeconf || die
+	CC=(tc-getCC) ./configure || die
+
 	emake || die
 }
 
@@ -128,7 +128,7 @@ build_nxserver()
 	einfo
 
 	cd ${S}/server/nxnode/src
-	econf || die
+	./configure || die
 	emake setversion || die
 	emake || die
 }
