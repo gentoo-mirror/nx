@@ -37,12 +37,12 @@ src_unpack()
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch || die
-	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/nxcompext-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxdesktop-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxviewer-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxsensor-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxnode-1.5.0-insitu.patch || die
+	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 }
 
 build_nxagent()

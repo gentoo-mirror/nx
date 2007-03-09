@@ -2,10 +2,6 @@ AUX 1.5.0/nx-x11-1.5.0-amd64.patch 522 RMD160 7ddb4ea671f01b9dfd9afba794c90d6180
 MD5 bfb13eece1a30e367cea52a4e34b19c8 files/1.5.0/nx-x11-1.5.0-amd64.patch 522
 RMD160 7ddb4ea671f01b9dfd9afba794c90d6180ce39cc files/1.5.0/nx-x11-1.5.0-amd64.patch 522
 SHA256 3da7bba55c801258359f9208ad63ea7d2a7a7a42c9aedd2e397f22b82147975b files/1.5.0/nx-x11-1.5.0-amd64.patch 522
-AUX 1.5.0/nx-x11-1.5.0-external-nxcomp.patch 4292 RMD160 96e7b372c9539b0c6041925ce28e86db9931b36b SHA1 34d43fb9b04f700a25ec775caac2b881696116d5 SHA256 895d3fddb8497bf2063f3ce8fe8c8b72e0309e912145747c2f472ba5cdf114a9
-MD5 e57a3488bd3a8a2d5905038e89faa9a1 files/1.5.0/nx-x11-1.5.0-external-nxcomp.patch 4292
-RMD160 96e7b372c9539b0c6041925ce28e86db9931b36b files/1.5.0/nx-x11-1.5.0-external-nxcomp.patch 4292
-SHA256 895d3fddb8497bf2063f3ce8fe8c8b72e0309e912145747c2f472ba5cdf114a9 files/1.5.0/nx-x11-1.5.0-external-nxcomp.patch 4292
 AUX 1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095 RMD160 4131c9b6e4b37e1ccf67cf36577afc01ebe4455c SHA1 96fd62bd8ffcc2fff37d052515790b86ffe30eff SHA256 20ff4bec5bd300a7d0324766e390b9f57312e74e154a6934fac8122120b05616
 MD5 0b90061cefb43ecd4e0c80f232ed09e1 files/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095
 RMD160 4131c9b6e4b37e1ccf67cf36577afc01ebe4455c files/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch 1095
@@ -38,15 +34,19 @@ AUX 1.5.0/nxsensor-1.5.0-insitu.patch 1419 RMD160 6006a1f1cf130088c5813dd9db8fbc
 MD5 9c146218a7fae0fbbcc15180bb7f2b32 files/1.5.0/nxsensor-1.5.0-insitu.patch 1419
 RMD160 6006a1f1cf130088c5813dd9db8fbcd0e119ac6f files/1.5.0/nxsensor-1.5.0-insitu.patch 1419
 SHA256 64d980cde3dcf674b43e5759bb161f0efc546c4d5896a0d44ce0dd1bf1d49ea3 files/1.5.0/nxsensor-1.5.0-insitu.patch 1419
+AUX 1.5.0/nxserver-2xterminalserver-1.5.0-external-nxcomp.patch 4292 RMD160 96e7b372c9539b0c6041925ce28e86db9931b36b SHA1 34d43fb9b04f700a25ec775caac2b881696116d5 SHA256 895d3fddb8497bf2063f3ce8fe8c8b72e0309e912145747c2f472ba5cdf114a9
+MD5 e57a3488bd3a8a2d5905038e89faa9a1 files/1.5.0/nxserver-2xterminalserver-1.5.0-external-nxcomp.patch 4292
+RMD160 96e7b372c9539b0c6041925ce28e86db9931b36b files/1.5.0/nxserver-2xterminalserver-1.5.0-external-nxcomp.patch 4292
+SHA256 895d3fddb8497bf2063f3ce8fe8c8b72e0309e912145747c2f472ba5cdf114a9 files/1.5.0/nxserver-2xterminalserver-1.5.0-external-nxcomp.patch 4292
 AUX 1.5.0/nxviewer-1.5.0-insitu.patch 2034 RMD160 8e0f91e1ce41e87b6a8f9d80ec83124780423152 SHA1 a8286e4aafe5a874a6fb2bfb73ae8b2aea848c26 SHA256 f7b9a75ea81e0bb735fde26e7816ddf0cd3e9a77bf8ba1df9e7577f0a1f031fc
 MD5 a45d969ed6d2c7afe9d4097f31027f0f files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 RMD160 8e0f91e1ce41e87b6a8f9d80ec83124780423152 files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 SHA256 f7b9a75ea81e0bb735fde26e7816ddf0cd3e9a77bf8ba1df9e7577f0a1f031fc files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 DIST linuxterminalserver-1.5.0-r21-src.tar.gz 112952553 RMD160 0e0e96243419d03b5d290ebba286b61b06edc75e SHA1 0a3e9c0babdeaafe36e72d139c1eed19ddb86921 SHA256 e0b48e4f917cb84115c2c653f88aa33d3915901fff0a6cb2e779066c54b269d5
-EBUILD nxserver-2xterminalserver-1.5.0.ebuild 2776 RMD160 96ab60571549a9b4acc6bf6431eb7c4190392bed SHA1 71f3b1729ac7cfdbf04160ef199c2b3c64668c09 SHA256 108fa7ef3dcf772f3f0f165721e0bd76ea13d02d7a3b0a2ae83b01b8a565d4ba
-MD5 f99cb29de288b4613809f1c036ecb7e5 nxserver-2xterminalserver-1.5.0.ebuild 2776
-RMD160 96ab60571549a9b4acc6bf6431eb7c4190392bed nxserver-2xterminalserver-1.5.0.ebuild 2776
-SHA256 108fa7ef3dcf772f3f0f165721e0bd76ea13d02d7a3b0a2ae83b01b8a565d4ba nxserver-2xterminalserver-1.5.0.ebuild 2776
+EBUILD nxserver-2xterminalserver-1.5.0.ebuild 2768 RMD160 4a04ca25336f7340c2250abd721c350694d3e387 SHA1 3ff19738e01844517632b6b82c795354be244a5c SHA256 b7692de4f58ddc8d9e747d6e5d77929309641202741dcc2b7ee2fd984909fc86
+MD5 6d99275d702aa017e7c9b53d970d091a nxserver-2xterminalserver-1.5.0.ebuild 2768
+RMD160 4a04ca25336f7340c2250abd721c350694d3e387 nxserver-2xterminalserver-1.5.0.ebuild 2768
+SHA256 b7692de4f58ddc8d9e747d6e5d77929309641202741dcc2b7ee2fd984909fc86 nxserver-2xterminalserver-1.5.0.ebuild 2768
 MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-nxserver-2xterminalserver-1.5.0 310
 RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-nxserver-2xterminalserver-1.5.0 310
 SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-nxserver-2xterminalserver-1.5.0 310
