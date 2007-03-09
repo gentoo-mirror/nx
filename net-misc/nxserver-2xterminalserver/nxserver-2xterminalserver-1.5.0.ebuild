@@ -11,7 +11,7 @@ SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="rdesktop vnc"
 
 # TODO: need cups?
 DEPEND="
@@ -27,8 +27,11 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-src_unpack()
-{
+pkg_preinst() {
+	enewuser nx -1 -1 /usr/NX/home/nx
+}
+
+src_unpack() {
 	unpack ${A}
 	
 	cd ${S}
@@ -133,13 +136,64 @@ build_nxserver()
 	emake || die
 }
 
-src_compile()
-{
-	build_nxagent || die
-	build_nxdesktop || die
-	build_nxviewer || die
-	build_nxspool || die
-	build_nxsensor || die
-	build_nxuexec || die
-	build_nxserver || die
+src_compile() {
+	build_nxagent
+	if use rdesktop; then
+		build_nxdesktop
+	fi
+	build_nxdesktop
+	if use vnc; then
+		build_nxviewer
+	fi
+	build_nxspool
+	build_nxsensor
+	build_nxuexec
+	build_nxserver
+}
+
+src_install() {
+	# Missing nxnode/nxserver
+	into /usr/NX/bin
+	dobin ${S}/common/nx-X11/programs/Xserver/hw/nxagent
+	dobin ${S}/server/nxsensor/nxsensor
+	#TODO: this one should be patched
+	dobin ${S}/server/nxnode/setup/nxsetup
+	newbin ${S}/server/nxspool/source/bin/smbspool nxspool
+	dobin ${S}/server/nxuexec/nxuexec
+
+	if use rdesktop; then
+		dobin ${S}/client/nxdesktop/nxdesktop
+	fi
+	if use vnc; then
+		dobin ${S}/server/nxviewer/nxviewer/nxviewer
+		dobin ${S}/server/nxviewer/nxpasswd/nxpasswd
+	fi
+
+	dodir /usr/NX/lib
+	cp -P common/nxcompext/libXcompext.so* ${D}/usr/NX/lib || die
+	
+	dodir /usr/NX/etc
+	#TODO
+
+	into /usr/NX/scripts
+	newbin ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
+	newbin ${S}/server/nxnode/bin/nxnodeenv.csh nxenv.csh
+	into /usr/NX/scripts/restricted
+	dobin ${S}/server/nxnode/bin/nxaddinitd.sh
+	dobin ${S}/server/nxnode/scripts/nxinit.sh
+	newbin ${S}/server/nxnode/bin/nxprinter.sh-LINUX nxprinter.sh
+	dobin ${S}/server/nxnode/bin/nxsessreg.sh
+	dobin ${S}/server/nxnode/bin/nxuseradd.sh
+
+	cp -R server/nxnode/share ${D}/usr/NX || die
+	cp -R home ${D}/usr/NX || die
+	#TODO: need to create var?
+
+}
+
+pkg_postinst() {
+	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
+	usermod -d /usr/NX/home/nx nx || die "Unable to set home directory of nx user!!"
+	# only run install when no configuration file is found
+	#TODO
 }
