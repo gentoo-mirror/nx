@@ -7,7 +7,7 @@ inherit eutils
 DESCRIPTION="NXClient is a X11/VNC/NXServer client especially tuned for using
 remote desktops over low-bandwidth links such as the Internet"
 HOMEPAGE="http://www.nomachine.com/"
-SRC_URI="http://64.34.161.181/download/2.1.0/Linux/nxclient-2.1.0-11.i386.tar.gz"
+SRC_URI="http://64.34.161.181/download/2.1.0/Linux/nxclient-2.1.0-17.i386.tar.gz"
 LICENSE="nomachine"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

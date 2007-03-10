@@ -8,14 +8,14 @@ DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="http://www.nomachine.com/developers.php"
 
 URI_BASE="http://web04.nomachine.com/download/${PV}/sources"
-SRC_NX_X11="nx-X11-$PV-2.tar.gz"
-SRC_NXAGENT="nxagent-$PV-17.tar.gz"
-SRC_NXAUTH="nxauth-$PV-1.tar.gz"
-SRC_NXCOMP="nxcomp-$PV-6.tar.gz"
-SRC_NXCOMPEXT="nxcompext-$PV-4.tar.gz"
-SRC_NXDESKTOP="nxdesktop-$PV-8.tar.gz"
-SRC_NXVIEWER="nxviewer-$PV-11.tar.gz"
-SRC_NXPROXY="nxproxy-$PV-2.tar.gz"
+SRC_NX_X11="nx-X11-$PV-3.tar.gz"
+SRC_NXAGENT="nxagent-$PV-18.tar.gz"
+SRC_NXAUTH="nxauth-$PV-2.tar.gz"
+SRC_NXCOMP="nxcomp-$PV-8.tar.gz"
+SRC_NXCOMPEXT="nxcompext-$PV-5.tar.gz"
+SRC_NXDESKTOP="nxdesktop-$PV-9.tar.gz"
+SRC_NXVIEWER="nxviewer-$PV-12.tar.gz"
+SRC_NXPROXY="nxproxy-$PV-3.tar.gz"
 
 SRC_URI="$URI_BASE/$SRC_NX_X11 $URI_BASE/$SRC_NXAGENT $URI_BASE/$SRC_NXPROXY
 	$URI_BASE/$SRC_NXAUTH $URI_BASE/$SRC_NXCOMPEXT $URI_BASE/$SRC_NXCOMP
