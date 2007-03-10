@@ -17,7 +17,10 @@ IUSE="rdesktop vnc"
 DEPEND="
 	dev-libs/glib
 	dev-libs/openssl
-	media-libs/gd
+	dev-perl/BSD-Resource
+	dev-perl/GDGraph
+	dev-perl/Passwd-Linux
+	dev-perl/Unix-Syslog
 	media-libs/jpeg
 	media-libs/libpng
 	net-print/cups
@@ -46,6 +49,7 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nxsensor-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/nxnode-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
+	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
 }
 
 build_nxagent()
@@ -132,8 +136,8 @@ build_nxserver()
 
 	cd ${S}/server/nxnode/src
 	./configure || die
-	emake setversion || die
-	emake || die
+	make setversion
+	make nxnode.pl nxserver.pl || die
 }
 
 src_compile() {
@@ -153,14 +157,13 @@ src_compile() {
 
 src_install() {
 	# Missing nxnode/nxserver
-	into /usr/NX/bin
+	into /usr/NX
 	dobin ${S}/common/nx-X11/programs/Xserver/hw/nxagent
 	dobin ${S}/server/nxsensor/nxsensor
-	#TODO: this one should be patched
 	dobin ${S}/server/nxnode/setup/nxsetup
 	newbin ${S}/server/nxspool/source/bin/smbspool nxspool
 	dobin ${S}/server/nxuexec/nxuexec
-
+	
 	if use rdesktop; then
 		dobin ${S}/client/nxdesktop/nxdesktop
 	fi
@@ -169,26 +172,39 @@ src_install() {
 		dobin ${S}/server/nxviewer/nxpasswd/nxpasswd
 	fi
 
-	dodir /usr/NX/lib
-	cp -P common/nxcompext/libXcompext.so* ${D}/usr/NX/lib || die
-	
-	dodir /usr/NX/etc
-	#TODO
+	dobin ${S}/server/nxnode/src/nxnode.pl
+	dobin ${S}/server/nxnode/src/nxserver.pl
 
-	into /usr/NX/scripts
-	newbin ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
-	newbin ${S}/server/nxnode/bin/nxnodeenv.csh nxenv.csh
+	make_wrapper nxnode "perl -I/usr/NX/lib/perl /usr/NX/bin/nxnode.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
+	make_wrapper nxserver "perl -I/usr/NX/lib/perl /usr/NX/bin/nxserver.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
+
+	dodir /usr/NX/lib/perl
+	cd ${S}/server/nxnode/src
+	cp -RH *.pm Config Exception NXShellDialogs handlers nxstat ${D}/usr/NX/lib/perl || die
+	dodir /usr/NX/etc
+	perl MakeConfigFile.pl DEBIAN > ${D}/usr/NX/etc/node-gentoo.cfg.sample
+	
+	cd ${S}
+	cp -P common/nxcompext/libXcompext.so* ${D}/usr/NX/lib || die
+
+	exeinto /usr/NX/scripts
+	newexe ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
+	newexe ${S}/server/nxnode/bin/nxnodeenv.csh nxenv.csh
 	into /usr/NX/scripts/restricted
-	dobin ${S}/server/nxnode/bin/nxaddinitd.sh
-	dobin ${S}/server/nxnode/scripts/nxinit.sh
-	newbin ${S}/server/nxnode/bin/nxprinter.sh-LINUX nxprinter.sh
-	dobin ${S}/server/nxnode/bin/nxsessreg.sh
-	dobin ${S}/server/nxnode/bin/nxuseradd.sh
+	doexe ${S}/server/nxnode/bin/nxaddinitd.sh
+	doexe ${S}/server/nxnode/scripts/nxinit.sh
+	newexe ${S}/server/nxnode/bin/nxprinter.sh-LINUX nxprinter.sh
+	doexe ${S}/server/nxnode/bin/nxsessreg.sh
+	doexe ${S}/server/nxnode/bin/nxuseradd.sh
 
 	cp -R server/nxnode/share ${D}/usr/NX || die
-	cp -R home ${D}/usr/NX || die
-	#TODO: need to create var?
-
+	cp -R server/nxnode/home ${D}/usr/NX || die
+	dodir /usr/NX/var/log
+	dodir /usr/NX/var/run
+	dodir /usr/NX/var/db/closed
+	dodir /usr/NX/var/db/failed
+	dodir /usr/NX/var/db/nxstat
+	dodir /usr/NX/var/db/running
 }
 
 pkg_postinst() {
