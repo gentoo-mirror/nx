@@ -13,7 +13,6 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="rdesktop vnc"
 
-# TODO: need cups?
 DEPEND="
 	dev-libs/glib
 	dev-libs/openssl
@@ -23,7 +22,6 @@ DEPEND="
 	dev-perl/Unix-Syslog
 	media-libs/jpeg
 	media-libs/libpng
-	net-print/cups
 	sys-libs/zlib
 	net-misc/nxclient-2xterminalserver"
 RDEPEND="${DEPEND}"
@@ -156,7 +154,6 @@ src_compile() {
 }
 
 src_install() {
-	# Missing nxnode/nxserver
 	into /usr/NX
 	dobin ${S}/common/nx-X11/programs/Xserver/hw/nxagent
 	dobin ${S}/server/nxsensor/nxsensor
@@ -181,8 +178,11 @@ src_install() {
 	dodir /usr/NX/lib/perl
 	cd ${S}/server/nxnode/src
 	cp -RH *.pm Config Exception NXShellDialogs handlers nxstat ${D}/usr/NX/lib/perl || die
-	dodir /usr/NX/etc
+	dodir /usr/NX/etc/keys
 	perl MakeConfigFile.pl DEBIAN > ${D}/usr/NX/etc/node-gentoo.cfg.sample
+	for x in passwords users administrators; do
+		cp ../etc/${x} ${D}/usr/NX/etc/${x}.db.sample
+	done
 	
 	cd ${S}
 	cp -P common/nxcompext/libXcompext.so* ${D}/usr/NX/lib || die
@@ -190,7 +190,7 @@ src_install() {
 	exeinto /usr/NX/scripts
 	newexe ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
 	newexe ${S}/server/nxnode/bin/nxnodeenv.csh nxenv.csh
-	into /usr/NX/scripts/restricted
+	exeinto /usr/NX/scripts/restricted
 	doexe ${S}/server/nxnode/bin/nxaddinitd.sh
 	doexe ${S}/server/nxnode/scripts/nxinit.sh
 	newexe ${S}/server/nxnode/bin/nxprinter.sh-LINUX nxprinter.sh
@@ -211,5 +211,11 @@ pkg_postinst() {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
 	usermod -d /usr/NX/home/nx nx || die "Unable to set home directory of nx user!!"
 	# only run install when no configuration file is found
-	#TODO
+	if [ -f /usr/NX/etc/node.cfg ]; then
+		einfo "Running 2X update script"
+		${ROOT}/usr/NX/bin/nxsetup --update
+	else
+		einfo "Running 2X setup script"
+		${ROOT}/usr/NX/bin/nxsetup --install
+	fi
 }

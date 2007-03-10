@@ -1,5 +1,5 @@
---- server/nxnode/setup/nxsetup.orig	2007-03-10 02:05:10.000000000 +0100
-+++ server/nxnode/setup/nxsetup	2007-03-10 02:10:58.000000000 +0100
+--- server/nxnode/setup/nxsetup.orig	2007-03-10 16:25:56.000000000 +0100
++++ server/nxnode/setup/nxsetup	2007-03-10 16:26:38.000000000 +0100
 @@ -840,6 +840,10 @@
  
  removeNXinit () {
@@ -32,7 +32,19 @@
  
   runCommand "cat /usr/NX/scripts/restricted/nxaddinitd.sh > /etc/init.d/nxserver" "Unable to create: '/etc/init.d/nxserver'" "warn"
   runCommand "chmod +x /etc/init.d/nxserver" "Cannot set permissions of '/etc/init.d/nxserver' file" "warn"
-@@ -1064,6 +1075,10 @@
+@@ -994,6 +1005,11 @@
+ }
+ 
+ addNXSystemSetup () {
++  
++  if [ "$system" = "gentoo" ]; then
++    return
++  fi
++
+   if [ -f "$rcBash" ];
+   then
+     grep "#$NX_SETUP_VERSION" "$rcBash" 1>/dev/null
+@@ -1064,6 +1080,10 @@
  }
  
  addNXUserLinux () {
@@ -43,7 +55,7 @@
  
    if [ "x$system" = "xmandrake" -o "x$system" = "xfedora" ];
    then
-@@ -1909,6 +1924,10 @@
+@@ -1909,6 +1929,10 @@
    system=fedora
  fi
  
@@ -54,7 +66,7 @@
  if [ "x$system" = "x" -a -f /etc/release ];
  then
    system=solaris
-@@ -1941,6 +1960,7 @@
+@@ -1941,6 +1965,7 @@
      "fedora"             ) ;;
      "debian"             ) ;;
      "solaris"             ) ;;
@@ -62,7 +74,7 @@
      ""                 ) ARGS=-1 && errMsg="$PREFIX $ERROR ERROR: Unable to autodetect the operating system type, please specify it" ;;
      *                  ) ARGS=-1 && errMsg="$PREFIX $ERROR ERROR: Unsupported operating system '$system'" ;;
    esac
-@@ -2094,18 +2114,7 @@
+@@ -2094,18 +2119,7 @@
    result=$?
    if [ "$result" = 0 ];
    then
