@@ -41,11 +41,7 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch || die
-	epatch ${FILESDIR}/1.5.0/nxcompext-1.5.0-insitu.patch || die
-	epatch ${FILESDIR}/1.5.0/nxdesktop-1.5.0-insitu.patch || die
-	epatch ${FILESDIR}/1.5.0/nxviewer-1.5.0-insitu.patch || die
-	epatch ${FILESDIR}/1.5.0/nxsensor-1.5.0-insitu.patch || die
-	epatch ${FILESDIR}/1.5.0/nxnode-1.5.0-insitu.patch || die
+	epatch ${FILESDIR}/1.5.0/${P}-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
 
@@ -215,6 +211,12 @@ src_install() {
 pkg_postinst() {
 	usermod -s /usr/NX/bin/nxserver nx || die "Unable to set login shell of nx user!!"
 	usermod -d /usr/NX/home/nx nx || die "Unable to set home directory of nx user!!"
+	# Workaround fonts link
+	if has_version '>=x11-base/xorg-x11-7.0' && ! [ -e /usr/lib/X11/fonts ];
+	then
+		ln -s /usr/share/fonts /usr/lib/X11/fonts
+	fi
+
 	# only run install when no configuration file is found
 	if [ -f /usr/NX/etc/node.cfg ]; then
 		einfo "Running 2X update script"
