@@ -44,6 +44,8 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/${P}-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
+	sed -i 's/-Wnested-externs/-Wnested-externs -fPIC/' \
+		common/nxcompext/Makefile.in || die "sed failed"
 
 	# Set correct product name (until proper tarballs are available)
 	einfo "Setting correct product name (this will take some time)"
