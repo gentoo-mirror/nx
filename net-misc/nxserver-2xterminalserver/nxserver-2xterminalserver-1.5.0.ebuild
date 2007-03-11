@@ -48,6 +48,10 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nxnode-1.5.0-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
+
+	# Set correct product name (until proper tarballs are available)
+	einfo "Setting correct product name (this will take some time)"
+	find . -type f -exec sed -i "s/@PRODUCT_NAME@/2X TerminalServer/g" {} \;
 }
 
 build_nxagent()
@@ -155,7 +159,7 @@ src_compile() {
 
 src_install() {
 	into /usr/NX
-	dobin ${S}/common/nx-X11/programs/Xserver/hw/nxagent
+	dobin ${S}/common/nx-X11/programs/Xserver/nxagent
 	dobin ${S}/server/nxsensor/nxsensor
 	dobin ${S}/server/nxnode/setup/nxsetup
 	newbin ${S}/server/nxspool/source/bin/smbspool nxspool

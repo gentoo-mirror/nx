@@ -47,10 +47,10 @@ MD5 a45d969ed6d2c7afe9d4097f31027f0f files/1.5.0/nxviewer-1.5.0-insitu.patch 203
 RMD160 8e0f91e1ce41e87b6a8f9d80ec83124780423152 files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 SHA256 f7b9a75ea81e0bb735fde26e7816ddf0cd3e9a77bf8ba1df9e7577f0a1f031fc files/1.5.0/nxviewer-1.5.0-insitu.patch 2034
 DIST linuxterminalserver-1.5.0-r21-src.tar.gz 112952553 RMD160 0e0e96243419d03b5d290ebba286b61b06edc75e SHA1 0a3e9c0babdeaafe36e72d139c1eed19ddb86921 SHA256 e0b48e4f917cb84115c2c653f88aa33d3915901fff0a6cb2e779066c54b269d5
-EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5198 RMD160 8477952b4f01eb79755c9edc9a6952ac15ffd509 SHA1 fdf8bd55bae663487abfe402e4b5faae18a716ec SHA256 8461ab130a83ab4911e6aefca324b49eeb6ee90370daacb249a43cc6fc9f3205
-MD5 2ffc21efa4cf997390f2b6c05be899b5 nxserver-2xterminalserver-1.5.0.ebuild 5198
-RMD160 8477952b4f01eb79755c9edc9a6952ac15ffd509 nxserver-2xterminalserver-1.5.0.ebuild 5198
-SHA256 8461ab130a83ab4911e6aefca324b49eeb6ee90370daacb249a43cc6fc9f3205 nxserver-2xterminalserver-1.5.0.ebuild 5198
+EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5401 RMD160 d8a55f214e06b4800574df12a75c9af8c7377172 SHA1 0744197ab29ac7490273444c0d179ace4ab8466c SHA256 8ffc297dbd9658eff0df52972f794a4a8efec4b37d2eaaf35427a7abe5a7a02b
+MD5 4503bcdfe814d3481e4cb1d6c37d7642 nxserver-2xterminalserver-1.5.0.ebuild 5401
+RMD160 d8a55f214e06b4800574df12a75c9af8c7377172 nxserver-2xterminalserver-1.5.0.ebuild 5401
+SHA256 8ffc297dbd9658eff0df52972f794a4a8efec4b37d2eaaf35427a7abe5a7a02b nxserver-2xterminalserver-1.5.0.ebuild 5401
 MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-nxserver-2xterminalserver-1.5.0 310
 RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-nxserver-2xterminalserver-1.5.0 310
 SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-nxserver-2xterminalserver-1.5.0 310
