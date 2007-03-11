@@ -189,7 +189,8 @@ src_install() {
 	done
 	
 	cd ${S}
-	cp -P common/nxcompext/libXcompext.so* ${D}/usr/NX/lib || die
+	cp -P common/nxcompext/libXcompext.so* \
+		common/nx-X11/lib/X11/libX11.so* ${D}/usr/NX/lib || die
 
 	exeinto /usr/NX/scripts
 	newexe ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
