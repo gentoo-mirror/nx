@@ -18,7 +18,9 @@ DEPEND="virtual/ssh
 	sys-apps/gawk
 	net-analyzer/gnu-netcat
 	nxclient? ( net-misc/nxclient )
-	!nxclient? ( !net-misc/nxclient )
+	!nxclient? ( !net-misc/nxclient
+				 || ( x11-misc/xdialog
+					  x11-apps/xmessage ) )
 	net-misc/nx
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )

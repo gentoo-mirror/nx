@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 		!net-misc/nx-x11-bin
 		!net-misc/nxcomp
 		!net-misc/nxproxy
-		!net-misc/nxssh
-		"
+		!net-misc/nxssh"
+
 S=${WORKDIR}/${PN}-X11
 
 src_unpack() {

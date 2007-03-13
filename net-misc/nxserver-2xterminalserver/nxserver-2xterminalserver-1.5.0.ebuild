@@ -34,7 +34,7 @@ pkg_preinst() {
 
 src_unpack() {
 	unpack ${A}
-	
+
 	cd ${S}
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-amd64.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-plastik-render-fix.patch || die
@@ -62,11 +62,11 @@ build_nxagent()
 	append-ldflags "-L/usr/NX/lib"
 	econf || die
 	emake || die
-	
+
 	einfo
 	einfo "Building nx-X11"
 	einfo
-	
+
 	cd ${S}/common/nx-X11
 	emake World || die
 }
@@ -162,7 +162,7 @@ src_install() {
 	dobin ${S}/server/nxnode/setup/nxsetup
 	newbin ${S}/server/nxspool/source/bin/smbspool nxspool
 	dobin ${S}/server/nxuexec/nxuexec
-	
+
 	if use rdesktop; then
 		dobin ${S}/client/nxdesktop/nxdesktop
 	fi
@@ -185,7 +185,7 @@ src_install() {
 	for x in passwords users administrators; do
 		cp ../etc/${x} ${D}/usr/NX/etc/${x}.db.sample
 	done
-	
+
 	cd ${S}
 	cp -P common/nxcompext/libXcompext.so* \
 		common/nx-X11/lib/X11/libX11.so* ${D}/usr/NX/lib || die
