@@ -51,9 +51,8 @@ src_install()
 		make_wrapper $x ./$x /usr/NX/bin /usr/NX/lib || die
 	done
 
-	exeinto /usr/NX/lib
-	doexe lib/libXcompsh.so*
-	doexe lib/libXcomp.so*
+	dodir /usr/NX/lib
+	cp -P lib/libXcompsh.so* lib/libXcomp.so* ${D}/usr/NX/lib
 
 	dodir /usr/NX/share
 	cp -R share ${D}/usr/NX
