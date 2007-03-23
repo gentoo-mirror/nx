@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="nxnode provides the components that are shared between the different editions of NoMachine's NX Server"
 HOMEPAGE="http://www.nomachine.com/"
-SRC_URI="http://64.34.161.181/download/2.1.0/Linux/nxnode-2.1.0-15.i386.tar.gz"
+SRC_URI="http://64.34.161.181/download/2.1.0/Linux/nxnode-2.1.0-22.i386.tar.gz"
 
 LICENSE="nomachine"
 SLOT="0"
