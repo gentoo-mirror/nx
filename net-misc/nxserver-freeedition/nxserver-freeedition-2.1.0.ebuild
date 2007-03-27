@@ -12,6 +12,7 @@ LICENSE="nomachine"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="nostrip"
 
 DEPEND="=net-misc/nxnode-2.1*"
 RDEPEND="${DEPEND}"
