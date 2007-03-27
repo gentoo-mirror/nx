@@ -16,6 +16,7 @@ RESTRICT="nostrip"
 
 DEPEND="=net-misc/nxnode-2.1*"
 RDEPEND="${DEPEND}"
+QA_TEXTRELS="usr/NX/lib/perl/GD.so"
 
 S="${WORKDIR}/NX"
 
