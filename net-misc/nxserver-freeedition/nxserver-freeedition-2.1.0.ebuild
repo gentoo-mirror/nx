@@ -14,7 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="nostrip"
 
-DEPEND="=net-misc/nxnode-2.1*"
+DEPEND="=net-misc/nxnode-2.1*
+		!net-misc/nxserver-freenx"
 RDEPEND="${DEPEND}"
 QA_TEXTRELS="usr/NX/lib/perl/GD.so"
 
