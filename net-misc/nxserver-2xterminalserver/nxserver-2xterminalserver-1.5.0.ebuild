@@ -52,107 +52,43 @@ src_unpack() {
 	find . -type f -exec sed -i "s/@PRODUCT_NAME@/2X TerminalServer/g" {} \;
 }
 
-build_nxagent()
-{
-	einfo
-	einfo "Building nxcompext"
-	einfo
-
+src_compile() {
 	cd ${S}/common/nxcompext
 	append-ldflags "-L/usr/NX/lib"
 	econf || die
 	emake || die
 
-	einfo
-	einfo "Building nx-X11"
-	einfo
-
 	cd ${S}/common/nx-X11
 	emake World || die
-}
 
-build_nxdesktop()
-{
-	einfo
-	einfo "Building nxdesktop"
-	einfo
+	if use rdesktop; then
+		cd ${S}/client/nxdesktop
+		CC=(tc-getCC) ./configure || die
+		emake || die
+	fi
 
-	cd ${S}/client/nxdesktop
-	CC=(tc-getCC) ./configure || die
-
-	emake || die
-}
-
-build_nxviewer()
-{
-	einfo
-	einfo "Building nxviewer"
-	einfo
-
-	cd ${S}/server/nxviewer
-	# Imakefile needs patching to find the libraries in the right place
-	xmkmf -a || die
-	emake World || die
-}
-
-build_nxspool()
-{
-	einfo
-	einfo "Building nxspool"
-	einfo
+	if use vnc; then
+		cd ${S}/server/nxviewer
+		xmkmf -a || die
+		emake World || die
+	fi
 
 	cd ${S}/server/nxspool/source
 	econf --without-ldap --without-krb5 || die
 	# We can't use emake here - it doesn't trigger the right target
 	# for some reason
 	make || die
-}
-
-build_nxsensor()
-{
-	einfo
-	einfo "Building nxsensor"
-	einfo
 
 	cd ${S}/server/nxsensor
 	emake glib12=1 || die
-}
-
-build_nxuexec()
-{
-	einfo
-	einfo "Building nxuexec"
-	einfo
 
 	cd ${S}/server/nxuexec
 	emake || die
-}
-
-build_nxserver()
-{
-	einfo
-	einfo "Building nxserver"
-	einfo
 
 	cd ${S}/server/nxnode/src
 	./configure || die
 	make setversion
 	make nxnode.pl nxserver.pl || die
-}
-
-src_compile() {
-	build_nxagent
-	if use rdesktop; then
-		build_nxdesktop
-	fi
-	build_nxdesktop
-	if use vnc; then
-		build_nxviewer
-	fi
-	build_nxspool
-	build_nxsensor
-	build_nxuexec
-	build_nxserver
 }
 
 src_install() {
