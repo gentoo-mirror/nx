@@ -92,6 +92,7 @@ src_compile() {
 }
 
 src_install() {
+	# Main binaries
 	into /usr/NX
 	dobin ${S}/common/nx-X11/programs/Xserver/nxagent
 	dobin ${S}/server/nxsensor/nxsensor
@@ -107,25 +108,10 @@ src_install() {
 		dobin ${S}/server/nxviewer/nxpasswd/nxpasswd
 	fi
 
-	dobin ${S}/server/nxnode/src/nxnode.pl
-	dobin ${S}/server/nxnode/src/nxserver.pl
-
-	make_wrapper nxnode "perl -I/usr/NX/lib/perl /usr/NX/bin/nxnode.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
-	make_wrapper nxserver "perl -I/usr/NX/lib/perl /usr/NX/bin/nxserver.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
-
-	dodir /usr/NX/lib/perl
-	cd ${S}/server/nxnode/src
-	cp -RH *.pm Config Exception NXShellDialogs handlers nxstat ${D}/usr/NX/lib/perl || die
-	dodir /usr/NX/etc/keys
-	perl MakeConfigFile.pl DEBIAN > ${D}/usr/NX/etc/node-gentoo.cfg.sample
-	for x in passwords users administrators; do
-		cp ../etc/${x} ${D}/usr/NX/etc/${x}.db.sample
-	done
-
-	cd ${S}
+	# Libraries
 	cp -P common/nxcompext/libXcompext.so* \
 		common/nx-X11/lib/X11/libX11.so* ${D}/usr/NX/lib || die
-
+	# And helper scripts
 	exeinto /usr/NX/scripts
 	newexe ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
 	newexe ${S}/server/nxnode/bin/nxnodeenv.csh nxenv.csh
@@ -136,8 +122,26 @@ src_install() {
 	doexe ${S}/server/nxnode/bin/nxsessreg.sh
 	doexe ${S}/server/nxnode/bin/nxuseradd.sh
 
-	cp -R server/nxnode/share ${D}/usr/NX || die
-	cp -R server/nxnode/home ${D}/usr/NX || die
+	# The server itself (and wrappers and perl modules)
+	dobin ${S}/server/nxnode/src/nxnode.pl
+	dobin ${S}/server/nxnode/src/nxserver.pl
+
+	make_wrapper nxnode "perl -I/usr/NX/lib/perl /usr/NX/bin/nxnode.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
+	make_wrapper nxserver "perl -I/usr/NX/lib/perl /usr/NX/bin/nxserver.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
+
+	dodir /usr/NX/lib/perl
+	cd ${S}/server/nxnode/src
+	cp -RH *.pm Config Exception NXShellDialogs handlers nxstat ${D}/usr/NX/lib/perl || die
+
+	# etc, var, home, ...
+	dodir /usr/NX/etc/keys
+	perl MakeConfigFile.pl DEBIAN > ${D}/usr/NX/etc/node-gentoo.cfg.sample
+	for x in passwords users administrators; do
+		cp ../etc/${x} ${D}/usr/NX/etc/${x}.db.sample
+	done
+
+	cp -R ${S}/server/nxnode/share ${D}/usr/NX || die
+	cp -R ${S}/server/nxnode/home ${D}/usr/NX || die
 	dodir /usr/NX/var/log
 	dodir /usr/NX/var/run
 	dodir /usr/NX/var/db/closed
