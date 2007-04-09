@@ -89,9 +89,12 @@ src_compile() {
 	./configure || die
 	make setversion
 	make nxnode.pl nxserver.pl || die
+	perl MakeConfigFile.pl DEBIAN > node-gentoo.cfg.sample
 }
 
 src_install() {
+	NODE_SRC=${S}/server/nxnode/src
+
 	# Main binaries
 	into /usr/NX
 	dobin ${S}/common/nx-X11/programs/Xserver/nxagent
@@ -109,8 +112,9 @@ src_install() {
 	fi
 
 	# Libraries
-	cp -P common/nxcompext/libXcompext.so* \
-		common/nx-X11/lib/X11/libX11.so* ${D}/usr/NX/lib || die
+	dodir /usr/NX/lib
+	cp -P ${S}/common/nxcompext/libXcompext.so* \
+		${S}/common/nx-X11/lib/X11/libX11.so* ${D}/usr/NX/lib || die
 	# And helper scripts
 	exeinto /usr/NX/scripts
 	newexe ${S}/server/nxnode/bin/nxnodeenv.sh nxenv.sh
@@ -123,22 +127,22 @@ src_install() {
 	doexe ${S}/server/nxnode/bin/nxuseradd.sh
 
 	# The server itself (and wrappers and perl modules)
-	dobin ${S}/server/nxnode/src/nxnode.pl
-	dobin ${S}/server/nxnode/src/nxserver.pl
-
+	dobin ${NODE_SRC}/nxnode.pl
+	dobin ${NODE_SRC}/nxserver.pl
 	make_wrapper nxnode "perl -I/usr/NX/lib/perl /usr/NX/bin/nxnode.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
 	make_wrapper nxserver "perl -I/usr/NX/lib/perl /usr/NX/bin/nxserver.pl" /usr/NX/bin /usr/NX/lib /usr/NX/bin
 
 	dodir /usr/NX/lib/perl
-	cd ${S}/server/nxnode/src
-	cp -RH *.pm Config Exception NXShellDialogs handlers nxstat ${D}/usr/NX/lib/perl || die
+	cp -RH ${NODE_SRC}/*.pm ${NODE_SRC}/Config ${NODE_SRC}/Exception \
+		${NODE_SRC}/NXShellDialogs ${NODE_SRC}/handlers ${NODE_SRC}/nxstat \
+		${D}/usr/NX/lib/perl/ || die
 
 	# etc, var, home, ...
 	dodir /usr/NX/etc/keys
-	perl MakeConfigFile.pl DEBIAN > ${D}/usr/NX/etc/node-gentoo.cfg.sample
 	for x in passwords users administrators; do
-		cp ../etc/${x} ${D}/usr/NX/etc/${x}.db.sample
+		cp ${S}/server/nxnode/etc/${x} ${D}/usr/NX/etc/${x}.db.sample
 	done
+	cp ${NODE_SRC}/node-gentoo.cfg.sample ${D}/usr/NX/etc/ || die
 
 	cp -R ${S}/server/nxnode/share ${D}/usr/NX || die
 	cp -R ${S}/server/nxnode/home ${D}/usr/NX || die
