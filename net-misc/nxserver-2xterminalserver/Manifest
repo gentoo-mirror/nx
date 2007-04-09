@@ -35,10 +35,6 @@ EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5052 RMD160 5318249081d35263e4ba51
 MD5 23bb7a903ae4f39fcf55ed50aa18f1f9 nxserver-2xterminalserver-1.5.0.ebuild 5052
 RMD160 5318249081d35263e4ba51ba114cd80f28328733 nxserver-2xterminalserver-1.5.0.ebuild 5052
 SHA256 ad1a61ca3f84ab21dbfbdce206af32e627f1e7023b8569df99f30ed929a32322 nxserver-2xterminalserver-1.5.0.ebuild 5052
-MISC .nxserver-2xterminalserver-1.5.0.ebuild.swp 16384 RMD160 2620396727a171a40b91476214cc9e688fb9ba4a SHA1 3c449cfa9c468b46d30146d2bba5fe015f0a1672 SHA256 fafdd78832d5bd0650eeb8ddf43582f542ca2ba7294e116e3644d76400c30237
-MD5 85c4582de6b2611905513b4f5cd91628 .nxserver-2xterminalserver-1.5.0.ebuild.swp 16384
-RMD160 2620396727a171a40b91476214cc9e688fb9ba4a .nxserver-2xterminalserver-1.5.0.ebuild.swp 16384
-SHA256 fafdd78832d5bd0650eeb8ddf43582f542ca2ba7294e116e3644d76400c30237 .nxserver-2xterminalserver-1.5.0.ebuild.swp 16384
 MD5 9ce3d064f488428d2ca91d7fddbd898f files/digest-nxserver-2xterminalserver-1.5.0 310
 RMD160 9863e56c29cc5e2c78c52e616149f338bc192306 files/digest-nxserver-2xterminalserver-1.5.0 310
 SHA256 827043de6eaf9a30d0256b9479470b9bb20d2deb9bf5dc82c1d9eb9e02ec047b files/digest-nxserver-2xterminalserver-1.5.0 310
