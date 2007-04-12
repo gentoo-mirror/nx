@@ -23,6 +23,7 @@ DEPEND="
 	media-libs/jpeg
 	media-libs/libpng
 	sys-libs/zlib
+	x11-misc/gccmakedep
 	net-misc/nxclient-2xterminalserver"
 RDEPEND="${DEPEND}"
 
