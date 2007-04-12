@@ -20,6 +20,9 @@ DEPEND="
 	dev-perl/GDGraph
 	dev-perl/Passwd-Linux
 	dev-perl/Unix-Syslog
+	dev-perl/DBI
+	dev-perl/DBD-SQLite
+	dev-perl/Error
 	media-libs/jpeg
 	media-libs/libpng
 	sys-libs/zlib
