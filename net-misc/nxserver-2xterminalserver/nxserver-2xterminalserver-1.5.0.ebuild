@@ -150,12 +150,12 @@ src_install() {
 
 	cp -R ${S}/server/nxnode/share ${D}/usr/NX || die
 	cp -R ${S}/server/nxnode/home ${D}/usr/NX || die
-	dodir /usr/NX/var/log
-	dodir /usr/NX/var/run
-	dodir /usr/NX/var/db/closed
-	dodir /usr/NX/var/db/failed
-	dodir /usr/NX/var/db/nxstat
-	dodir /usr/NX/var/db/running
+	keepdir /usr/NX/var/log
+	keepdir /usr/NX/var/run
+	keepdir /usr/NX/var/db/closed
+	keepdir /usr/NX/var/db/failed
+	keepdir /usr/NX/var/db/nxstat
+	keepdir /usr/NX/var/db/running
 }
 
 pkg_postinst() {
