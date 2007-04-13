@@ -8,8 +8,7 @@ DESCRIPTION="A X11/RDP/VNC proxy server especially well suited to low bandwidth 
 HOMEPAGE="http://www.2x.com/terminalserver/"
 SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-server-r21-src.tar.gz
 	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-common-r21-src.tar.gz
-	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-client-r21-src.tar.gz
-	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-scripts-r21-src.tar.gz"
+	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-client-r21-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,9 +53,10 @@ src_unpack() {
 	sed -i 's/-Wnested-externs/-Wnested-externs -fPIC/' \
 		common/nxcompext/Makefile.in || die "sed failed"
 
-	# Set correct product name (until proper tarballs are available)
-	einfo "Setting correct product name (this will take some time)"
-	find . -type f -exec sed -i "s/@PRODUCT_NAME@/2X TerminalServer/g" {} \;
+	# Set correct product name
+	einfo "Setting official product name"
+	find server/nxnode common/nx-X11/programs/Xserver/hw/nxagent/Args.c \
+		-type f -exec sed -i "s/@PRODUCT_NAME@/2X TerminalServer/g" {} \;
 }
 
 src_compile() {
