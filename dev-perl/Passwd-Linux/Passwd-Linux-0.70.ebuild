@@ -6,7 +6,7 @@ inherit perl-module
 
 DESCRIPTION="Perl module for manipulating the passwd and shadow files"
 HOMEPAGE="http://search.cpan.org/~eestabroo/Passwd-Linux-0.70/Linux.pm"
-SRC_URI="http://search.cpan.org/CPAN/authors/id/E/EE/EESTABROO/Passwd-Linux-0.70.tar.gz"
+SRC_URI="mirror://cpan/authors/id/E/EE/EESTABROO/Passwd-Linux-0.70.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
