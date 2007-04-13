@@ -50,6 +50,7 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/${P}-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
+	epatch ${FILESDIR}/1.5.0/${P}-nxagent-reduced-debugging.patch || die
 	sed -i 's/-Wnested-externs/-Wnested-externs -fPIC/' \
 		common/nxcompext/Makefile.in || die "sed failed"
 
