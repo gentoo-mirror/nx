@@ -6,7 +6,10 @@ inherit flag-o-matic eutils
 
 DESCRIPTION="A X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 HOMEPAGE="http://www.2x.com/terminalserver/"
-SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-r21-src.tar.gz"
+SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-server-r21-src.tar.gz
+	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-common-r21-src.tar.gz
+	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-client-r21-src.tar.gz
+	http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-1.5.0-scripts-r21-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
