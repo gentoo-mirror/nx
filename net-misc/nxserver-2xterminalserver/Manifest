@@ -30,6 +30,10 @@ AUX 1.5.0/nxserver-2xterminalserver-1.5.0-nxagent-reduced-debugging.patch 508 RM
 MD5 5c59d5b67aced2fb5a79ab9926184509 files/1.5.0/nxserver-2xterminalserver-1.5.0-nxagent-reduced-debugging.patch 508
 RMD160 eda50d0819696b61e305c0aade4bd998c7580d89 files/1.5.0/nxserver-2xterminalserver-1.5.0-nxagent-reduced-debugging.patch 508
 SHA256 6cb2078c36979e39b58b37f79468c3cac7e9334f88b96f8134b2db7945af40ac files/1.5.0/nxserver-2xterminalserver-1.5.0-nxagent-reduced-debugging.patch 508
+AUX 1.5.0/nxserver-2xterminalserver-1.5.0-perl.patch 1136 RMD160 f4a5f2e8510e1db123e5856cc2390c06855e6a0b SHA1 dbaf034f82d884c3b4e0e91574aff7cf2bd4ee7f SHA256 ced705edc8a3379093f3809051c7db8617ba16e80d9610e8d093e026e4b20d58
+MD5 511755c54da8b453f164d804a8ce3122 files/1.5.0/nxserver-2xterminalserver-1.5.0-perl.patch 1136
+RMD160 f4a5f2e8510e1db123e5856cc2390c06855e6a0b files/1.5.0/nxserver-2xterminalserver-1.5.0-perl.patch 1136
+SHA256 ced705edc8a3379093f3809051c7db8617ba16e80d9610e8d093e026e4b20d58 files/1.5.0/nxserver-2xterminalserver-1.5.0-perl.patch 1136
 AUX 1.5.0/nxserver-2xterminalserver-1.5.0-setup.patch 2775 RMD160 1399d4e0a1e2da8f1e2c9203465bece738be6452 SHA1 dd8f6e7c43ac6a33dff2f84f4873606d1ffa0191 SHA256 f521231e67fe9e9aa1cbaa82a679483b5c4cdc01aac27b02cd72d5de350edfc6
 MD5 1eb7778fcae558d88ca6a16dc85e58e7 files/1.5.0/nxserver-2xterminalserver-1.5.0-setup.patch 2775
 RMD160 1399d4e0a1e2da8f1e2c9203465bece738be6452 files/1.5.0/nxserver-2xterminalserver-1.5.0-setup.patch 2775
@@ -37,10 +41,10 @@ SHA256 f521231e67fe9e9aa1cbaa82a679483b5c4cdc01aac27b02cd72d5de350edfc6 files/1.
 DIST linuxterminalserver-1.5.0-client-r21-src.tar.gz 2270147 RMD160 32fa31ee713d46e66c8a5e4aa14126995b225cfb SHA1 9295a232409b56ecb2fb4dccf81e6c05d65a7130 SHA256 70c7e3c9741b577b867e78524a1fb607aa2fae5d6f1bdda4b1a42eb9fd3d7bb3
 DIST linuxterminalserver-1.5.0-common-r21-src.tar.gz 34332949 RMD160 411291efa4bef31fbb5ff8128591514c687b9eeb SHA1 f63ed2816b13f1296db909b40ffb1c7d4cb5e109 SHA256 a6aaf7b1593d4df012ecefd1c8a6a176c0fde23cf9039401fe61f56197898555
 DIST linuxterminalserver-1.5.0-server-r21-src.tar.gz 4097853 RMD160 add7c5bcd2a4486d04c4c2b17815c4a449e2bd93 SHA1 14c2c04805889a08dfee9def45b07c3703db8d32 SHA256 79057d7fcf1fa3afd5f361eaac67d1f3d1fb339fa5a837f36eb7a6103d7662d3
-EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5813 RMD160 9bd5dd2a90e0f3da7cad9fde717d373d6821a81b SHA1 6a60656c7530c18822dce7639832fe48e2dd5c16 SHA256 bfb61f2ab137e64817e0f2b700faa49924dc2ef11ce0cd1e4b217e19caa56142
-MD5 fb7ef5f4107780cae704c9f5b2c5fec1 nxserver-2xterminalserver-1.5.0.ebuild 5813
-RMD160 9bd5dd2a90e0f3da7cad9fde717d373d6821a81b nxserver-2xterminalserver-1.5.0.ebuild 5813
-SHA256 bfb61f2ab137e64817e0f2b700faa49924dc2ef11ce0cd1e4b217e19caa56142 nxserver-2xterminalserver-1.5.0.ebuild 5813
+EBUILD nxserver-2xterminalserver-1.5.0.ebuild 5871 RMD160 353d038220c19c48241accc35b3c138e088ccf3e SHA1 8cc2f20ae130297b95b360b1e83533382c6e501d SHA256 77b6f475240218732da08a975dccf4ad366bdaf6a48872b22af46216da0f6eed
+MD5 641edfc1aa178b6753462baeb9c165ff nxserver-2xterminalserver-1.5.0.ebuild 5871
+RMD160 353d038220c19c48241accc35b3c138e088ccf3e nxserver-2xterminalserver-1.5.0.ebuild 5871
+SHA256 77b6f475240218732da08a975dccf4ad366bdaf6a48872b22af46216da0f6eed nxserver-2xterminalserver-1.5.0.ebuild 5871
 MD5 3dc8d122e49ff8f6c649a6ad0244eca4 files/digest-nxserver-2xterminalserver-1.5.0 978
 RMD160 b5de18eceeff699ee6d1e7a1354495b920980ec7 files/digest-nxserver-2xterminalserver-1.5.0 978
 SHA256 1918746ff308794d926375a4e2d5b62b3e1d0d176804f4dfdd3ea6c508d14f51 files/digest-nxserver-2xterminalserver-1.5.0 978

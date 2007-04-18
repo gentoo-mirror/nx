@@ -12,7 +12,7 @@ SRC_URI="http://code.2x.com/release/linuxterminalserver/src/linuxterminalserver-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="rdesktop vnc"
 
 RDEPEND="dev-libs/glib
@@ -69,9 +69,11 @@ src_unpack() {
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-tmp-exec.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-xorg7-font-fix.patch || die
 	epatch ${FILESDIR}/1.5.0/nx-x11-1.5.0-windows-linux-resume.patch || die
+	
 	epatch ${FILESDIR}/1.5.0/${P}-insitu.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-external-nxcomp.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-setup.patch || die
+	epatch ${FILESDIR}/1.5.0/${P}-perl.patch || die
 	epatch ${FILESDIR}/1.5.0/${P}-nxagent-reduced-debugging.patch || die
 	sed -i 's/-Wnested-externs/-Wnested-externs -fPIC/' \
 		common/nxcompext/Makefile.in || die "sed failed"
