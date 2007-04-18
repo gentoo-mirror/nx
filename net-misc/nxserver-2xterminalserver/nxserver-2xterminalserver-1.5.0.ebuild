@@ -15,22 +15,44 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="rdesktop vnc"
 
-DEPEND="
-	dev-libs/glib
+RDEPEND="dev-libs/glib
 	dev-libs/openssl
 	dev-perl/BSD-Resource
+	dev-perl/DBD-SQLite
+	dev-perl/DBI
+	dev-perl/Error
 	dev-perl/GDGraph
 	dev-perl/Passwd-Linux
 	dev-perl/Unix-Syslog
-	dev-perl/DBI
-	dev-perl/DBD-SQLite
-	dev-perl/Error
 	media-libs/jpeg
 	media-libs/libpng
+	media-libs/mesa
 	sys-libs/zlib
+	x11-libs/libX11
+	x11-libs/libFS
+	x11-libs/libXvMC
+	x11-libs/libICE
+	x11-libs/libXmu
+	x11-libs/libXdmcp
+	x11-libs/libSM
+	x11-libs/libXt
+	x11-libs/libXau
+	x11-libs/libXaw
+	x11-libs/libXp
+	x11-libs/libXpm
+	x11-libs/libXext"
+
+DEPEND="${RDEPEND}
+	app-text/rman
+	net-misc/nxclient-2xterminalserver
 	x11-misc/gccmakedep
-	net-misc/nxclient-2xterminalserver"
-RDEPEND="${DEPEND}"
+	x11-misc/imake
+	x11-proto/xproto
+	x11-proto/xf86vidmodeproto
+	x11-proto/glproto
+	x11-proto/videoproto
+	x11-proto/xextproto
+	x11-proto/fontsproto"
 
 S="${WORKDIR}"
 
