@@ -26,11 +26,7 @@ RDEPEND="dev-libs/glib
 	dev-perl/Unix-Syslog
 	media-libs/jpeg
 	media-libs/libpng
-	media-libs/mesa
 	sys-libs/zlib
-	x11-libs/libX11
-	x11-libs/libFS
-	x11-libs/libXvMC
 	x11-libs/libICE
 	x11-libs/libXmu
 	x11-libs/libXdmcp
@@ -48,9 +44,6 @@ DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
 	x11-misc/imake
 	x11-proto/xproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/glproto
-	x11-proto/videoproto
 	x11-proto/xextproto
 	x11-proto/fontsproto"
 
