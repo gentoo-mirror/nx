@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="nostrip"
 
-DEPEND="!net-misc/nxserver-freenx"
+DEPEND="!net-misc/nxserver-freenx
+	!<net-misc/nxserver-freeedition-3.0.0"
 
 RDEPEND="=net-misc/nxclient-3*
 	x11-libs/libICE
