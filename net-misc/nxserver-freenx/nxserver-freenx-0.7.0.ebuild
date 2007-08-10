@@ -31,7 +31,8 @@ DEPEND="virtual/ssh
 RDEPEND="${DEPEND}
 	media-fonts/font-misc-misc
 	media-fonts/font-cursor-misc
-	x11-apps/xauth"
+	x11-apps/xauth
+	x11-apps/xrdb"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
@@ -49,6 +50,7 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${PN}-0.6.0-nxloadconfig.patch
 	epatch ${FILESDIR}/${P}-kdecups.patch
+	epacth ${FILESDIR}/${P}-xfsfonts.patch
 
 	# Fix DISPLAY for XCB
 	sed -i "s/unix:/:/g" nxnode || die
