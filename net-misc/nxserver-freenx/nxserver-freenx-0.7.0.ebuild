@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.6.0.ebuild,v 1.4 2007/06/11 11:57:37 voyageur Exp $
+# $Header: $
 
 inherit multilib eutils
 
