@@ -87,6 +87,7 @@ src_install() {
 	dobin nxkeygen
 	dobin nxloadconfig
 	dobin nxsetup
+	dobin nxcups-gethost
 	use nxclient || dobin nxprint
 	use nxclient || dobin nxclient
 
