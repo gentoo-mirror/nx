@@ -48,6 +48,10 @@ src_unpack() {
 	mv node.conf.sample node.conf || die
 
 	epatch ${FILESDIR}/${PN}-0.6.0-nxloadconfig.patch
+	epatch ${FILESDIR}/${P}-kdecups.patch
+
+	# Fix DISPLAY for XCB
+	sed -i "s/unix:/:/g" nxnode || die
 
 	# on amd64, get the correct path to NX 32bit libsA
 	if 	has_multilib_profile; then
