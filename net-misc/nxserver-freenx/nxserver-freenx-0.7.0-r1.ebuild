@@ -51,6 +51,7 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-0.6.0-nxloadconfig.patch
 	epatch ${FILESDIR}/${P}-kdecups.patch
 	epatch ${FILESDIR}/${P}-xfsfonts.patch
+	epatch ${FILESDIR}/${P}-nx3support.patch
 
 	# Fix DISPLAY for XCB-enabled systems
 	sed -i "s/unix:/:/g" nxnode || die

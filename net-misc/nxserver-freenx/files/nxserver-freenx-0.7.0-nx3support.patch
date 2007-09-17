@@ -1,0 +1,79 @@
+diff -Naur freenx-0.7.0.orig/node.conf freenx-0.7.0/node.conf
+--- freenx-0.7.0.orig/node.conf	2007-09-17 14:11:10.000000000 +0200
++++ freenx-0.7.0/node.conf	2007-09-17 14:13:39.000000000 +0200
+@@ -378,6 +378,9 @@
+ # When you installed a 2.0.0 NX Backend, set this to 1.
+ #ENABLE_2_0_0_BACKEND="0"
+ 
++# When you installed a 3.0.0 NX Backend, set this to 1.
++#ENABLE_3_0_0_BACKEND="0"
++
+ # When set to 1 this will automatically resume started sessions
+ #ENABLE_AUTORECONNECT="0"
+ 
+diff -Naur freenx-0.7.0.orig/nxloadconfig freenx-0.7.0/nxloadconfig
+--- freenx-0.7.0.orig/nxloadconfig	2007-09-17 14:11:10.000000000 +0200
++++ freenx-0.7.0/nxloadconfig	2007-09-17 14:19:00.000000000 +0200
+@@ -184,6 +184,7 @@
+ # Misc directives
+ 
+ ENABLE_2_0_0_BACKEND=""
++ENABLE_3_0_0_BACKEND=""
+ ENABLE_AUTORECONNECT="0"
+ ENABLE_AUTORECONNECT_BEFORE_140="1"
+ EXPORT_USERIP="0"
+@@ -275,13 +276,19 @@
+ [ -z "$AGENT_LIBRARY_PATH" ] && AGENT_LIBRARY_PATH=$PATH_LIB
+ [ -z "$PROXY_LIBRARY_PATH" ] && PROXY_LIBRARY_PATH=$PATH_LIB
+ [ -z "$APPLICATION_LIBRARY_PATH" ] && APPLICATION_LIBRARY_PATH=$PATH_LIB
+-[ -z "$APPLICATION_LIBRARY_PRELOAD" ] && APPLICATION_LIBRARY_PRELOAD="$APPLICATION_LIBRARY_PATH/libX11.so:$APPLICATION_LIBRARY_PATH/libXext.so:$APPLICATION_LIBRARY_PATH/libXcomp.so:$APPLICATION_LIBRARY_PATH/libXcompext.so:$APPLICATION_LIBRARY_PATH/libXrender.so"
++[ -z "$APPLICATION_LIBRARY_PRELOAD" ] && APPLICATION_LIBRARY_PRELOAD="$APPLICATION_LIBRARY_PATH/libX11.so:$APPLICATION_LIBRARY_PATH/libXext.so:$APPLICATION_LIBRARY_PATH/libXcomp.so:$APPLICATION_LIBRARY_PATH/libXcompext.so:$APPLICATION_LIBRARY_PATH/libXcompshad.so:$APPLICATION_LIBRARY_PATH/libXrender.so"
+ if [ -z "$ENABLE_2_0_0_BACKEND" ]
+ then
+ 	ENABLE_2_0_0_BACKEND="1"
+ 	[ -z "$(strings $REAL_PATH_BIN/nxagent | egrep 'NXAGENT - Version 2.[01].0')" ] && ENABLE_2_0_0_BACKEND="0"
+ fi 
+ 
++if [ -z "$ENABLE_3_0_0_BACKEND" ]
++then
++	ENABLE_3_0_0_BACKEND="1"
++	[ -z "$(strings $REAL_PATH_BIN/nxagent | egrep 'NXAGENT - Version 3.[01].0')" ] && ENABLE_3_0_0_BACKEND="0"
++fi
++
+ [ -z "$KDE_PRINTRC" -a -n "$KDEHOME" ] && KDE_PRINTRC="$KDEHOME/share/config/kdeprintrc"
+ [ -z "$KDE_PRINTRC" -o ! -r "$KDE_PRINTRC" ] && KDE_PRINTRC="$HOME/.kde/share/config/kdeprintrc"
+ 
+@@ -535,8 +542,8 @@
+ 	[ -z $(echo "$ENABLE_ROOTLESS_MODE" | egrep "^[0|1]$") ] && \
+ 		ERROR="yes" && echo "Error: Invalid value \"ENABLE_ROOTLESS_MODE=$ENABLE_ROOTLESS_MODE\""
+ 
+-	[ -z "$(strings $REAL_PATH_BIN/nxagent | egrep 'NXAGENT - Version 1.5.0|NXAGENT - Version 2.[01].0')" ] && \
+-		ERROR="yes" && echo "Error: Could not find 1.5.0 or 2.[01].0 version string in nxagent. NX 1.5.0 or 2.[01].0 backend is needed for this version of FreeNX."
++	[ -z "$(strings $REAL_PATH_BIN/nxagent | egrep 'NXAGENT - Version 1.5.0|NXAGENT - Version 2.[01].0|NXAGENT - Version 3.0.0')" ] && \
++		ERROR="yes" && echo "Error: Could not find 1.5.0, 2.[01].0 or 3.0.0 version string in nxagent. NX 1.5.0 to 3.0.0 backend is needed for this version of FreeNX."
+ 		
+ 	[ -z $(echo "$ENABLE_USESSION" | egrep "^[0|1]$") ] && \
+ 		ERROR="yes" && echo "Error: Invalid value \"ENABLE_USESSION=$ENABLE_USESSION\""
+diff -Naur freenx-0.7.0.orig/nxnode freenx-0.7.0/nxnode
+--- freenx-0.7.0.orig/nxnode	2007-09-17 14:11:10.000000000 +0200
++++ freenx-0.7.0/nxnode	2007-09-17 14:20:34.000000000 +0200
+@@ -414,7 +414,7 @@
+ 	# backingstore
+ 	
+ 	B=""
+-	if [ -n "$backingstore" -a "$ENABLE_2_0_0_BACKEND" != "1" ]
++	if [ -n "$backingstore" -a "$ENABLE_2_0_0_BACKEND" != "1" -a "$ENABLE_3_0_0_BACKEND" != "1" ]
+ 	then
+ 		[ "$backingstore" != 1 ] && B="-bs $backingstore"
+ 		[ "$backingstore" = 1 ] && B="+bs"
+@@ -942,8 +942,8 @@
+ 
+ node_start_monitor()
+ {
+-	[ "$ENABLE_2_0_0_BACKEND" = "1" ] && node_start_monitor_2_0_0 "$@"
+-	[ "$ENABLE_2_0_0_BACKEND" = "1" ] || node_start_monitor_1_5_0 "$@"
++	[ "$ENABLE_2_0_0_BACKEND" = "1" || "$ENABLE_3_0_0_BACKEND" = "1" ] && node_start_monitor_2_0_0 "$@"
++	[ "$ENABLE_2_0_0_BACKEND" = "1" || "$ENABLE_3_0_0_BACKEND" = "1" ] || node_start_monitor_1_5_0 "$@"
+ }
+ 
+ #
