@@ -21,7 +21,7 @@ DEPEND="virtual/ssh
 	!nxclient? ( !net-misc/nxclient
 				 || ( x11-misc/xdialog
 					  x11-apps/xmessage ) )
-	~net-misc/nx-2.1.0
+	>=net-misc/nx-2.1.0
 	arts? ( kde-base/arts )
 	cups? ( net-print/cups )
 	esd? ( media-sound/esound )
