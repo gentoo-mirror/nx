@@ -1,6 +1,6 @@
 diff -Naur freenx-0.7.0.orig/node.conf freenx-0.7.0/node.conf
---- freenx-0.7.0.orig/node.conf	2007-09-17 14:11:10.000000000 +0200
-+++ freenx-0.7.0/node.conf	2007-09-17 14:13:39.000000000 +0200
+--- freenx-0.7.0.orig/node.conf	2007-09-17 14:46:18.000000000 +0200
++++ freenx-0.7.0/node.conf	2007-09-17 14:22:45.000000000 +0200
 @@ -378,6 +378,9 @@
  # When you installed a 2.0.0 NX Backend, set this to 1.
  #ENABLE_2_0_0_BACKEND="0"
@@ -12,8 +12,8 @@ diff -Naur freenx-0.7.0.orig/node.conf freenx-0.7.0/node.conf
  #ENABLE_AUTORECONNECT="0"
  
 diff -Naur freenx-0.7.0.orig/nxloadconfig freenx-0.7.0/nxloadconfig
---- freenx-0.7.0.orig/nxloadconfig	2007-09-17 14:11:10.000000000 +0200
-+++ freenx-0.7.0/nxloadconfig	2007-09-17 14:19:00.000000000 +0200
+--- freenx-0.7.0.orig/nxloadconfig	2007-09-17 14:46:18.000000000 +0200
++++ freenx-0.7.0/nxloadconfig	2007-09-17 14:29:43.000000000 +0200
 @@ -184,6 +184,7 @@
  # Misc directives
  
@@ -43,6 +43,22 @@ diff -Naur freenx-0.7.0.orig/nxloadconfig freenx-0.7.0/nxloadconfig
  [ -z "$KDE_PRINTRC" -a -n "$KDEHOME" ] && KDE_PRINTRC="$KDEHOME/share/config/kdeprintrc"
  [ -z "$KDE_PRINTRC" -o ! -r "$KDE_PRINTRC" ] && KDE_PRINTRC="$HOME/.kde/share/config/kdeprintrc"
  
+@@ -303,11 +310,11 @@
+ 	[ ! -f "$REAL_PATH_BIN/nxagent" ] && \
+ 		ERROR="yes" && echo "Error: Could not find nxagent in $PATH_BIN. Please install some OSS components."
+ 		
+-	[ ! -f "$PATH_BIN/nxdesktop" ] && \
+-		WARNING="yes" && echo "Warning: Could not find nxdesktop in $PATH_BIN. RDP sessions won't work."
++	[ ! -f "$PATH_BIN/rdesktop" ] && \
++		WARNING="yes" && echo "Warning: Could not find rdesktop in $PATH_BIN. RDP sessions won't work."
+ 		
+-	[ ! -f "$PATH_BIN/nxviewer" ] && \
+-		WARNING="yes" && echo "Warning: Could not find nxviewer in $PATH_BIN. VNC sessions won't work."
++	[ ! -f "$PATH_BIN/vncviewer" ] && \
++		WARNING="yes" && echo "Warning: Could not find vncviewer in $PATH_BIN. VNC sessions won't work."
+ 
+ 	# Check for paths
+ 		
 @@ -535,8 +542,8 @@
  	[ -z $(echo "$ENABLE_ROOTLESS_MODE" | egrep "^[0|1]$") ] && \
  		ERROR="yes" && echo "Error: Invalid value \"ENABLE_ROOTLESS_MODE=$ENABLE_ROOTLESS_MODE\""
@@ -55,8 +71,8 @@ diff -Naur freenx-0.7.0.orig/nxloadconfig freenx-0.7.0/nxloadconfig
  	[ -z $(echo "$ENABLE_USESSION" | egrep "^[0|1]$") ] && \
  		ERROR="yes" && echo "Error: Invalid value \"ENABLE_USESSION=$ENABLE_USESSION\""
 diff -Naur freenx-0.7.0.orig/nxnode freenx-0.7.0/nxnode
---- freenx-0.7.0.orig/nxnode	2007-09-17 14:11:10.000000000 +0200
-+++ freenx-0.7.0/nxnode	2007-09-17 14:20:34.000000000 +0200
+--- freenx-0.7.0.orig/nxnode	2007-09-17 14:46:18.000000000 +0200
++++ freenx-0.7.0/nxnode	2007-09-17 14:30:20.000000000 +0200
 @@ -414,7 +414,7 @@
  	# backingstore
  	
@@ -66,6 +82,38 @@ diff -Naur freenx-0.7.0.orig/nxnode freenx-0.7.0/nxnode
  	then
  		[ "$backingstore" != 1 ] && B="-bs $backingstore"
  		[ "$backingstore" = 1 ] && B="+bs"
+@@ -443,7 +443,7 @@
+ 
+ 	if [ "$type" = "windows" ]
+ 	then
+-		# nxdesktop session (Windows RDP)
++		# rdesktop session (Windows RDP)
+ 
+ 		[ "$SET_LD_LIBRARY_PATH" = "1" ] && export LD_LIBRARY_PATH="$AGENT_LIBRARY_PATH:$LD_LIBRARY_PATH"
+ 		# Setup optional parameters
+@@ -457,11 +457,11 @@
+ 
+ 		# Start the agent
+ 		
+-		echo "$agent_password" | $PATH_BIN/nxdesktop -name "NX - $user@$SERVER_NAME:$display - $session (GPL Edition)" -option "$USER_FAKE_HOME/.nx/C-$sess_id/options" $K $G $U $P $D $agent_server $AGENT_EXTRA_OPTIONS_RDP 2>&3 &
++		echo "$agent_password" | $PATH_BIN/rdesktop -name "NX - $user@$SERVER_NAME:$display - $session (GPL Edition)" -option "$USER_FAKE_HOME/.nx/C-$sess_id/options" $K $G $U $P $D $agent_server $AGENT_EXTRA_OPTIONS_RDP 2>&3 &
+ 
+ 	elif [ "$type" = "vnc" ]
+ 	then
+-		# nxviewer session (VNC RFP)
++		# vncviewer session (VNC RFP)
+ 		
+ 		[ "$SET_LD_LIBRARY_PATH" = "1" ] && export LD_LIBRARY_PATH="$AGENT_LIBRARY_PATH:$LD_LIBRARY_PATH"
+ 		# Setup password
+@@ -471,7 +471,7 @@
+ 		
+ 		# Start the agent
+ 		
+-		$PATH_BIN/nxviewer -encodings tight hextile copyrect raw -passwd $USER_FAKE_HOME/.nx/C-$sess_id/scripts/.passwd -name "NX - $user@$SERVER_NAME:$display - $session (GPL Edition)" -option "$USER_FAKE_HOME/.nx/C-$sess_id/options" $vncfullscreen $G $K $agent_server $AGENT_EXTRA_OPTIONS_RFB 2>&3 &
++		$PATH_BIN/vncviewer -encodings tight hextile copyrect raw -passwd $USER_FAKE_HOME/.nx/C-$sess_id/scripts/.passwd -name "NX - $user@$SERVER_NAME:$display - $session (GPL Edition)" -option "$USER_FAKE_HOME/.nx/C-$sess_id/options" $vncfullscreen $G $K $agent_server $AGENT_EXTRA_OPTIONS_RFB 2>&3 &
+ 
+ 	elif [ "$R" = "-R" -a "$rootless" != "1" ]
+ 	then
 @@ -942,8 +942,8 @@
  
  node_start_monitor()
