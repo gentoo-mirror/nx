@@ -1,5 +1,0 @@
-# Bernard Cafarelli <voyageur@gentoo.org> (18 Sep 2007)
-# Has potential OPEN security bugs in its code
-# Unmask only if you know what you are doing
-# See bug #192712 for more information
-<net-misc/nx-3.0
