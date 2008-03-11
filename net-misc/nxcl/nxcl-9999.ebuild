@@ -7,7 +7,7 @@ inherit autotools subversion
 DESCRIPTION="A library for building NX clients"
 HOMEPAGE="http://svn.berlios.de/wsvn/freenx/nxcl"
 
-ESVN_REPO_URI="svn://svn.berlios.de/freenx/nxcl"
+ESVN_REPO_URI="svn://svn.berlios.de/freenx/trunk/freenx-client/nxcl"
 
 LICENSE="GPL-2"
 SLOT="0"

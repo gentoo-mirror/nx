@@ -7,7 +7,7 @@ inherit qt4 subversion
 DESCRIPTION="A Qt-based NX client using nxcl"
 HOMEPAGE="http://svn.berlios.de/wsvn/freenx/qtnx"
 
-ESVN_REPO_URI="svn://svn.berlios.de/freenx/qtnx"
+ESVN_REPO_URI="svn://svn.berlios.de/freenx/trunk/freenx-client/qtnx"
 
 LICENSE="GPL-2"
 SLOT="0"
