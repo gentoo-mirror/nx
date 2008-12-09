@@ -15,7 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="net-misc/nx
+DEPEND=""
+RDEPEND="app-admin/sudo
+	net-misc/nx
 	virtual/postgresql-server"
 
 S=${WORKDIR}
@@ -46,4 +48,8 @@ pkg_postinst() {
 	elog "To work, x2goserver needs a configured postgreSQL database"
 	elog "Sample script to create the database can be found here:"
 	elog "    /usr/share/x2go/script/x2gocreatebase.sh"
+	einfo ""
+	elog "You also need to give sudo rights on x2gopgwrapper to your users"
+	elog "A sudoers example for all members of the group users:"
+	elog "    %users ALL=(ALL) NOPASSWD: /usr/bin/x2gopgwrapper"
 }
