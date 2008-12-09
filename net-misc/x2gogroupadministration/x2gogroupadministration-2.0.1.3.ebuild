@@ -23,12 +23,3 @@ src_unpack(){
 	unpack ${A}
 	epatch "${DISTDIR}/${PN}_${FULL_PV}.diff.gz"
 }
-
-#src_compile() {
-#	econf $(use_with arts) || die "Error: econf failed"
-#	emake || die "Error: emake failed"
-#}
-
-#src_install(){
-#	emake DESTDIR="${D}" install || die "Error: Install failed"
-#}
