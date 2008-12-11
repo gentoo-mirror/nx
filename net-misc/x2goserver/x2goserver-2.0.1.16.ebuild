@@ -8,7 +8,7 @@ MAJOR_PV="$(get_version_component_range 1-3)"
 FULL_PV="${MAJOR_PV}-$(get_version_component_range 4)"
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://x2go.berlios.de"
-SRC_URI="http://x2go.obviously-nice.de/deb/pool/${PN}/${PN}_${FULL_PV}_all.deb"
+SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}_all.deb"
 
 LICENSE="GPL-2"
 SLOT="0"
