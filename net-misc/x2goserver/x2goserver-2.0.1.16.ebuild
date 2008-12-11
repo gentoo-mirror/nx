@@ -41,7 +41,8 @@ src_install() {
 
 	insinto /etc/x2go
 	doins etc/x2go/sql
-	#TODO write Gentoo initd file
+
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 }
 
 pkg_postinst() {
