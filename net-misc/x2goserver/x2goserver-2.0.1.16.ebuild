@@ -18,7 +18,8 @@ IUSE=""
 DEPEND=""
 RDEPEND="app-admin/sudo
 	net-misc/nx
-	virtual/postgresql-server"
+	virtual/postgresql-server
+	virtual/ssh"
 
 S=${WORKDIR}
 
