@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=1
 inherit versionator
 
 MAJOR_PV="$(get_version_component_range 1-3)"
@@ -13,7 +14,7 @@ SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}_all
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fuse"
+IUSE="+fuse"
 
 DEPEND=""
 RDEPEND="app-admin/sudo
