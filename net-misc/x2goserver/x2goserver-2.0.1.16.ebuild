@@ -13,13 +13,14 @@ SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}_all
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="fuse"
 
 DEPEND=""
 RDEPEND="app-admin/sudo
 	net-misc/nx
 	virtual/postgresql-server
-	virtual/ssh"
+	virtual/ssh
+	fuse? ( sys-fs/sshfs-fuse )"
 
 S=${WORKDIR}
 
@@ -36,7 +37,7 @@ src_unpack() {
 src_install() {
 	dobin usr/bin/*
 	dosbin usr/sbin/*
-	
+
 	exeinto /usr/share/x2go/script
 	doexe usr/lib/x2go/script/x2gocreatebase.sh
 

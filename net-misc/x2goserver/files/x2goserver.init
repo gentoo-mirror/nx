@@ -6,7 +6,8 @@
 DAEMON=/usr/sbin/x2gocleansessions
 
 depend() {
-	before sshd
+	need postgresql
+	use sshd
 }
 
 start() {
