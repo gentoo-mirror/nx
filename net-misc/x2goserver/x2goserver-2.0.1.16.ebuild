@@ -14,14 +14,16 @@ SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}_all
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+fuse"
+IUSE="+fuse kde"
 
 DEPEND=""
 RDEPEND="app-admin/sudo
 	net-misc/nx
 	virtual/postgresql-server
 	virtual/ssh
-	fuse? ( sys-fs/sshfs-fuse )"
+	fuse? ( sys-fs/sshfs-fuse )
+	kde? ( net-misc/x2gokdebindings 
+		net-misc/x2gosessionadministration )"
 
 S=${WORKDIR}
 

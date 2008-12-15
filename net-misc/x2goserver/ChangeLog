@@ -2,7 +2,12 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  12 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org> x2goserver-2.0.1.16.ebuild:
+  15 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  x2goserver-2.0.1.16.ebuild:
+  Add dependency on KDE tools (bindings and sessionadministration)
+
+  12 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  x2goserver-2.0.1.16.ebuild:
   Switch to EAPI=1, remote shares are useful
 
   12 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org> files/x2goserver.init, +metadata.xml,
