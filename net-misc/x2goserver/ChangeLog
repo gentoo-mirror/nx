@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  x2goserver-2.0.1.16.ebuild:
+  Depend on ldap ebuilds
+
   15 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
   x2goserver-2.0.1.16.ebuild:
   Add dependency on KDE tools (bindings and sessionadministration)

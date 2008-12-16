@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -23,7 +23,7 @@ src_install() {
 	sed -i -e "s|http://webserver|http://${VHOST_HOSTNAME}/${PN}|" usr/NX/share/plugin/nxapplet.html
 	[ "$VHOST_HOSTNAME" = localhost ] && ewarn "Server hostname is localhost, the plugin will not be usable from remote hosts"
 
-	cp -R usr/NX/share/* ${D}/${MY_HTDOCSDIR}
+	cp -R usr/NX/share/* "${D}"/${MY_HTDOCSDIR}
 
 	#TODO: webapp_postinst_txt en ${FILESDIR}/postinstall-en.txt
 	# Note to the user that she can access the client at http://localhost/nxweb/plugin/nxapplet.html
