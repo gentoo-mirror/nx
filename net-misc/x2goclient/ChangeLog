@@ -1,9 +1,0 @@
-# ChangeLog for net-misc/x2goclient
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  05 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
-  +x2goclient-2.0.1.21.ebuild:
-  Initial commit, first version provided by joachim Langenbach
-  <joachim@falaba.de> in bug #249600
-
