@@ -50,6 +50,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
+	epatch "${FILESDIR}"/${P}-pam_ssh.patch
 	epatch "${FILESDIR}"/${PN}-0.7.3_p102-nxloadconfig.patch
 	epatch "${FILESDIR}"/${PN}-0.7.3_p102-cflags.patch
 	epatch "${FILESDIR}"/${PN}-0.7.2-cups.patch
@@ -109,6 +110,11 @@ pkg_postinst () {
 	elog "To complete the installation, run:"
 	elog " nxsetup --install --setup-nomachine-key"
 	elog "This will use the default Nomachine SSH key"
-	elog "If you had older NX servers installed, you may need to add \"--clean
-	--purge\" to the nxsetup command"
+	elog "If you had older NX servers installed, you may need to add \"--clean --purge\" to the nxsetup command"
+
+	if ! built_with_use net-misc/openssh pam; then
+		elog ""
+		elog "net-misc/openssh was not built with PAM support"
+		elog "You will need to unlock the nx account by setting a password for it"
+	fi
 }
