@@ -1,0 +1,64 @@
+diff -u -x '*.kde*' -r x2gouseradministration-2.0.1/src/x2gouseradministration.cpp x2gouseradministration-2.0.1-mod/src/x2gouseradministration.cpp
+--- x2gouseradministration-2.0.1/src/x2gouseradministration.cpp	2009-02-09 14:39:19.000000000 +0100
++++ x2gouseradministration-2.0.1-mod/src/x2gouseradministration.cpp	2009-05-12 19:22:55.000000000 +0200
+@@ -133,6 +133,8 @@
+ 		QTextStream stream ( &file );
+ 		uri = stream.readLine();
+ 		base = stream.readLine();
++                bindDN = stream.readLine();
++                bindDNPw = stream.readLine();
+ 		file.close();
+ 	}
+ 	else
+@@ -145,6 +147,10 @@
+ 	base=lst[1];
+ 	lst=lst.split ( "//",uri );
+ 	uri=lst[1];
++        lst=lst.split("\"",bindDN);
++        bindDN=lst[1];
++        lst=lst.split("\"",bindDNPw);
++        bindDNPw=lst[1];
+ 	kdDebug() <<"base: "<<base<<" uri: "<<uri<<endl;
+ 	QVBoxLayout* lay=new QVBoxLayout ( this );
+ 	QFrame* mainFrame=new QFrame ( this );
+@@ -491,16 +497,16 @@
+ 	}
+ 	else
+ 	{
+-		QString passfile="/etc/libnss-ldap.secret";
+-		QFile file ( passfile );
+-		QCString tpass;
+-		if ( file.open ( IO_ReadOnly ) )
+-		{
+-			QTextStream in ( &file );
+-			in>>tpass;
+-			file.close();
+-		}
+-		ld=new LDAPSession ( uri,389,"cn=ldapadmin,"+base,tpass.data(),false,true );
++// 		QString passfile="/etc/libnss-ldap.secret";
++// 		QFile file ( passfile );
++// 		QCString tpass;
++// 		if ( file.open ( IO_ReadOnly ) )
++// 		{
++// 			QTextStream in ( &file );
++// 			in>>tpass;
++// 			file.close();
++// 		}
++		ld=new LDAPSession ( uri,389,(const char*)bindDN,(const char*)bindDNPw,true,false);
+ 		leSearchUin->setFocus();
+ 	}
+ 	load();
+Nur in x2gouseradministration-2.0.1-mod/src: x2gouseradministration.cpp~.
+diff -u -x '*.kde*' -r x2gouseradministration-2.0.1/src/x2gouseradministration.h x2gouseradministration-2.0.1-mod/src/x2gouseradministration.h
+--- x2gouseradministration-2.0.1/src/x2gouseradministration.h	2009-02-09 14:39:19.000000000 +0100
++++ x2gouseradministration-2.0.1-mod/src/x2gouseradministration.h	2009-05-12 19:28:00.000000000 +0200
+@@ -143,6 +143,8 @@
+     QGroupBox* gbUsers;
+     QString base;
+     QString uri;
++    QString bindDN;
++    QString bindDNPw;
+     QString prevUText;
+     QCString upass;
+     QString currentUser;
+Nur in x2gouseradministration-2.0.1-mod/src: x2gouseradministration.h~.

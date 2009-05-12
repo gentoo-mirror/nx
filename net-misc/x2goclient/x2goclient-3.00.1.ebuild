@@ -19,13 +19,19 @@ IUSE="ldap"
 DEPEND="net-misc/nx
 	|| ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 x11-libs/qt-svg:4 )
 		>=x11-libs/qt-4.3:4 )
-	ldap? ( net-nds/openldap )"
+	ldap? ( net-nds/openldap )
+	net-print/cups"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-${MAJOR_PV}
 
 src_prepare() {
-	use ldap ||	epatch "${FILESDIR}"/${PN}-2.0.1-noldap.patch
+	if use ldap ; then
+		epatch "${FILESDIR}"/${PN}-3.00.1-ldap.patch
+	else
+		epatch "${FILESDIR}"/${PN}-2.0.1-noldap.patch
+	fi
+#	use ldap || epatch "${FILESDIR}"/${PN}-2.0.1-noldap.patch
 }
 
 src_compile() {
@@ -52,4 +58,14 @@ src_install() {
         doins icons/hildon/*
 
 	make_desktop_entry /usr/bin/${PN} ${PN} x2goclient/128x128/${PN}.png "Network"
+}
+
+pkg_postinst(){
+	if use ldap; then
+		elog "You can now specify an binddn and a"
+		elog "password which is used to login at the ldap server."
+		elog "But the password is stored in plaintext at the config file"
+		elog "at your homedirectory!!"
+		elog ""
+	fi
 }

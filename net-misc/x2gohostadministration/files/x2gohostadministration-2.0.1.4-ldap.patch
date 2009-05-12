@@ -1,0 +1,74 @@
+diff -u -x '*.kde*' -r x2gohostadministration-2.0.1/src/x2gohostadministration.cpp x2gohostadministration-2.0.1-mod/src/x2gohostadministration.cpp
+--- x2gohostadministration-2.0.1/src/x2gohostadministration.cpp	2009-02-09 14:39:18.000000000 +0100
++++ x2gohostadministration-2.0.1-mod/src/x2gohostadministration.cpp	2009-05-12 18:47:16.000000000 +0200
+@@ -86,6 +86,8 @@
+         QTextStream stream( &file );
+         uri = stream.readLine();
+         base = stream.readLine();
++        bindDN = stream.readLine();
++        bindDNPw = stream.readLine();
+         file.close();
+     }
+     else
+@@ -99,6 +101,10 @@
+     base=lst[1];
+     lst=lst.split("//",uri);    
+     uri=lst[1];
++    lst=lst.split("\"", bindDN);
++    bindDN=lst[1];
++    lst=lst.split("\"", bindDNPw);
++    bindDNPw=lst[1];
+     kdDebug()<<base<<" --- "<<uri<<endl;
+     QVBoxLayout* lay=new QVBoxLayout(this);
+     QFrame* mainFrame=new QFrame(this);
+@@ -241,21 +247,21 @@
+     }
+     else
+     {
+-        QString passfile="/etc/libnss-ldap.secret";
+-        QFile file1(passfile);
+-        QCString tpass;
+-        if (file1.open(IO_ReadOnly))
+-        {
+-            QTextStream in(&file1);
+-            in>>tpass;
+-            file1.close();
+-            ld=new LDAPSession(uri,389,"cn=ldapadmin,"+base,tpass.data(),false,true);
+-        }
+-        else
+-        {
+-            KMessageBox::error( 0, i18n("Can't open file ")+"/etc/libnss-ldap.secret");
+-            exit (-1);
+-        }
++//         QString passfile="/etc/libnss-ldap.secret";
++//         QFile file1(passfile);
++//         QCString tpass;
++//         if (file1.open(IO_ReadOnly))
++//         {
++//             QTextStream in(&file1);
++//             in>>tpass;
++//             file1.close();
++       ld=new LDAPSession(uri,389,(const char*)bindDN,(const char*)bindDNPw,true,false);
++//         }
++//         else
++//         {
++//             KMessageBox::error( 0, i18n("Can't open file ")+"/etc/libnss-ldap.secret");
++//             exit (-1);
++//         }
+     }
+ 
+ 
+Nur in x2gohostadministration-2.0.1-mod/src: x2gohostadministration.cpp~.
+diff -u -x '*.kde*' -r x2gohostadministration-2.0.1/src/x2gohostadministration.h x2gohostadministration-2.0.1-mod/src/x2gohostadministration.h
+--- x2gohostadministration-2.0.1/src/x2gohostadministration.h	2009-02-09 14:39:18.000000000 +0100
++++ x2gohostadministration-2.0.1-mod/src/x2gohostadministration.h	2009-05-12 18:44:12.000000000 +0200
+@@ -71,6 +71,8 @@
+     bool isChanged;
+     QString base;
+     QString uri;
++    QString bindDN;
++    QString bindDNPw;
+ private:
+     void loadList();
+     void loadHost(QString name);
+Nur in x2gohostadministration-2.0.1-mod/src: x2gohostadministration.h~.

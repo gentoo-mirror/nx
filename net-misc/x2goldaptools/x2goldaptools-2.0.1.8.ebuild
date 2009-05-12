@@ -55,4 +55,11 @@ pkg_postinst() {
 	elog ""
 	elog "Use initsystem to create database"
 	elog "  /usr/share/x2goldaptools/script/initsystem"
+	elog ""
+	elog "To use the X2Go-Kcontrolmodules, append to"
+	elog "  /etc/x2go/x2goldaptools.conf"
+	elog "the lines (order and quotes are important!)"
+	elog "  binddn=\"cn=your,o=bind,c=dn\""
+	elog "  binddnpw=\"yourbindpassword\""
+	elog "and make sure you secure the file"
 }

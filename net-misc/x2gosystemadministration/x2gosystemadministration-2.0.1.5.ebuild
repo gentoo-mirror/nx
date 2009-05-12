@@ -8,7 +8,6 @@ MAJOR_PV="$(get_version_component_range 1-3)"
 FULL_PV="${MAJOR_PV}-$(get_version_component_range 4)"
 DESCRIPTION="The X2Go KControl group administration module"
 HOMEPAGE="http://x2go.berlios.de"
-#SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${MAJOR_PV}.orig.tar.gz http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}.diff.gz"
 SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,8 +20,8 @@ need-kde 3
 S=${WORKDIR}/${PN}-${MAJOR_PV}
 
 src_unpack(){
-	unpack ${A}
-	epatch "${FILESDIR}"/${PN}-2.0.1.4-ldap.patch	
+        unpack ${A}
+        epatch "${FILESDIR}"/${PN}-2.0.1.5-ldap.patch
 }
 
 pkg_postinst(){

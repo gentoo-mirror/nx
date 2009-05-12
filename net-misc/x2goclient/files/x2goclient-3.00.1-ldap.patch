@@ -1,0 +1,117 @@
+diff -u -x '*.kde*' -r x2goclient-3.00/configdialog.cpp x2goclient-3.00-mod/configdialog.cpp
+--- x2goclient-3.00/configdialog.cpp	2009-03-04 10:44:09.000000000 +0100
++++ x2goclient-3.00-mod/configdialog.cpp	2009-05-12 16:32:10.000000000 +0200
+@@ -61,7 +61,10 @@
+ 	ldapServer=new QLineEdit ( gb );
+ 	port=new QSpinBox ( gb );
+ 	ldapBase=new QLineEdit ( gb );
++        ldapBindDN=new QLineEdit ( gb );
++        ldapBindDNPw=new QLineEdit ( gb );
+ 	port->setMaximum ( 1000000 );
++        ldapBindDNPw->setEchoMode (QLineEdit::Password);
+ 
+ 	QHBoxLayout *grLay=new QHBoxLayout ( gb );
+ 
+@@ -77,6 +80,8 @@
+ 
+ 	laiLay->addWidget ( new QLabel ( tr ( "Server URL:" ),gb ) );
+ 	laiLay->addWidget ( new QLabel ( tr ( "BaseDN:" ),gb ) );
++        laiLay->addWidget ( new QLabel ( tr ("BindDN:" ),gb ) );
++        laiLay->addWidget ( new QLabel ( tr ("BindDN Password:" ),gb ) );
+ 	laiLay->addWidget ( new QLabel ( tr ( "Failover server 1 URL:" ),gb ) );
+ 	laiLay->addWidget ( new QLabel ( tr ( "Failover server 2 URL:" ),gb ) );
+ 
+@@ -112,6 +117,8 @@
+ 
+ 	setLay->addLayout ( aLay );
+ 	setLay->addWidget ( ldapBase );
++        setLay->addWidget ( ldapBindDN );
++        setLay->addWidget ( ldapBindDNPw );
+ 	setLay->addLayout ( aLay1 );
+ 	setLay->addLayout ( aLay2 );
+ 
+@@ -140,6 +147,12 @@
+ 	ldapBase->setText ( st.value ( "LDAP/basedn",
+ 	                               ( QVariant ) par->retLdapDn()
+ 	                             ).toString() );
++        ldapBindDN->setText ( st.value ( "LDAP/BindDN",
++                                         ( QVariant ) par->retLdapBindDN()
++                                       ).toString() );
++        ldapBindDNPw->setText ( st.value ( "LDAP/BindDNPw",
++                                         ( QVariant ) par->retLdapBindDNPw()
++                                       ).toString() );
+ 	gb->setEnabled ( useldap->isChecked() );
+ 	frLay->addWidget ( gb );
+ 	connect ( useldap,SIGNAL ( toggled ( bool ) ),gb,
+@@ -412,7 +425,14 @@
+ 		st.setValue ( "LDAP/server2", ( QVariant )
+ 		              ldapServer2->text() );
+ 	if ( ldapBase->text().length() )
+-		st.setValue ( "LDAP/basedn", ( QVariant ) ldapBase->text() );
++		st.setValue ( "LDAP/basedn", ( QVariant )
++                              ldapBase->text() );
++        if ( ldapBindDN->text().length() )
++                st.setValue ( "LDAP/BindDN", ( QVariant )
++                              ldapBindDN->text() );
++        if ( ldapBindDNPw->text().length() )
++                st.setValue ( "LDAP/BindDNPw",
++                              ldapBindDNPw->text() );
+ #endif //USELDAP
+ #ifdef WINDOWS
+ 
+diff -u -x '*.kde*' -r x2goclient-3.00/configdialog.h x2goclient-3.00-mod/configdialog.h
+--- x2goclient-3.00/configdialog.h	2009-03-04 10:34:51.000000000 +0100
++++ x2goclient-3.00-mod/configdialog.h	2009-05-12 15:11:36.000000000 +0200
+@@ -56,6 +56,8 @@
+ 		QLineEdit* ldapBase;
+ 		QLineEdit* ldapServer;
+ 		QSpinBox*  port;
++                QLineEdit* ldapBindDN;
++                QLineEdit* ldapBindDNPw;
+ 		QLineEdit* ldapServer1;
+ 		QSpinBox*  port1;
+ 		PrintWidget* pwid;
+diff -u -x '*.kde*' -r x2goclient-3.00/onmainwindow.cpp x2goclient-3.00-mod/onmainwindow.cpp
+--- x2goclient-3.00/onmainwindow.cpp	2009-03-10 16:07:50.000000000 +0100
++++ x2goclient-3.00-mod/onmainwindow.cpp	2009-05-12 15:59:22.000000000 +0200
+@@ -715,6 +715,10 @@
+ 		ldapPort=st1.value ( "LDAP/port", ( QVariant ) 389 ).toInt();
+ 		ldapDn=st1.value ( "LDAP/basedn",
+ 		                   ( QVariant ) QString::null ).toString();
++                ldapBindDN=st1.value ( "LDAP/BindDN",
++                                       ( QVariant ) QString::null ).toString();
++                ldapBindDNPw=st1.value ( "LDAP/BindDNPw",
++                                         ( QVariant ) QString::null ).toString();
+ 		ldapServer1=st1.value ( "LDAP/server1",
+ 		                        ( QVariant ) QString::null ).toString();
+ 		ldapPort1=st1.value ( "LDAP/port1",
+@@ -1489,7 +1493,7 @@
+ 	try
+ 	{
+ 		ld=new LDAPSession ( ldapServer.toStdString(),
+-		                     ldapPort,"","",true,false );
++		                     ldapPort,ldapBindDN.toStdString(),ldapBindDNPw.toStdString(),true,false );
+ 	}
+ 	catch ( LDAPExeption e )
+ 	{
+diff -u -x '*.kde*' -r x2goclient-3.00/onmainwindow.h x2goclient-3.00-mod/onmainwindow.h
+--- x2goclient-3.00/onmainwindow.h	2009-03-04 12:08:50.000000000 +0100
++++ x2goclient-3.00-mod/onmainwindow.h	2009-05-12 15:56:07.000000000 +0200
+@@ -151,6 +151,8 @@
+ 		QString retLdapServer() {return ldapServer;}
+ 		int retLdapPort() {return ldapPort;}
+ 		QString retLdapDn() {return ldapDn;}
++                QString retLdapBindDN() {return ldapBindDN; }
++                QString retLdapBindDNPw() {return ldapBindDNPw; }
+ 		QString retLdapServer1() {return ldapServer1;}
+ 		int retLdapPort1() {return ldapPort1;}
+ 		QString retLdapServer2() {return ldapServer2;}
+@@ -350,6 +352,8 @@
+ 
+ 		QString ldapServer;
+ 		int ldapPort;
++                QString ldapBindDN;
++                QString ldapBindDNPw;
+ 		QString ldapServer1;
+ 		int ldapPort1;
+ 		QString ldapServer2;
