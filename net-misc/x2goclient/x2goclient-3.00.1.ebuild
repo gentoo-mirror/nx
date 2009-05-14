@@ -29,9 +29,8 @@ src_prepare() {
 	if use ldap ; then
 		epatch "${FILESDIR}"/${PN}-3.00.1-ldap.patch
 	else
-		epatch "${FILESDIR}"/${PN}-2.0.1-noldap.patch
+		epatch "${FILESDIR}"/${PN}-3.00.1-noldap.patch
 	fi
-#	use ldap || epatch "${FILESDIR}"/${PN}-2.0.1-noldap.patch
 }
 
 src_compile() {
@@ -45,17 +44,17 @@ src_install() {
 	
 	# copying the icons
 	insinto /usr/share/pixmaps/x2goclient
-        doins icons/*
+	doins icons/*
 	insinto /usr/share/pixmaps/x2goclient/16x16
-        doins icons/16x16/*
+	doins icons/16x16/*
 	insinto /usr/share/pixmaps/x2goclient/32x32
-        doins icons/32x32/*
+	doins icons/32x32/*
 	insinto /usr/share/pixmaps/x2goclient/64x64
-        doins icons/64x64/*
+	doins icons/64x64/*
 	insinto /usr/share/pixmaps/x2goclient/128x128
-        doins icons/128x128/*
+	doins icons/128x128/*
 	insinto /usr/share/pixmaps/x2goclient/hildon
-        doins icons/hildon/*
+	doins icons/hildon/*
 
 	make_desktop_entry /usr/bin/${PN} ${PN} x2goclient/128x128/${PN}.png "Network"
 }
