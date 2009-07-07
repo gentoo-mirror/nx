@@ -1,0 +1,22 @@
+dev-python/pygtk virtual/python
+dev-python/pygtk
+0
+https://launchpad.net/~marceloshima/+archive/tacix/+files/eagleeye_0.0.1+ubuntubzr76~jaunty-1.tar.gz
+
+https://code.launchpad.net/~freenx-team/freenx-server/eagleeye
+GPL-2
+GTK FreeNX client
+~amd64 ~x86
+alternatives distutils eutils multilib portability python toolchain-funcs versionator
+
+
+
+
+
+
+compile install postinst postrm unpack
+
+
+
+
+
