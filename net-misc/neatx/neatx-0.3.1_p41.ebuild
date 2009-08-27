@@ -69,6 +69,7 @@ src_install() {
 
 netcat-path = /usr/bin/netcat
 xserssion-path = /etc/X11/Sessions/Xsession
+use-xsession = false
 EOF
 
 	insinto ${NX_HOME_DIR}/.ssh

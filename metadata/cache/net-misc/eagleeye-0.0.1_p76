@@ -7,7 +7,7 @@ https://code.launchpad.net/~freenx-team/freenx-server/eagleeye
 GPL-2
 GTK FreeNX client
 ~amd64 ~x86
-alternatives distutils eutils multilib portability python toolchain-funcs versionator
+distutils eutils multilib portability python toolchain-funcs versionator
 
 
 

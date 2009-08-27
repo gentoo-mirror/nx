@@ -7,7 +7,7 @@ https://launchpad.net/tacix
 GPL-2
 Remote Desktop Server
 ~amd64 ~x86
-alternatives distutils eutils multilib portability python toolchain-funcs
+distutils eutils multilib portability python toolchain-funcs
 
 
 
