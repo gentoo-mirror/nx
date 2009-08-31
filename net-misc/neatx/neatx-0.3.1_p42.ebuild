@@ -6,7 +6,8 @@ EAPI="2"
 
 inherit eutils autotools distutils subversion
 
-ESVN_REPO_URI="http://neatx.googlecode.com/svn/trunk/neatx@41"
+REV="${PV/[0-9.]*\_p}"
+ESVN_REPO_URI="http://neatx.googlecode.com/svn/trunk/neatx@${REV}"
 
 DESCRIPTION="Google implementation of NX server"
 HOMEPAGE="http://code.google.com/p/neatx/"
@@ -83,12 +84,12 @@ pkg_postinst () {
 	# Other NX servers ebuilds may have already created the nx account
 	# However they use different login shell/home directory paths
 	if [[ ${ROOT} == "/" ]]; then
-		usermod -s /usr/lib/neatx/nxserver-login nx || die "Unable to set login shell of nx user!!"
+		usermod -s /usr/$(get_libdir)/neatx/nxserver-login nx || die "Unable to set login shell of nx user!!"
 		usermod -d ${NX_HOME_DIR} nx || die "Unable to set home directory of nx user!!"
 	else
 		elog "If you had another NX server installed before, please make sure"
 		elog "the nx user account is correctly set to:"
-		elog " * login shell: /usr/lib/neatx/nxserver-login"
+		elog " * login shell: /usr/$(get_libdir)/neatx/nxserver-login"
 		elog " * home directory: ${NX_HOME_DIR}"
 	fi
 
