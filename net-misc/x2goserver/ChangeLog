@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/x2goserver
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*x2goserver-3.0.1.1 (02 Sep 2009)
+
+  02 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +x2goserver-3.0.1.1.ebuild:
+  Bump with lots of fixes from calchan, including sqlite support
+  (USE-enabled by default), installation and setup rework, EAPI2, ...
 
   16 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
   x2goserver-2.0.1.16.ebuild:
