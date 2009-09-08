@@ -61,8 +61,10 @@ src_compile() {
 
 src_install() {
 	emake install DESTDIR="${D}" || die "Failed to install"
-	chmod a+rwx "${D}"/var/lib/neatx/sessions
+	fperms 777 /var/lib/neatx/sessions
 	dodir ${NX_HOME_DIR}/.ssh
+	fowners nx:nx ${NX_HOME_DIR}
+	fowners nx:nx ${NX_HOME_DIR}/.ssh
 
 	insinto /etc
 	newins doc/neatx.conf.example neatx.conf
