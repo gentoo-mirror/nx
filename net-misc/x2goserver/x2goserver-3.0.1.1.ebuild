@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,14 +14,15 @@ SRC_URI="http://x2go.obviously-nice.de/deb/pool-lenny/${PN}/${PN}_${FULL_PV}_all
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+fuse kde ldap"
+IUSE="+fuse kde ldap postgresql sqlite"
 
 DEPEND=""
 RDEPEND="app-admin/sudo
 	net-misc/nx
-	virtual/postgresql-server
 	virtual/ssh
 	fuse? ( sys-fs/sshfs-fuse )
+	postgresql? ( virtual/postgresql-server )
+	sqlite? ( dev-db/sqlite )
 	kde? ( net-misc/x2gokdebindings
 		net-misc/x2gosessionadministration )
 	ldap? ( net-misc/x2goldaptools
@@ -40,6 +41,12 @@ src_unpack() {
 
 	# Needs testing, is it fully compatible with nxagent?
 	sed -i -e "s/x2goagent/nxagent/" usr/bin/x2gostartagent || die "sed failed"
+
+	if use sqlite ; then
+		echo sqlite > etc/x2go/sql
+	fi
+
+	epatch "${FILESDIR}"/x2gomountdirs_no_desktop_icon.patch
 }
 
 src_install() {
@@ -48,21 +55,35 @@ src_install() {
 
 	exeinto /usr/share/x2go/script
 	doexe usr/lib/x2go/script/x2gocreatebase.sh
+	doexe usr/lib/x2go/script/x2gosqlite.sh
 
 	insinto /etc/x2go
 	doins etc/x2go/sql
 
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	if use sqlite ; then
+		elog "creating x2go sqlite database directory /var/db/x2go"
+		dodir /var/db/x2go
+	fi
+
+	if use postgresql ; then
+		newinitd "${FILESDIR}"/${PN}.init ${PN}
+	fi
 }
 
 pkg_postinst() {
-	elog "To work, x2goserver needs a configured postgreSQL database"
-	elog "To use a database on localhost:"
-	elog "	echo -n local > /etc/x2go/sql"
-	elog "Sample script to create the database can be found here:"
-	elog "    /usr/share/x2go/script/x2gocreatebase.sh"
+	if use postgresql ; then
+		elog "To work, x2goserver needs a configured postgreSQL database"
+		elog "	echo -n local > /etc/x2go/sql"
+		elog "Sample script to create the database can be found here:"
+		elog "    /usr/share/x2go/script/x2gocreatebase.sh"
+	fi
+	if use sqlite ; then
+		elog "To work, x2goserver needs a configured sqlite database"
+		elog "Sample script to create the database can be found here:"
+		elog "    /usr/share/x2go/script/x2gosqlite.sh"
+	fi
 	einfo ""
-	elog "You also need to give sudo rights on x2gopgwrapper to your users"
+	elog "You need to give sudo rights on x2gopgwrapper to your users"
 	elog "A sudoers example for all members of the group users:"
 	elog "    %users ALL=(ALL) NOPASSWD: /usr/bin/x2gopgwrapper"
 	elog "To give only a special group access to the x2goserver, "
