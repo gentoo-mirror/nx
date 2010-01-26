@@ -1,0 +1,12 @@
+diff -u --recursive --new-file x2goclient-gtk-3.01/src/main_window.cc x2goclient-gtk-3.01-mod/src/main_window.cc
+--- x2goclient-gtk-3.01/src/main_window.cc	2009-09-24 20:02:33.000000000 +0200
++++ x2goclient-gtk-3.01-mod/src/main_window.cc	2009-10-11 15:50:43.000000000 +0200
+@@ -37,7 +37,7 @@
+ #include "config.h"
+ #include <gtkmmconfig.h>
+ #if GTKMM_MAJOR_VERSION==2 && GTKMM_MINOR_VERSION>2
+-#include <sigc++/compatibility.h>
++// #include <sigc++/compatibility.h>
+ #define GMM_GTKMM_22_24(a,b) b
+ #else //gtkmm 2.2
+ #define GMM_GTKMM_22_24(a,b) a
