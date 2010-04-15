@@ -2,6 +2,13 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/x2goclient/ChangeLog,v 1.2 2009/04/16 14:00:21 voyageur Exp $
 
+
+*x2goclient-3.01.5 (15 Apr 2010)
+
+  15 Apr 2010; Joachim Langenbach <joachim@falaba.de> x2goclient-3.01.5.ebuild:
+  Added new Ebuild
+  ldap patch is not needed anymore, because it's in sources already
+
   16 Apr 2009; Bernard Cafarelli <voyageur@gentoo.org> Manifest:
   Upstream modified source tarball, bug #266141
 

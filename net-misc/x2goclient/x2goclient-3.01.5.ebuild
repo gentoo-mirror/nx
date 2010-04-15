@@ -26,9 +26,12 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${PN}-${MAJOR_PV}
 
 src_prepare() {
-	if use ldap ; then
-		epatch "${FILESDIR}"/${PN}-3.00.1-ldap.patch
-	else
+#	if use ldap ; then
+#		epatch "${FILESDIR}"/${PN}-3.00.1-ldap.patch
+#	else
+#		epatch "${FILESDIR}"/${PN}-3.00.1-noldap.patch
+#	fi
+	if not use ldap ; then
 		epatch "${FILESDIR}"/${PN}-3.00.1-noldap.patch
 	fi
 }

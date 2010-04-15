@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/x2goclient/x2goclient-2.99.3.ebuild,v 1.1 2009/03/13 12:36:03 voyageur Exp $
 
@@ -41,7 +41,7 @@ src_compile() {
 src_install() {
 	dobin ${PN}
 	dodoc README
-	
+
 	# copying the icons
 	insinto /usr/share/pixmaps/x2goclient
 	doins icons/*

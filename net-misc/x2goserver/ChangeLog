@@ -2,6 +2,13 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*x2goserver-3.0.1.5 (15 Apr 2010)
+
+  15 Apr 2010 Joachim Langenbach <joachim@falaba.de>
+  Added x2goserver-3.0.1.5
+  Removed kde useflag, because KDE3 is not supported anymore by gentoo
+  Changed postgressql to postgres useflag, because it's the official postgres useflag
+
 *x2goserver-3.0.1.1 (02 Sep 2009)
 
   02 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
