@@ -1,4 +1,0 @@
-# Bernard Cafarelli <voyageur@gentoo.org> (14 Mar 2008)
-# Mask live ebuilds now that 0.9 was released
-=net-misc/nxcl-9999
-=net-misc/qtnx-9999
