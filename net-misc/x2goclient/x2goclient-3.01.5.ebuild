@@ -26,13 +26,8 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${PN}-${MAJOR_PV}
 
 src_prepare() {
-#	if use ldap ; then
-#		epatch "${FILESDIR}"/${PN}-3.00.1-ldap.patch
-#	else
-#		epatch "${FILESDIR}"/${PN}-3.00.1-noldap.patch
-#	fi
-	if not use ldap ; then
-		epatch "${FILESDIR}"/${PN}-3.00.1-noldap.patch
+	if ! use ldap ; then
+		epatch "${FILESDIR}"/${P}-noldap.patch
 	fi
 }
 
@@ -59,15 +54,15 @@ src_install() {
 	insinto /usr/share/pixmaps/x2goclient/hildon
 	doins icons/hildon/*
 
-	make_desktop_entry /usr/bin/${PN} ${PN} x2goclient/128x128/${PN}.png "Network"
+	make_desktop_entry ${PN} "X2go client" ${PN} "Network"
 }
 
 pkg_postinst(){
 	if use ldap; then
-		elog "You can now specify an binddn and a"
-		elog "password which is used to login at the ldap server."
-		elog "But the password is stored in plaintext at the config file"
-		elog "at your homedirectory!!"
+		elog "You can now specify a binddn and a password"
+		elog "which is used to login at the ldap server."
+		elog "But the password is stored in plaintext in the config file"
+		elog "in your home directory!!"
 		elog ""
 	fi
 }

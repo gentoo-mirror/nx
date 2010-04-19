@@ -1,7 +1,13 @@
 # ChangeLog for net-misc/x2goclient
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/x2goclient/ChangeLog,v 1.2 2009/04/16 14:00:21 voyageur Exp $
 
+  19 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -x2goclient-3.00.1.ebuild, -files/x2goclient-3.00.1-ldap.patch,
+  -files/x2goclient-3.00.1-noldap.patch, -x2goclient-3.01.3.ebuild,
+  x2goclient-3.01.5.ebuild, +files/x2goclient-3.01.5-noldap.patch:
+  Update no-ldap patch, bug #315533. Also fix desktop entry and drop old
+  versions
 
 *x2goclient-3.01.5 (15 Apr 2010)
 
