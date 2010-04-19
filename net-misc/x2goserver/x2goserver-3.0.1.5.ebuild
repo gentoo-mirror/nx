@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=1
-inherit versionator
+inherit eutils versionator
 
 MAJOR_PV="$(get_version_component_range 1-3)"
 FULL_PV="${MAJOR_PV}-$(get_version_component_range 4)"
@@ -21,7 +21,7 @@ RDEPEND="app-admin/sudo
 	net-misc/nx
 	virtual/ssh
 	fuse? ( sys-fs/sshfs-fuse )
-	postgresql? ( virtual/postgresql-server )
+	postgres? ( virtual/postgresql-server )
 	sqlite? ( dev-db/sqlite )
 	ldap? ( net-misc/x2goldaptools )"
 
@@ -60,13 +60,13 @@ src_install() {
 		dodir /var/db/x2go
 	fi
 
-	if use postgresql ; then
+	if use postgres ; then
 		newinitd "${FILESDIR}"/${PN}.init ${PN}
 	fi
 }
 
 pkg_postinst() {
-	if use postgresql ; then
+	if use postgres ; then
 		elog "To work, x2goserver needs a configured postgreSQL database"
 		elog "	echo -n local > /etc/x2go/sql"
 		elog "Sample script to create the database can be found here:"
