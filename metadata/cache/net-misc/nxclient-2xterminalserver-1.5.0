@@ -7,7 +7,7 @@ http://www.2x.com/terminalserver/
 GPL-2
 2X Terminal Server GPL NX client, based on NoMachine code
 ~amd64 ~x86
-eutils multilib portability qt3 toolchain-funcs versionator
+eutils multilib portability qt3 toolchain-funcs
 
 
 

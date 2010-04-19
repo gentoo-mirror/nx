@@ -1,5 +1,5 @@
-dev-python/pygtk >=app-admin/eselect-python-20090804 virtual/python
-dev-python/pygtk virtual/python
+dev-python/pygtk >=app-admin/eselect-python-20091230 dev-lang/python
+dev-python/pygtk >=app-admin/eselect-python-20091230 dev-lang/python
 0
 https://launchpad.net/~marceloshima/+archive/tacix/+files/eagleeye_0.0.1+ubuntubzr76~jaunty-1.tar.gz
 
@@ -7,7 +7,7 @@ https://code.launchpad.net/~freenx-team/freenx-server/eagleeye
 GPL-2
 GTK FreeNX client
 ~amd64 ~x86
-distutils eutils multilib portability python toolchain-funcs versionator
+distutils multilib python toolchain-funcs versionator
 
 
 
