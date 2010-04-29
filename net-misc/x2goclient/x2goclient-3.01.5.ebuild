@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/x2goclient/x2goclient-2.99.3.ebuild,v 1.1 2009/03/13 12:36:03 voyageur Exp $
 
-EAPI="2"
-inherit qt4 versionator
+EAPI="3"
+inherit qt4-r2 versionator
 
 MAJOR_PV="$(get_version_component_range 1-2)"
 FULL_PV="${MAJOR_PV}-$(get_version_component_range 3)"
@@ -29,11 +29,6 @@ src_prepare() {
 	if ! use ldap ; then
 		epatch "${FILESDIR}"/${P}-noldap.patch
 	fi
-}
-
-src_compile() {
-	eqmake4
-	emake || die "emake failed"
 }
 
 src_install() {
