@@ -18,6 +18,7 @@ IUSE="+fuse ldap postgres sqlite"
 
 DEPEND=""
 RDEPEND="app-admin/sudo
+	dev-perl/Config-Simple
 	net-misc/nx
 	virtual/ssh
 	fuse? ( sys-fs/sshfs-fuse )
