@@ -1,0 +1,22 @@
+
+
+0
+amd64? ( http://download.nomachine.com/download/4.4/Linux/nomachine-enterprise-client_4.4.12_11_x86_64.tar.gz ) x86? ( http://download.nomachine.com/download/4.4/Linux/nomachine-enterprise-client_4.4.12_11_i686.tar.gz )
+strip
+http://www.nomachine.com
+nomachine
+Client for NoMachine remote servers
+-* ~amd64 ~x86
+eutils multilib toolchain-funcs versionator
+
+
+
+
+5
+
+install
+
+
+
+
+
