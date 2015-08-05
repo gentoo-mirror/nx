@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=b59c68603f5be72cccb15dab93f96a90
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DESCRIPTION=X11/VNC/NXServer client (remote desktops over low-bandwidth links)
+LICENSE=nomachine
+IUSE=cups
+RESTRICT=strip
+SRC_URI=amd64? ( http://download.nomachine.com/download/3.5.0/Linux/nxclient-3.5.0-7.x86_64.tar.gz ) x86? ( http://download.nomachine.com/download/3.5.0/Linux/nxclient-3.5.0-7.i386.tar.gz )
+KEYWORDS=-* amd64 x86
+HOMEPAGE=http://www.nomachine.com/
+RDEPEND=dev-libs/expat =dev-libs/openssl-0.9.8* media-libs/audiofile || ( virtual/jpeg:62 media-libs/jpeg:62 ) =media-libs/libpng-1.2* media-libs/freetype media-libs/fontconfig cups? ( net-print/cups ) x11-libs/libXft x11-libs/libX11 x11-libs/libXdmcp x11-libs/libXrender x11-libs/libXau x11-libs/libXext sys-libs/zlib
