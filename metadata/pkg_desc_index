@@ -1,0 +1,9 @@
+app-eselect/eselect-nxserver 0.3: Manages configuration of NX servers
+net-misc/neatx 0.3.1_p59-r4: Google implementation of NX server
+net-misc/nxcl 0.9-r2: A library for building NX clients
+net-misc/nxclient 3.5.0.7: X11/VNC/NXServer client (remote desktops over low-bandwidth links)
+net-misc/nxnode 3.5.0.9: shared components between the different editions of NoMachine's NX Servers
+net-misc/nxsadmin 0.2.1-r1: graphical tool for management of active NX sessions on FreeNX server
+net-misc/nxserver-freeedition 3.5.0.11-r1: Free edition NX server from NoMachine
+net-misc/nxserver-freenx 0.7.3_p104-r7: Free Software Implementation of the NX Server
+net-misc/qtnx 0.9: A Qt-based NX client using nxcl
