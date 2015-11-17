@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.7.3_p104-r7.ebuild,v 1.4 2015/03/01 15:04:04 jlec Exp $
+# $Id$
 
 EAPI="5"
 
@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="+nxclient rdesktop vnc"
+IUSE="rdesktop vnc"
 
 DEPEND="x11-misc/gccmakedep
 	x11-misc/imake"
@@ -33,13 +33,15 @@ RDEPEND="dev-tcltk/expect
 	x11-apps/sessreg
 	virtual/awk
 	virtual/ssh
-	nxclient? ( net-misc/nxclient )
-	!nxclient? ( !net-misc/nxclient
-				 || ( x11-misc/xdialog
-					  x11-apps/xmessage ) )
+	|| (
+		x11-misc/xdialog
+		x11-apps/xmessage
+		)
 	rdesktop? ( net-misc/rdesktop )
-	vnc? ( x11-misc/x11vnc
-		   net-misc/tightvnc )"
+	vnc? (
+		x11-misc/x11vnc
+		net-misc/tightvnc
+		)"
 
 S=${WORKDIR}/${MY_PN}
 
@@ -76,11 +78,6 @@ src_install() {
 	export NX_SESS_DIR=/var/lib/nxserver/db
 
 	default
-
-	# This should be renamed to remove the blocker on net-misc/nxclient
-	if use nxclient ; then
-		rm "${ED}"/usr/bin/nxprint || die
-	fi
 
 	mv "${ED}"/etc/nxserver/node.conf.sample "${ED}"/etc/nxserver/node.conf ||
 		die "cannot find default configuration file"

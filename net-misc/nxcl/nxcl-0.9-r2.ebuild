@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxcl/nxcl-0.9-r2.ebuild,v 1.5 2013/08/07 13:29:05 ago Exp $
+# $Id$
 
 EAPI=4
 
@@ -14,11 +14,10 @@ SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="dbus doc nxclient"
+IUSE="dbus doc"
 
 RDEPEND=">=net-misc/nx-3.2.0-r5
-	dbus? ( sys-apps/dbus )
-	nxclient? ( net-misc/nxclient )"
+	dbus? ( sys-apps/dbus )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 S="${WORKDIR}/${MY_P}/${PN}"
@@ -29,10 +28,8 @@ src_prepare() {
 	# And doc path
 	sed -i -e "/^docdir =/s#doc/.*#share/doc/${PF}#" doc/Makefile.am ||
 		die "doc path sed failed"
-	if ! use nxclient; then
-		# Patch to use standard ssh instead of nxssh from nxclient
-		epatch "${FILESDIR}"/${P}-no_nxssh.patch
-	fi
+	# Patch to use standard ssh instead of nxssh from nxclient
+	epatch "${FILESDIR}"/${P}-no_nxssh.patch
 	epatch "${FILESDIR}"/${P}-gcc43.patch
 	epatch "${FILESDIR}"/${P}-gcc47.patch
 	eautoreconf
