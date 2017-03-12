@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -18,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="rdesktop vnc"
+IUSE="rdp vnc"
 
 DEPEND="x11-misc/gccmakedep
 	x11-misc/imake"
@@ -37,11 +36,8 @@ RDEPEND="dev-tcltk/expect
 		x11-misc/xdialog
 		x11-apps/xmessage
 		)
-	rdesktop? ( net-misc/rdesktop )
-	vnc? (
-		x11-misc/x11vnc
-		net-misc/tightvnc
-		)"
+	rdp? ( net-misc/rdesktop )
+	vnc? ( x11-misc/x11vnc )"
 
 S=${WORKDIR}/${MY_PN}
 
