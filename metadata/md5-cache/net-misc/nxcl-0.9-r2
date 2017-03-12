@@ -10,4 +10,4 @@ RDEPEND=>=net-misc/nx-3.2.0-r5 dbus? ( sys-apps/dbus )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~voyageur/distfiles/freenx-client-0.9.tar.bz2
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=ee76dd1cf1af9dc698caaf5e9a37de6a
+_md5_=b8879fd42b4a3e19de253ea98965e2af
