@@ -1,5 +1,3 @@
-app-eselect/eselect-nxserver 0.3: Manages configuration of NX servers
 net-misc/nxcl 0.9-r2: A library for building NX clients
-net-misc/nxsadmin 0.2.1-r1: graphical tool for management of active NX sessions on FreeNX server
 net-misc/nxserver-freenx 0.7.3_p104-r7: Free Software Implementation of the NX Server
 net-misc/qtnx 0.9: A Qt-based NX client using nxcl
