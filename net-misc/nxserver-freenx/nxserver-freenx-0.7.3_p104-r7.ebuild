@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit multilib eutils toolchain-funcs user versionator
+inherit eapi7-ver eutils multilib toolchain-funcs user
 
-MAJOR_PV="$(get_version_component_range 1-3)"
-PATCH_VER="$(get_version_component_range 4)"
+MAJOR_PV="$(ver_cut 1-3)"
+PATCH_VER="$(ver_cut 4-)"
 MY_PN="freenx-server"
 
 DESCRIPTION="Free Software Implementation of the NX Server"

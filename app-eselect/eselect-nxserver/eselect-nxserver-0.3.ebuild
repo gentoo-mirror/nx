@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Manages configuration of NX servers"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/nxserver.eselect-${PVR}.bz2"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/nxserver.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

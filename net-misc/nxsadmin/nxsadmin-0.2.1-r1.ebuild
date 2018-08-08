@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="graphical tool for management of active NX sessions on FreeNX server"
-HOMEPAGE="http://sourceforge.net/projects/nxsadmin.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/nxsadmin.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
