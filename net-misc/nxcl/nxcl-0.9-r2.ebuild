@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit autotools eutils
 
 MY_P="freenx-client-${PV}"
 DESCRIPTION="A library for building NX clients"
-HOMEPAGE="http://developer.berlios.de/projects/freenx/"
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.bz2"
+HOMEPAGE="https://developer.berlios.de/projects/freenx/"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
