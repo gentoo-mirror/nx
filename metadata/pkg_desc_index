@@ -1,3 +1,2 @@
 net-misc/nxcl 0.9-r2: A library for building NX clients
 net-misc/nxserver-freenx 0.7.3_p104-r7: Free Software Implementation of the NX Server
-net-misc/qtnx 0.9: A Qt-based NX client using nxcl
